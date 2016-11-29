@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<template id="panel_plan_charts_page" page="True">
+			<p>CHARTS!</p>
+		</template>
+		
+		
+		<template id="panel_plan_modules_apps_page" page="True">
+		
+			<div class="container" id="search_modules_apps">
+				<form id="search-modules" class="form-inline">
+			    	<t t-if="attrib_values">
+			      		<t t-foreach="attrib_values" t-as="a">
+			        		<input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+			      		</t>
+			    	</t>
+			    	<div class="form-group">
+				    	<div class="input-group">
+				      		<input type="text" name="search" id="search" class="search-query form-control" placeholder="Search..." t-att-value="search"/>
+				      		<span class="input-group-btn">
+				        		<a href="#" class="btn btn-default a-submit"><i class="fa fa-search"/></a>
+				      		</span>
+				  		</div>
+			  		</div>
+			  		<div class="form-group">
+					<div class="dropdown">
+						<button class="btn btn-default btn-flat dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    	<i class="fa fa-filter"></i>
+					    	Filter: <t t-esc="filter_name" />
+					  	</button>
+					  	<ul class="dropdown-menu eiqui-nav" id="menu_modules_filter" aria-labelledby="dropdownMenu1">
+					    	<li t-att-class="module_filter == 'all' and 'active' or ''" data-filter='all'><a href="#">All</a></li>
+					    	<li role="separator" class="divider"></li>
+					    	<li t-att-class="module_filter == 'installed' and 'active' or ''" data-filter='installed'><a href="#">Installed</a></li>
+					    	<li t-att-class="module_filter == 'not_installed' and 'active' or ''" data-filter='not_installed'><a href="#">Not Installed</a></li>
+					    	<li role="separator" class="divider"></li>
+					    	<li t-att-class="module_filter == 'pending_updates' and 'active' or ''" data-filter='pending_updates'><a href="#">Pending Updates</a></li>
+					    	<li role="separator" class="divider"></li>
+					    	<li t-att-class="module_filter == 'apps' and 'active' or ''" data-filter='apps'><a href="#">APPs</a></li>
+					  	</ul>
+					</div>
+					</div>
+				</form>
+		  	</div>
+		  	
+		  	<small class="container pull-right" t-esc="'%d-%d of %d' % (cur_page*num_regs, cur_page*num_regs+len(modules), total_modules_count)" />
+		  	
+			<table class="table eiqui-table" id="panel-modules">
+				<thead>
+					<th>Name</th>
+					<th class="text-center">Installed?</th>
+					<th class="text-center">Updated?</th>
+					<th class="text-center">Last Update</th>
+					<th>Description</th>
+					<th>&amp;nbsp;</th>
+				</thead>
+				<tbody>
+					<t t-foreach="modules" t-as="module">
+						<tr t-att-class="(module in modules_installed) and 'bg-success' or '' ">
+							<td class="col-md-4" t-esc="module.name"></td>
+							<td class="text-center col-md-1">
+								<t t-if="module in modules_installed"><i class="fa fa-check"></i></t>
+								<t t-if="module not in modules_installed"><i class="fa fa-close"></i></t>
+							</td>
+							<td class="text-center col-md-1" t-esc="False"></td>
+							<td class="text-center col-md-2" t-esc="module.repo_id.last_import_date"></td>
+							<t t-if="module.eiqui_description">
+								<t t-if="len(module.eiqui_description) &gt;= 72"><td class="col-md-4" t-esc="'%s...' % module.eiqui_description[:72]" data-toggle="tooltip" data-placement="bottom" t-att-title="module.eiqui_description" /></t>
+								<t t-if="len(module.eiqui_description) &lt; 72"><td class="col-md-4" t-esc="module.eiqui_description" /></t>
+							</t>
+							<t t-if="not module.eiqui_description">
+								<td>Description not available!</td>
+							</t>
+							<td class="col-md-1">
+								<div class="dropdown">
+									<button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    	More
+								    	<span class="caret"></span>
+								  	</button>
+								  	<ul class="dropdown-menu eiqui-nav" aria-labelledby="dropdownMenu1">
+								    	<li><a href="#">Complete Description</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li><a href="#">Check in Test"</a></li>
+								    	<li><a href="#">Install in Production</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li><a href="#">Add/Configure Functions</a></li>
+								    	<li><a href="#">Restore Last Version</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li><a href="#">Training and Advice</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li><a href="#">Technical Info.</a></li>
+								    	<li><a href="#">Guide</a></li>
+								  	</ul>
+								</div>
+							</td>
+						</tr>
+					</t>
+				</tbody>
+			</table>
+			
+			<div class="col-md-12 text-center">
+				<nav id="modules-pagination" class="eiqui-nav" aria-label="Page navigation">
+	 				<ul class="pagination">
+	    				<li t-att-class="cur_page-1 &lt; 0 and 'disabled' or ''">
+	      					<a t-att-data-page="str(cur_page-1)" href="#" aria-label="Previous">
+	        					<span aria-hidden="true">&amp;laquo;</span>
+	      					</a>
+	    				</li>
+	    				<t t-set="cpage" t-value="0"/>
+	    				<t t-foreach="range(num_pages)" t-as="npage">
+	    					<t t-if="npage &gt;= cur_page-4 and cpage &lt; 4">
+	    						<li t-att-class="cur_page == npage and 'active' or ''">
+	    							<t t-set="cpage" t-value="cpage+1"/>
+	    							<a t-att-data-page="str(npage)" href="#" t-esc="npage+1" />
+	    						</li>
+	    					</t>
+	    				</t>
+	    				<li t-att-class="cur_page+1 &gt;= num_pages and 'disabled' or ''">
+	      					<a t-att-data-page="str(cur_page+1)" href="#" aria-label="Next">
+	        					<span aria-hidden="true">&amp;raquo;</span>
+	      					</a>
+	    				</li>
+	  				</ul>
+				</nav>
+			</div>
+			
+		</template>
+		
+		
+		<template id="panel_plan_maintenance_page" page="True">
+			<p>MAINTENANCE!</p>
+		</template>
+		
+		<template id="panel_plan_tasks_issues_page" page="True">
+			<p>TASKS ISSUES!</p>
+		</template>
+		
+		<template id="panel_plan_server_page" page="True">
+			<p>SERVER!</p>
+		</template>
+		
+		<template id="panel_plan_access_control_page" page="True">
+			<p>ACCESS CONTROL!</p>
+		</template>
+		
+		<template id="panel_plan_general_page" page="True">
+			<p>GENERAL!</p>
+		</template>
+		
+		<template id="panel_plan_advance_page" page="True">
+			<p>ADVANCE!</p>
+		</template>
+
+		<template id="panel_plan_page" name="eiqui - Panel de Control: Plan" page="True">
+			<t t-set="ram" t-value="project.plan_type_id.ram/1024/1024 or 0"/>
+			<t t-set="storage" t-value="project.plan_type_id.storage/1024/1024 or 0"/>
+			<t t-set="url" t-value="'%s.eiqui.com' % project.name"/>
+			<t t-call="website.layout">
+				<t t-set="title" t-value="'eiqui - Panel de Control: Plan'" />
+				
+				<div id="header" class="container">
+					<table class="col-md-12">
+						<tbody>
+							<tr>
+								<td class="col-md-2">
+									<img t-att-src="'https://%s/logo.png' % url" class="img-responsive"/>
+								</td>
+								<td style="text-align:center;" class="col-md-2 text-muted"><t t-esc="project.plan_type_id.name"/><div class="eiqui-small-text" t-esc="'\n%sGiB/%sGiB Disco' % (ram, storage)"/></td>
+								<td style="text-align:center;" class="col-md-2 text-muted" t-esc="project.date or 'NEVER'" />
+								<td class="col-md-5" style="text-align:right;">
+									<a href="/panel" class="btn btn-default btn-lg">View all Plans</a>
+									<button class="btn btn-lg eiqui-bg-color">Create new Plan</button>
+								</td>
+								<td class="col-md-1">
+									<t t-call="aloxa_eiqui.user_menu" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h1 class="project-plan-url text-muted" t-esc="url" />
+				</div>
+				
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<ul class="nav nav-pills nav-stacked eiqui-nav" id="project-plan-menu">
+								<li role="presentation"><a data-section="charts" href="#">Charts</a></li>
+								<li role="presentation"><a data-section="modules_apps" href="#">Modules&amp;APPs</a></li>
+								<li role="presentation"><a data-section="maintenance" href="#">Maintenance</a></li>
+								<li role="presentation"><a data-section="tasks_issues" href="#">Tasks and Issues</a></li>
+								<li role="presentation"><a data-section="server" href="#">Server</a></li>
+								<li role="presentation"><a data-section="access_control" href="#">Access Control</a></li>
+								<li role="presentation"><a data-section="general" href="#" t-esc="url"/></li>
+								<li role="presentation"><a data-section="advance" href="#">Advance</a></li>
+							</ul>
+							<div style="margin-top:2em;">
+								<t t-call="aloxa_eiqui.eiqui_messages" />
+							</div>
+						</div>
+						
+						<div class="col-md-9" id="eiqui-ajax" data-page="plan" t-att-data-project="project.id"></div>
+					</div>
+				</div>
+			</t>
+		</template>
+		
+	</data>
+</openerp>

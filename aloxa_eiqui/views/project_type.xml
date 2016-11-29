@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+    
+		<!-- FORM -->
+		<record id="eiqui_project_type_form" model="ir.ui.view">
+			<field name="name">Project Types</field>
+			<field name="model">eiqui.project.type</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Project Types">
+					<sheet>
+						<group>
+							<field name="name"/>
+						</group>
+						<group>
+							<field name="ram"/>
+							<field name="storage"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- TREE -->
+		<record id="eiqui_types_tree" model="ir.ui.view">
+			<field name="name">Project Types</field>
+			<field name="model">eiqui.project.type</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Project Types">
+					<field name="name"/>
+					<field name="ram"/>
+					<field name="storage"/>
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<template id="mail_campaign_eiqui" name="Campaña de Correo" page="True">
+			<t t-call="aloxa_eiqui.minimal_layout">
+				<t t-set="head">
+					<style type="text/css">
+						@font-face {
+							font-family: 'Dosis';
+							font-style: normal;
+							font-weight: 400;
+							src: local('Dosis Regular'), local('Dosis-Regular'), url(https://fonts.gstatic.com/s/dosis/v6/guC5lwT5Dw7anV_xfpCGqw.ttf) format('truetype');	
+						}
+						
+						@media only screen and (max-device-width: 800px) {
+						    .ei_hide_telf { display:block !important; }
+						    .ei_hide_mail { display:none; }
+						}
+						@media only screen and (min-device-width: 800px) {
+						    .ei_hide_telf { display:none; }
+						    .ei_hide_mail { display:initial; }
+						}
+					</style>
+				</t>
+				<div style="font-family: Dosis, Verdana, sans-serif; text-align:center;"> 	
+					<table style="max-width:650px; border-collapse:collapse; margin:0 auto;">
+						<thead>
+							<tr><th scope="col" style="color:white;">_</th>
+						</tr></thead>
+						<tbody>			
+							<tr>
+								<td style="text-align:center;">
+									<img onerror="this.style.display='none';" src="https://aloxa.eiqui.com/website/image/ir.attachment/454/datas"/>
+								</td>
+							</tr>
+							<tr>
+								<td style="font-size:16px;">
+									<p style="line-height:150%; text-align:justify;">Ola!</p>
+									<p style="line-height:150%; text-align:justify;">O meu nome é Darío Lodeiros Vázquez de <a href="http://www.eiqui.com/" style="color:#68b581; text-decoration:none; font-weight:bold;">www.eiqui.com</a>. Estamos dando a coñecer unha plataforma desenvolvida cooperativamente (por máis de cinco mil programadores repartidos por todo o mundo) chamada <a href="https://www.odoo.com/es_ES" style="color:#68b581; text-decoration:none; font-weight:bold;">Odoo</a>. Grazas a este gran traballo comunitario e global, a pequena e mediana empresa ten hoxe dispoñible unha <b>tecnoloxía de xestión sinxela, elegante, áxil, e segura</b>.</p> 
+									<p style="line-height:150%; text-align:justify;">Unha plataforma que che permite dende <b>xestionar ventas, documentos, páxina web integrada, compras, facturación, e máis de mil módulos</b> funcionais a túa disposición… e todos dispoñibles <b>dende calquera sitio e en calquera momento </b>(cloud), sen límite de usuarios e <b>sen pagos por licencias</b>.</p>
+									<p style="line-height:150%; text-align:justify;">Gustaríame persoalmente poder ensinarvos o potencial de esta plataforma para que, cando fora necesario, podades tela en consideración.</p>
+									<p style="line-height:150%; text-align:justify;"><b>¿Sería posible facervos unha breve chamada esta semana?</b></p>
+									<p style="line-height:150%; text-align:justify;">Moitas grazas pola atención!</p>
+								</td>
+							</tr>
+							<tr><td style="color:white;">_</td></tr>
+							<tr><td style="color:white;">_</td></tr>
+							<tr style="background-color:#68b581; color:#FFF; font-size:32px; height: 2.5em;">
+								<td style="padding:0.1em; font-size:45px;text-align:center;">
+				                                        <p class="ei_hide_telf" style="display:none; font-size:10px; margin:0;">PREMA PARA CHAMAR</p>
+									<p class="ei_hide_telf" style="display:none; margin:0;"><a style="text-decoration:none; margin:0 auto; color:#FFF" href="tel:+34981684923">981 684923</a></p>
+									<p class="ei_hide_mail" style="margin:0;"><a style="text-decoration:none;  margin:0 auto; color:#FFF" href="https://eiqui.com/">www.eiqui.com</a></p>
+								</td>
+							</tr>
+							<tr><td style="color:white;">_</td></tr>
+							<tr><td style="color:white;">_</td></tr>
+							<tr>
+								<td style="text-align:center; padding:0;">
+									<a href="http://www.eiqui.com"><img style="width:100%" src="https://aloxa.eiqui.com/website/image/ir.attachment/457/datas" onerror="this.style.display='none';" /></a>
+								</td>
+						</tr>
+						</tbody>
+					</table>
+				    <br/>
+				    <p>Se non podes ver correctamente este correo <a href="https://aloxa.eiqui.com/mail/campaign/eiqui">prema aquí</a></p>
+				</div>
+			</t>
+		</template>
+		
+	</data>
+</openerp>

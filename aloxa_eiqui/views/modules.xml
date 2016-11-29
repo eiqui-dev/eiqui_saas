@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+    
+		<!-- FORM -->
+		<record id="eiqui_modules_form" model="ir.ui.view">
+			<field name="name">Git Odoo Modules</field>
+			<field name="model">eiqui.modules</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Git Odoo Modules">
+					<sheet>
+						<group>
+							<field name="Reviewed"/>
+							<field name="installable" readonly="True"/>
+						</group>
+						<group>
+							<field name="name"/>
+							<field name="author"/>
+						</group>
+						<group>
+							<field name="repo_id" readonly="True"/>
+							<field name="odoo_version_id"/>
+							<field name="tags_ids"/>
+							<field name="vertical_ids"/>
+						</group>
+						<notebook>
+							<page string="Original">
+								<group>
+									<field name="original_description"/>
+									<field name="original_summary"/>
+									<field name="original_app"/>
+									<field name="original_image" widget="image"/>
+									<field name="original_guide_html" class="oe_styling_v8"/>
+								</group>
+							</page>
+							<page string="Eiqui">
+								<group>
+									<field name="eiqui_description"/>
+									<field name="eiqui_summary"/>
+									<field name="eiqui_app"/>
+									<field name="eiqui_image" widget="image"/>
+									<field name="eiqui_guide"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- TREE -->
+		<record id="eiqui_modules_tree" model="ir.ui.view">
+			<field name="name">Git Odoo Modules</field>
+			<field name="model">eiqui.modules</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Git Odoo Modules">
+					<field name="name"/>
+					<field name="folder"/>
+					<field name="repo_id"/>
+					<field name="repo_branch"/>
+					<field name="Reviewed"/>
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<!-- FORM -->
+		<record id="eiqui_messages_form" model="ir.ui.view">
+			<field name="name">Messages</field>
+			<field name="model">eiqui.messages</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Messages">
+					<sheet>
+						<group>
+							<field name="project_id"/>
+						</group>
+						<group>
+							<field name="type"/>
+							<field name="visible"/>
+						</group>
+						<group>
+							<field name="message"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- TREE -->
+		<record id="eiqui_messages_tree" model="ir.ui.view">
+			<field name="name">Messages</field>
+			<field name="model">eiqui.messages</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Messages">
+					<field name="project_id"/>
+					<field name="message"/>
+					<field name="create_date"/>
+					<field name="visible"/>
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>

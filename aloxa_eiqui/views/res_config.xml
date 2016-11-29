@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_eiqui_config_settings" model="ir.ui.view">
+            <field name="name">Eiqui Settings</field>
+            <field name="model">eiqui.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure Eiqui" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+
+                    <group string="Git Account">
+                    	<field name="git_username" />
+                    	<field name="git_password" password="True" />
+                	</group>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+   
+        <record model="ir.ui.view" id="view_mail_mass_mailing_list_form">
+        	<field name="model">mail.mass_mailing.list</field>
+            <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_list_form"/>
+            <field name="arch" type="xml">
+            
+            	<xpath expr="//form[@string='Contact List']//sheet" position="before">
+            		<header>
+            			<button name="import_contacts" string="Import Contacts" type="object" class="oe_highlight" />
+            		</header>
+            	</xpath>
+            	
+            </field>
+		</record>
+	    
+	</data>
+</openerp>

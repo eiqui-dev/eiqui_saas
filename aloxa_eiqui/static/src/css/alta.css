@@ -1,0 +1,165 @@
+/*#################################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2016 Solucións Aloxa S.L. <info@aloxa.eu>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#################################################################################*/
+@keyframes toOdooColor {
+	0%   { color: var(--eiqui-color-black); }
+	100% { color: var(--odoo-color); }
+}
+@-webkit-keyframes toOdooColor {
+	0%   { color: var(--eiqui-color-black); }
+	100% { color: var(--odoo-color); }
+}
+.toOdooColorAnim {
+	-webkit-animation-name: toOdooColor;
+	-webkit-animation-duration: 5s;
+	animation-name: toOdooColor;
+	animation-duration: 5s;
+	color: var(--odoo-color);
+}
+
+@keyframes toEiquiColor {
+	0%   { color: var(--eiqui-color-black); }
+	100% { color: var(--eiqui-color); }
+}
+@-webkit-keyframes toEiquiColor {
+	0%   { color: var(--eiqui-color-black); }
+	100% { color: var(--eiqui-color); }
+}
+.toEiquiColorAnim {
+	-webkit-animation-name: toEiquiColor;
+	-webkit-animation-duration: 5s;
+	animation-name: toEiquiColor;
+	animation-duration: 5s;
+	color: var(--eiqui-color);
+}
+
+.panel-eiqui {
+	padding: 2em;
+	z-index: 10;
+	color: white;
+}
+
+.control-margin-top {
+	margin-top: 1em;
+	/*border-color: transparent;*/
+}
+.control-margin-bottom {
+	margin-bottom: 1em;
+	/*border-color: transparent;*/
+}
+
+.highlightred {
+	border-color: #F90303 !important;
+}
+
+.text-shadow-sm {
+	text-shadow: 1px 2px 2px rgba(0,0,0,0.3);
+}
+
+.fixed-black-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: #EEE;
+	opacity: 0.8;
+}
+
+body {
+	background: #F8F8F8 url('/aloxa_eiqui/static/src/img/linterna.svg') no-repeat fixed 95% -180px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--eiqui-color-black);
+}
+
+
+.btn-shadow {
+	padding: 0.5em;
+	background: rgba(0, 0, 0, 0.35) none repeat scroll 0% 0%;
+	border-radius: 5px;
+}
+
+.vertical-centered {
+	display: table-cell; 
+	vertical-align: middle;
+}
+.no-js, html, body {
+	height: 100%;
+}
+.no-js {
+	display: table;
+	width: 100%;
+}
+
+.panel-eiqui-slide {
+	float:left;
+	width:100%;
+}
+.panel-eiqui-border {
+	border: 0 solid var(--eiqui-color); 
+	border-width: 1px 0;
+	background-color: rgba(0,0,0,0.35);
+}
+
+.label-lg {
+	font-size: large;
+	margin-top: 0.8em;
+	text-transform: uppercase;
+}
+
+.btn-lg-eiqui {
+	color: var(--eiqui-color-black);
+	font-size: x-large;	
+}
+.btn-lg-eiqui:hover {
+	cursor: pointer;
+}
+
+.brand-logo {
+	position: fixed; 
+	top: 5px; 
+	left: 5px; 
+	z-index:10;
+}
+
+.step-info {
+	color: var(--eiqui-color-black);
+}
+
+.select2-container {
+	width: 100% !important;
+	font-size: x-large;
+}
+.select2-container .select2-selection--single {
+	height:48px !important;
+}
+.select2-selection--single .select2-selection__rendered {
+	line-height: 48px !important;
+	margin-left: 0.2em;
+}
+.select2-selection--single .select2-selection__arrow {
+	height:48px !important;
+}
+
+#carousel-signup {
+	width: 100%;
+}

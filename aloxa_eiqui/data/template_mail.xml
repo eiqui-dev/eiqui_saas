@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- Email template for infor plan created -->
+        <record id="plan_created_mail" model="email.template">
+            <field name="name">Plan Created</field>
+            <field name="model_id" ref="model_project_project"/>
+            <field name="email_from"><![CDATA[${object.user_id.company_id.name} <${(object.user_id.company_id.email or user.email)|safe}>]]></field>
+            <field name="email_to">${object.user_id.email|safe}</field>
+            <field name="subject">Your plan is ready for use</field>
+            <field name="body_html"><![CDATA[
+<p>PLAN PARAMETERS</p>
+<ul>
+	<li>XML-RPC Port: ${ctx.get('plan_info')['inst_info']['xmlrpc_port']}</li>
+	<li>DB User: ${ctx.get('plan_info')['inst_info']['db_user']}</li>
+	<li>DB Password: ${ctx.get('plan_info')['inst_info']['db_password']}</li>
+	<li>Odoo Master Password: ${ctx.get('plan_info')['inst_info']['admin_passwd']}</li>
+	<li>Odoo DB Name: ${object.name}
+		<ul><li>Admin Password: ${ctx.get('plan_info')['adminpasswd']}</li></ul>
+	</li>
+	<li>Data Directory: ${ctx.get('plan_info')['inst_info']['data_dir']}</li>
+	<li>Logfile: ${ctx.get('plan_info')['inst_info']['logfile']}</li>
+	<li>URL: ${ctx.get('plan_info')['odoo_url']}</li>
+</ul>
+			]]></field>
+        </record>
+        
+        <!-- Email template for infor plan error -->
+        <record id="plan_error_mail" model="email.template">
+            <field name="name">Plan Error</field>
+            <field name="model_id" ref="model_project_project"/>
+            <field name="email_from"><![CDATA[${object.user_id.company_id.name} <${(object.user_id.company_id.email or user.email)|safe}>]]></field>
+            <field name="email_to">${object.user_id.email|safe}</field>
+            <field name="subject">Ooops! Error occurred while creating your plan</field>
+            <field name="body_html"><![CDATA[
+<p>Keep calm!</p>
+			]]></field>
+        </record>
+        
+	</data>
+</openerp>

@@ -1,0 +1,1865 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<template id="home_page" name="eiqui - Developing Open Future" page="True">
+			<t t-call="aloxa_eiqui.base_layout">
+				<t t-set="head">
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/animate.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/owl.carousel.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/owl.theme.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/prettyPhoto.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/red.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/home.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/responsive.css" />
+					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/bootstrap-switch.min.css" />
+					<link rel="stylesheet"
+						href="/aloxa_eiqui/static/src/css/jquery.fancybox.css?v=2.1.5" type="text/css"
+						media="screen" />
+				</t>
+			
+				<t t-set="clickandgo" t-value="True"/>
+				
+				<!-- Menu Principal -->
+				<header id="section_header" class="navbar-fixed-top main-nav" role="banner">
+					<div class="container">
+						<!-- <div class="row"> -->
+						<div class="navbar-header ">
+							<button type="button" class="navbar-toggle" data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="/" class="navbar-brand" style="position:absolute;">
+           						<img src="/aloxa_eiqui/static/src/img/eiqui.png" alt="Logo of eiqui" t-att-title="res_company.name"/>
+       						</a>
+						</div><!--Navbar header End -->
+						<nav class="collapse navbar-collapse navigation" id="bs-example-navbar-collapse-1"
+							role="navigation">			
+							<ul class="nav navbar-nav navbar-right ">
+								<li class="active">
+									<a href="#slider_part" class="page-scroll">Inicio</a>
+								</li>
+								<li>
+									<a href="#apps" class="page-scroll">¿Qué te ofrece Odoo?</a>
+								</li>										
+								<li>
+									<a href="#service" class="page-scroll">Servicios</a>
+								</li>								
+								<li>
+									<a href="#newweb" class="page-scroll">Tu nueva web </a>
+								</li>
+								<li>
+									<a href="#team" class="page-scroll">Coompetencia</a>
+								</li>
+								<li>
+									<a href="#pricing_table" class="page-scroll">Tarifas</a>
+								</li>
+								<!--<li>
+									<a href="#blog" class="page-scroll">Noticias</a>
+								</li>-->
+								<li>
+									<a href="#contact" class="page-scroll">Contacta</a>
+								</li>
+
+								<!-- t t-foreach="website.menu_id.child_id" t-as="submenu">
+									<t t-call="website.submenu" />
+								</t>
+								<li class="divider" t-ignore="true" t-if="website.user_id != user_id" />
+								<li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<b>
+											<span t-esc="user_id.name" />
+											<span class="caret"></span>
+										</b>
+									</a>
+									<ul class="dropdown-menu js_usermenu" role="menu">
+										<li>
+											<a href="/web" role="menuitem">My Account</a>
+										</li>
+										<li class="divider" />
+										<li>
+											<a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout
+											</a>
+										</li>
+									</ul>
+								</li -->
+							</ul>
+						</nav>
+					</div><!-- /.container-fluid -->
+				</header>
+			
+				<!-- Slider start -->
+				<section id="slider_part">
+					<div class="carousel slide" id="carousel-example-generic"
+						data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators text-center">
+							<li data-target="#carousel-example-generic" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+						</ol>
+
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="overlay-slide">
+									<img src="/aloxa_eiqui/static/src/img/banner/p1.png" alt="" class="img-responsive" />
+								</div>
+								<div class="carousel-caption">
+									<div class="col-md-12 col-xs-12 text-center">
+										<h2 class="animated3" style="margin-bottom: 2px;">
+											<b>SaaS</b>											
+										</h2>
+										<p style="font-size:18px; margin-top: 2px;">la gestión,<b> ahora</b>, la tienes en la nube</p>
+									</div>
+									<!-- <button class="btn btn-main featured" style="margin-top: 200px;">DESCUBRELO</button>-->
+									
+								</div>
+							</div>	
+							<div class="item">
+								<div class="overlay-slide">
+									<img src="/aloxa_eiqui/static/src/img/banner/banner.jpg" alt="" class="img-responsive" />
+								</div>
+								<div class="carousel-caption">
+									<div class="col-md-12 col-xs-12 text-center">
+										<h2>Movilidad</h2>
+										<h3 class="animated2">														
+											Desde cualquier sitio
+										</h3>
+										<div class="line"></div>
+										<p class="animated3">A cualquier hora</p>
+										<!-- <button class="btn btn-main featured">PRUEBALO AHORA</button>-->
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="overlay-slide">
+									<img src="/aloxa_eiqui/static/src/img/banner/p3.jpg" alt="" class="img-responsive" />
+								</div>
+								<div class="carousel-caption">
+									<div class="col-md-12 col-xs-12 text-center">
+										<h2>Usabilidad</h2>
+										<h3 class="animated3">
+											Ágil, rápido y 
+											<b>elegante</b>
+										</h3>
+										<div class="line"></div>
+										<p class="animated2"> El ERP más intuitivo del mercado</p>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="overlay-slide">
+									<img src="/aloxa_eiqui/static/src/img/banner/p10.jpg" alt="" class="img-responsive" />
+								</div>
+								<div class="carousel-caption">
+									<div class="col-md-12 col-xs-12 text-center">
+										<h2>Odoo</h2>
+										<h3 class="animated3" style="font-size:35px; line-height: 40px;">
+											<b >+ de 2.000.000 </b>
+											de usuarios<br/>
+											<b>+ de 5.400 </b>
+											desarrolladores<br/>
+											<b>+ de 312 </b>
+											nuevas apps CADA MES!
+										</h3>
+										<div class="line"></div>
+										<p class="animated2" style="margin-top: 200px;">Bienvenido al Software Libre</p>
+									</div>
+								</div>
+							</div>
+							
+						</div> 	 <!-- End Carousel Inner -->
+
+						<!-- Controls -->
+						<div class="slides-control ">
+							<a class="left carousel-control" href="#carousel-example-generic"
+								data-slide="prev">
+								<span>
+									<i class="fa fa-angle-left"></i>
+								</span>
+							</a>
+							<a class="right carousel-control" href="#carousel-example-generic"
+								data-slide="next">
+								<span>
+									<i class="fa fa-angle-right"></i>
+								</span>
+							</a>
+						</div>
+					</div>
+				</section>
+				<!--/ Slider end -->
+				
+				<!-- Portfolio works Start -->
+				
+				<section id="apps">
+				
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										Una <b>App </b>
+										para cada necesidad
+									</h3>
+									<h4 class="feature_sub">
+									Te presentamos las principales Apps de Odoo para construir tu sistema, 
+									a mayores Odoo dispone de miles de módulos para añadir funcionalidades,
+									y lo mejor, la libertad para crear los que aún no existan
+									<b>Más de 300 cada mes!</b>
+									 </h4>
+									<div class="divider"></div>
+								</div>
+							</div>  <!-- Col-md-12 End -->
+						</div>
+					</div>
+					<div class="row" >
+						<img src="/aloxa_eiqui/static/src/img/banner/odoopantallas.png" alt="" class="img-responsive center-block" />
+				 	</div>
+
+					<div id="isotope-filter" class="skew3 text-center">
+						<a data-filter=".sales" href="#" class="current">Ventas, Compras y Facturación</a>
+						<a data-filter=".web" href="#" class="">Marketing &amp; Web</a>
+						<a data-filter=".production" href="#" class="">Operaciones</a>
+						<a data-filter=".account" href="#" class="">Productividad y Finanzas</a>
+						<a data-filter=".logist" href="#" class="">Logística</a>
+						<a data-filter=".rrhh" href="#" class="">Recursos Humanos</a>
+
+						
+					</div>
+					<div class="clearfix"></div>
+					<div class="text-center ">
+						<ul class="portfolio-wrap" id="portfolio_items">
+							<li class="col-xs-2 col-sm-2 col-md-2 account">&amp;nbsp;</li>
+							<li class="col-xs-1 col-sm-1 col-md-1 sales web rrhh logist production">&amp;nbsp;</li>
+						
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio sales logist">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/ventas.png" alt="" />
+									<figcaption>
+										<h5>Ventas</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Presupuestos, tarifas, registro de clientes, gestión de contratos...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li class="col-xs-2 col-sm-2 col-md-2 single-portfolio sales web">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/crm.png" alt="" />
+									<figcaption>
+										<h5>CRM</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/crm.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Iniciativas, oportunidades, segmentación de clientes, mailing...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li class="col-xs-2 col-sm-2 col-md-2 single-portfolio sales logist">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/compras.png" alt="" />
+									<figcaption>
+										<h5>Compras</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/compras.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Solicitud de presupuesto a proveedores, pedidos de compra, registro de proveedores ...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio account sales">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/facturacion.png" alt="" />
+									<figcaption>
+										<h5>Facturación</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Crea facturas de cliente y proveedor, controla vencimientos, pagos y cobros ...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio logist production">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/almacen.png" alt="" />
+									<figcaption>
+										<h5>Almacén</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Controla tu inventario, trazabilidad, abastecimientos, albaranes, automatiza abastecimientos...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li class="col-xs-2 col-sm-2 col-md-2 single-portfolio production rrhh">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/proyectos.png" alt="" />
+									<figcaption>
+										<h5>Proyectos</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Gestióna proyectos, tareas e incidencias, Gantt, control de costes...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio web">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/constructorweb.png" alt="" />
+									<figcaption>
+										<h5>Contructor Web</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Crea tu sitio web de forma rápida e intuitiva, escribe entradas en tu blog, sube imágenes,...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio web sales">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/ventaonline.png" alt="" />
+									<figcaption>
+										<h5>Tienda Online</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Gestiona tu tienda online de forma eficiente, integración con la gestión, actualización automática de stock y tarifas...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li class="col-xs-4 col-sm-4 col-md-4 sales">&amp;nbsp;</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio sales production">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/tpv.png" alt="" />
+									<figcaption>
+										<h5>TPV</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Realiza tus ventas de una manera ágil y desde cualquier lugar...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio account">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/contabilidad.png" alt="" />
+									<figcaption>
+										<h5>Contabilidad</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Asientos contables automatizados, informes de cuentas anuales, modelos fiscales y tributarios...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio production">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/fabricacion.png" alt="" />
+									<figcaption>
+										<h5>Fabricación</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Múltiples listas de materiales por producto, rutas y centros de producción, externalización, reparaciónes (RMA)
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio web">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/marketing.png" alt="" />
+									<figcaption>
+										<h5>Marketing</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Organiza de forma sencilla campañas de marketing, administra listas  y plantillas de correo...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio web production">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/eventos.png" alt="" />
+									<figcaption>
+										<h5>Eventos</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Promociona eventos en la web de una forma intuitiva, administra suscripciones...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li class="col-xs-5 col-sm-5 col-md-5 production">&amp;nbsp;</li>
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio production sales">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/serviciospostventa.png" alt="" />
+									<figcaption>
+										<h5>Servicios Postventa</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Obtén feedback de tus clientes, administra reclamaciones y reparaciones, ...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio account logist">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/informes.png" alt="" />
+									<figcaption>
+										<h5>Informes</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Crea informes dinámicos de manera sencilla, crea filtros, agrupaciones y niveles, ...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio logist rrhh">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/gestiondocumental.png" alt="" />
+									<figcaption>
+										<h5>Gestión documental</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Organiza tus documentos en directorios, adjunta documentos a proyectos, presupuestos, tareas...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio rrhh marketing">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/mensajeria.png" alt="" />
+									<figcaption>
+										<h5>Mensajería</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Comunícate de forma interna con otros usuarios, recibe y envía correos electrónicos, chatea en vivo con los visitantes de tu web...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio account rrhh">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/contabilidadanalitica.png" alt="" />
+									<figcaption>
+										<h5>Contabilidad Analítica</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Conoce los costes reales de tus productos y tus servicios, distribuye gastos entre varios proyectos...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+							
+							<li
+								class="col-xs-2 col-sm-2 col-md-2 single-portfolio rrhh">
+								<figure>
+									<img src="/aloxa_eiqui/static/src/img/portfolio/partesdehoras.png" alt="" />
+									<figcaption>
+										<h5>Partes de Horas</h5>
+										<p class="links">
+											<a href="portfolio-single.html">
+												<i class="fa fa-link"></i>
+											</a>
+											<a href="/aloxa_eiqui/static/src/img/portfolio/ventas.png" data-rel="prettyPhoto"
+												class="img-responsive">
+												<i class="fa fa-plus"></i>
+											</a>
+										</p>
+										<p class="description">
+											Controla las horas que cada departamento dedica a un cliente, haz una previsión del esfuerzo necesario para cada proyecto...
+										</p>
+									</figcaption>
+								</figure>
+							</li>
+
+						</ul>
+					</div> <!-- Container Full End -->
+				</section> 
+				<!-- Portfolio Section End -->
+				
+				<!-- Service Area start -->
+
+				<section id="service">							
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										eiqui
+										<b>Servicios</b>
+									</h3>
+									<h4 class="feature_sub">
+										Desde el autónomo en sus primeros pasos, hasta las grandes corporaciones
+										<br/>en eiqui encontrarás todos los servicios que puedes necesitar para
+										implantar la gestión adecuadamente en tu proyecto
+									</h4>
+									<div class="divider"></div>
+								</div>
+							</div>  <!-- Col-md-12 End -->
+						</div>
+						<div class="row">
+							<div class="main_feature text-center">
+								<div class="col-md-3 col-xs-12 col-sm-6">
+									<div class="feature_content">
+										<i class="fa fa-play-circle-o"></i>
+										<h5>Crea tu Plan</h5>
+										<p>Sin instalaciones, sin licencias, puedes estrenar ya mismo
+										tu nuevo sistema. Podrás ampliarlo y contratar nuevos
+										servicios siempre que lo necesites</p>
+										<a class="btn btn-main btn-eiqui-act" href="/alta" style="color: #fff !important;"> Crea tu plan</a>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12 col-sm-6">
+									<div class="feature_content">
+										<i class="fa fa-check-square-o"></i>
+										<h5>Formación &amp; Análisis</h5>
+										<p>Tanto para dudas concretas, como si deseas una
+										orientación personalizada para diseñar tu sistema,
+										decenas de especialistas a tu disposición</p>
+										<!-- <button class="btn btn-main"> Leer Más</button> -->
+									</div>
+								</div> <!-- Col-md-4 Single_feature End -->
+								<div class="col-md-3 col-xs-12 col-sm-6">
+									<div class="feature_content">
+										<i class="fa fa-cog"></i>
+										<h5>Personalización</h5>
+										<p>Cada empresa tiene sus peculiaridades, Odoo nos permite 
+										personalizar sus funciones para adaptarlo todo lo posible
+										a tus necesidades</p>
+										<!--  <button class="btn btn-main"> Leer Más</button> -->
+									</div>
+								</div> <!-- Col-md-4 Single_feature End -->
+								<div class="col-md-3 col-xs-12 col-sm-6">
+									<div class="feature_content">
+										<i class="fa fa-life-ring"></i>
+										<h5>Soporte</h5>
+										<p>Si necesitas una covertura para una mayor seguridad y no
+										perder el tiempo por pequeñas dudas,
+									    cuenta con nuestros servicios de apoyo</p>
+										<!-- <button class="btn btn-main"> Leer Más</button> -->
+									</div>
+								</div> <!-- Col-md-4 Single_feature End -->
+								<!-- <button class="btn btn-main"> Read More</button> -->
+							</div>
+						</div>  <!-- Row End -->
+					</div>  <!-- Container End -->
+					
+				</section>
+				<!-- Service Area End -->
+				
+				
+				<div class="row" style="text-align : center;">
+						<img src="/aloxa_eiqui/static/src/img/bg/eiqui3.svg" alt="" class="img-responsive"/>
+				 </div>
+				
+				<!-- Counter Strat -->
+
+				<section id="counter_area">
+					<div class="row">
+						<img src="/aloxa_eiqui/static/src/img/banner/tecnologiaadaptadaalmedio.svg" alt="" class="img-responsive" />
+				 	</div>
+					<div class="facts">
+						<div class="container">
+							<div class="col-md-3 col-xs-12 col-sm-6 columns">
+								<div class="facts-wrap">
+									<div class="graph">
+										<div class="graph-left-side">
+											<div class="graph-left-container">
+												<div class="graph-left-half">
+												</div>
+											</div>
+										</div>
+										<div class="graph-right-side">
+											<div class="graph-right-container">
+												<div class="graph-right-half"></div>
+											</div>
+										</div>
+										<i class="fa fa-thumbs-o-up fa-3x fw"></i>
+										<div class="facts-wrap-num">
+											+ de <span class="counter">5400</span>
+										</div>
+									</div>
+									<h6>Desarrolladores</h6>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6 columns">
+								<div class="facts-wrap">
+									<div class="graph">
+										<div class="graph-left-side">
+											<div class="graph-left-container">
+												<div class="graph-left-half">
+												</div>
+											</div>
+										</div>
+										<div class="graph-right-side">
+											<div class="graph-right-container">
+												<div class="graph-right-half"></div>
+											</div>
+										</div>
+										<i class="fa fa-gift fa-3x fw"></i>
+										<div class="facts-wrap-num">
+											<span class="counter">23</span>
+										</div>
+									</div>
+									<h6>Idiomas</h6>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6 columns">
+								<div class="facts-wrap">
+									<div class="graph">
+										<div class="graph-left-side">
+											<div class="graph-left-container">
+												<div class="graph-left-half">
+												</div>
+											</div>
+										</div>
+										<div class="graph-right-side">
+											<div class="graph-right-container">
+												<div class="graph-right-half"></div>
+											</div>
+										</div>
+										<i class="fa fa-check-square-o fa-3x fw"></i>
+										<div class="facts-wrap-num">
+											<span class="counter">312</span>
+										</div>
+									</div>
+									<h6>Nuevas APPs por mes</h6>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-12 col-sm-6 columns">
+								<div class="facts-wrap">
+									<div class="graph">
+										<div class="graph-left-side">
+											<div class="graph-left-container">
+												<div class="graph-left-half">
+												</div>
+											</div>
+										</div>
+										<div class="graph-right-side">
+											<div class="graph-right-container">
+												<div class="graph-right-half"></div>
+											</div>
+										</div>
+										<i class="fa fa-envelope-o fa-3x fw"></i>
+										<div class="facts-wrap-num">
+											+ de <span class="counter">2</span>
+										</div>
+									</div>
+									<h6>Millones de usuarios</h6>
+								</div>
+							</div>
+						</div> <!-- Conatainer End -->
+					</div>	<!-- Fact div ENd -->
+				</section>
+				<!-- Counter End -->
+
+				<!-- Counter End -->
+				<div class="clearfix"></div>
+				
+				<!-- Webs Section start -->
+				
+				<section class="work_area" id="newweb">
+			        <div class="container">
+			            <div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										Mucho más que una web
+										<b>integrada en el ERP</b>
+									</h3>
+									<h4 class="feature_sub">El potencial de tener la web en el 
+									propio ERP es la mayor fluidez de comunicación de cara al exterior que te hayas podido imaginar </h4>
+									<div class="divider"></div>
+								</div>
+							</div>
+						</div>
+			        </div>
+			        <div class="container-fluid">
+			            <div class="row">
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-aliment.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-aliment.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Aliment</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-bunny.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-bunny.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Bunny</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-dusty.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-dusty.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Dusty</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			            </div>
+			            <div class="row pad_top">
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-fivepath.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-fivepath.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Fivepath</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-lightwood.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-lightwood.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Lightwood</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image last_padding">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-plenus.emiprotechnologies.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-plenus.emiprotechnologies.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Plenus</h2>
+			                            <h4>emiprotechnologies.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image last_padding">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-urban.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-urban.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Urban</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image last_padding">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-vehicle.odoo.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-vehicle.odoo.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Vehicle</h2>
+			                            <h4>Odoo.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			                <div class="col-md-4 no_padding">
+			                    <div class="single_image last_padding">
+			                        <img src="/aloxa_eiqui/static/src/img/webs/theme-wineyard.73lines.com.png" alt=""/>
+			                        <div class="image_overlay">
+			                            <a href="http://theme-wineyard.73lines.com" target="_blank">Ver Demo Online</a>
+			                            <h2>Wineyard</h2>
+			                            <h4>73lines.com</h4>
+			                        </div>                        
+			                    </div>
+			                </div>
+			            </div>           
+			        </div>
+		    </section>
+				
+				<!-- Team MEmber Start -->
+				<section id="team">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										Nuestra
+										c<b>OO</b>mpetencia
+									</h3>
+									<h4 class="feature_sub">Son docenas de empresas en España, y miles en todo el mundo,
+									las que trabajamos en el ecosistema del Software Libre, más en concreto de Odoo.  Esto 
+									garantiza a los clientes una autonomía y libertad al tiempo que incrementa exponencialmente
+									la evolución de sus prestaciones. Cuantos más somos, más y mejor crece... Odoo no tiene 
+									propietario, es de todos, y para todos. Bienvenido al Software Libre.  </h4>
+									<div class="divider"></div>
+								</div>
+							</div>  <!-- Col-md-12 End -->
+
+							<div id="owl-demo" class="owl-carousel owl-theme team-items">
+								<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/tecnativa.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Hi, we're Tecnativa
+													 Consulting and Software Engineer open source
+													 mainly based on Odoo.
+													 </p>
+												</div>
+										</div>
+										<h3>Tecnativa</h3>
+									</div>
+								</div>  <!-- item wrapper end -->
+								<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/logoavanzosccalidad.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p> Uno de los primeros y más antiguos integradores de Odoo (antes OpenERP) en España
+       Desarrolladores de más de 200 módulos para cubrir las necesidades de varios sectores industriales. 
+</p>
+												</div>
+										</div>
+										<h3>Avanzosc</h3>
+									</div>
+								</div>  <!-- item wrapper end -->
+								<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/malagatic.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Profesionales de OpenERP y del software libre. Formación, consultoría, desarrollo.</p>
+												</div>
+										</div>
+										<h3>Malagtic</h3>
+									</div>
+								</div>  <!-- item wrapper end -->
+								<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/anubia.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Empresa consultora, de formación, desarrollo e implantación de soluciones de software libre para la gestión completa de empresas.</p>
+												</div>
+										</div>
+										<h3>Anubía</h3>
+									</div>
+								</div>  <!-- item wrapper end -->
+								<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/domatix.jpeg" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Domatix es una empresa creada en el año 2001 especializada en la implantación de soluciones empresariales.  </p>
+												</div>
+										</div>
+										<h3>Domatix</h3>
+									</div>
+									</div>  <!-- item wrapper end -->
+									<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/comunitea-erp.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>En Comunitea somos especialistas en la implantación de sistemas de gestión inteligente (ERP) para negocios. </p>
+												</div>
+										</div>
+										<h3>Comunitea</h3>
+									</div>
+									</div>  <!-- item wrapper end -->
+									<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/gafic.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Gabinete de Asesoramiento Fiscal y Contable, GAFIC, S.L.P es una asesoría profesional altamente especializada y dedicada desde 1985 al asesoramiento mercantil, fiscal, contable, laboral y de auditoría contable, entre otras. </p>
+												</div>
+										</div>
+										<h3>Gafic</h3>
+									</div>
+									</div>  <!-- item wrapper end -->
+									<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/ingeos.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Ingeos es una Ingeniería Informática orientada a la implantación de soluciones Open Source.</p>
+												</div>
+										</div>
+										<h3>Ingeos</h3>
+									</div>
+									</div>  <!-- item wrapper end -->
+									<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/opentia.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>OPENTIA (Open Technologies for Informational Advancement) es la denominación de un grupo de entidades dedicadas al avance de las ciencias informáticas en abierto tanto en su vertiente innovadora como en la implantadora y difusora.</p>
+												</div>
+										</div>
+										<h3>Opentia</h3>
+									</div>
+									</div>  <!-- item wrapper end -->
+									<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/nubistalia.jpg" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>NUBISTALIA desarrolla software con metodologías y herramientas ágiles, para empresas que quieren maximizar sus resultados, reducir sus costos y enfocarse en el desarrollo de su core business.﻿﻿</p>
+												</div>
+										</div>
+										<h3>Nubistalia</h3>
+									</div>
+									</div>  <!-- item wrapper end -->
+									<div class="item text-center">
+									<div class="single-member">
+										<div class="overlay-hover">
+											<img src="/aloxa_eiqui/static/src/img/team/aserti.png" alt="" class="img-responsive"/>
+												<div class="overlay-effect">
+													<!--<ul class="social list-inline">
+														<li>
+															<a href="">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-twitter"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-pinterest"></i>
+															</a>
+														</li>
+														<li>
+															<a href="">
+																<i class="fa fa-skype"></i>
+															</a>
+														</li>
+													</ul>-->
+													<p>Somos una compañía de servicios especializada en la consultoría, diseño, implantación y mantenimiento de proyectos relacionados con el software de gestión y administración empresarial . </p>
+												</div>
+										</div>
+										<h3>Aserti</h3>
+									</div>									
+								</div>  <!-- item wrapper end -->
+
+							</div>
+						</div>
+					</div> <!-- Conatiner Team end -->
+					<!-- </div> -->
+
+				</section>  <!-- Section TEam End -->
+
+				<!-- Our Team Members End -->
+
+
+				<div class="clearfix"></div>
+
+				<!-- Pricing Table Start -->
+				<section id="pricing_table" class="pricing_overlay">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										<b>Tarifas</b>
+									</h3>
+									<h4 class="feature_sub text_prices">Paga por lo que necesitas, ni más ni menos.						 
+									Solo queremos clientes satisfechos. Sin permanencia, sin trucos. Garantizamos que tu sistema, es eso, tuyo.</h4>
+									<br/>
+									<input type="checkbox" name="plan-mode" checked="checked"/>
+									<div class="divider"></div>
+								</div>
+							</div>  <!-- Col-md-12 End -->
+
+							<div class="text-center pricing">
+								<div class="col-md-4 col-xs-12 col-sm-12">
+									<div id="price-company" class="single_table">
+										<div class="plan_wraper"></div>
+										<ul>
+											<li class="plan">
+												Empresa
+												<br/>
+													<span>Plan Anual</span>
+											</li>
+											<li class="price">
+												<span class='price-eur'>60</span>
+												<span>€/mes</span>
+											</li>
+											<li class='price-vat'>&amp;nbsp;</li>
+											<li> 40GB de espacio en disco</li>
+											<li> 2GB de RAM</li>
+											<li> Procesador 2Cores</li>
+											<li> 3TB de transferencia</li>
+											<li class="price_button">
+												<a class="btn btn-main" href="/alta">Sign UP Now!</a>
+											</li>
+										</ul>
+									</div>
+								</div> <!-- Single col-md-4 End -->
+								<div class="col-md-4 col-xs-12 col-sm-12">
+									<div id="price-standard" class="single_table grey_bg  ">
+										<div class="plan_wraper"></div>
+										<ul>
+											<li class="plan">
+												Estándar
+												<br/>
+													<span>Plan Anual</span>
+											</li>
+											<li class="price">
+												<span class='price-eur'>40</span>
+												<span>€/mes</span>
+											</li>
+											<li class='price-vat'>&amp;nbsp;</li>
+											<li> 20GB de espacio en disco</li>
+											<li> 512MB de RAM</li>
+											<li> Procesador 1Core</li>
+											<li> 1TB de transferencia</li>
+											<li class="price_button">
+												<a class="btn btn-main" href="/alta">Sign UP Now!</a>
+											</li>
+										</ul>
+									</div>
+								</div> <!-- Single col-md-4 End -->
+								<div class="col-md-4 col-xs-12 col-sm-12">
+									<div id="price-high-performance" class="single_table dark_bg">
+										<div class="plan_wraper"></div>
+										<ul>
+											<li class="plan">
+												Alto rendimiento
+												<br/>
+													<span>Plan Anual</span>
+											</li>
+											<li class="price">
+												<span class='price-eur'>120</span>
+												<span>€/mes</span>
+											</li>
+											<li class='price-vat'>&amp;nbsp;</li>
+								 			<li> 80GB de espacio en disco</li>
+											<li> 8GB de RAM</li>
+											<li> Procesador 4Cores</li>
+											<li> 15TB de transferencia</li>
+											<li class="price_button">
+												<a class="btn btn-main" href="/alta">Sign UP Now!</a>
+											</li>
+										</ul>
+									</div>
+								</div> <!-- Single col-md-4 End -->
+							</div>
+							
+						</div>
+					</div>
+				</section>  <!-- Pricing Section End -->
+				<!-- Pricing Table End -->
+
+				<!-- bLOG Start -->
+				  <!-- TEMP<section id="blog">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										Our
+										<b>Blog</b>
+									</h3>
+									<h4 class="feature_sub">Lorem ipsum dolor sit amet, consectetur
+										adipisicing elit. </h4>
+									<div class="divider"></div>
+								</div>
+							</div>  
+						</div>
+						<div class="row">
+							<div class="blog-timeline">
+								<div id="owl-blog" class="owl-carousel owl-theme">
+									<div t-foreach="blog_posts" t-as="post" class="item ">
+										<div class="single_blog">
+											<div class="post_img text-center">
+												<a t-attf-href="/blog/#{ slug(post.blog_id) }/post/#{ slug(post) }">
+													<img t-attf-src="/web/binary/image?model=blog.post&amp;id=#{post.id}&amp;field=website_image" alt="" class="img-responsive"/>
+												</a>
+												<div class="post-date">
+													<span t-esc="post.visits"/>
+												</div>
+											</div>
+											<a t-attf-href="/blog/#{ slug(post.blog_id) }/post/#{ slug(post) }">
+												<h4 t-esc="post.name" />
+											</a>
+											<ul class="list-inline">
+												<li>
+													<i class="fa fa-pencil"></i>
+													<t t-esc="post.author_id.name" />
+												</li>
+												<li>
+													<i class="fa fa-calendar"></i>
+													<span t-field="post.__last_update" />
+												</li>
+											</ul>
+										</div>
+									</div>-->
+									
+									<!-- div class="item ">
+										<div class="single_blog">
+											<div class="post_img text-center">
+												<a href="blog-single.html">
+													<img src="/aloxa_eiqui/static/src/img/blog/pic5.jpg" alt="" class="img-responsive"/>
+												</a>
+												<div class="post-date">
+													<span>25</span>
+													6
+												</div>
+											</div>
+											<a href="blog-single.html">
+												<h4>Lorem ipsum dolor sit amet</h4>
+											</a>
+											<ul class="list-inline">
+												<li>
+													<i class="fa fa-pencil"></i>
+													John Smith
+												</li>
+												<li>
+													<i class="fa fa-comments"></i>
+													12
+												</li>
+											</ul>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+												Repellendus provident quae maxime consequuntur atque.</p>
+										</div>
+									</div -->
+							<!-- TEMP	</div>
+							</div> --><!-- blog Timeline End -->
+						<!-- TEMP</div>
+					</div>
+				</section>-->
+				<!-- bLOG End -->
+
+				<!-- Testimonial Start -->
+
+				<section id="testimonial" class="wow fadeInUp">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										<b>Clientes</b>
+										Feedback
+									</h3>
+									<div class="divider"></div>
+								</div>
+							</div>  <!-- Col-md-12 End -->
+						</div>
+						<div class="row">
+							<div id="testimonial-carousel"
+								class="owl-carousel owl-theme text-center testimonial-slide">
+								<div class="item">
+									<div class="testimonial-thumb">
+										<img class="img-circle" src="/aloxa_eiqui/static/src/img/team/davidvemo.jpeg" alt="testimonial"/>
+									</div>
+									<div class="testimonial-content">
+										<h3 class="name">
+											David Pacheco
+											<span>Director Ejecutivo VEMO.TV</span>
+										</h3>
+										<p class="testimonial-text">
+											Implantar Odoo en VEMO.TV ha sido un paso fundamental que sitúa la empresa en el prestente tecnológico. Un software de gestión para empresas del siglo XXI, ajustado a tus necesidades y flujos de trabajo.
+										</p>
+									</div>
+								</div>
+								<div class="item">
+									<div class="testimonial-thumb">
+										<img class="img-circle" src="/aloxa_eiqui/static/src/img/juanpeon.jpeg"
+											alt="testimonial"/>
+									</div>
+									<div class="testimonial-content">
+										<h3 class="name">
+											Juan Peon
+											<span>MaisMetal construcciones metalicas</span>
+										</h3>
+										<p class="testimonial-text">
+											Odoo nos ha proporcionado una herramienta esencial personalizada para el desarrollo y gestion de la empresa.
+										</p>
+									</div>
+								</div>
+								<div class="item">
+									<div class="testimonial-thumb">
+										<img class="img-circle" src="/aloxa_eiqui/static/src/img/tamararodriguez.jpeg" alt="testimonial"/>
+									</div>
+									<div class="testimonial-content">
+										<h3 class="name wow bounceInLeft">
+											Tamara Rodriguez Silva
+											<span>Gerente Innovacion Sostenible</span>
+										</h3>
+										<p class="testimonial-text">
+											LLevamos un año trabajando con la plataforma Odoo, un erp/crm modular integrado que nos permite controlar en todo momento las tareas asociadas a contabilidad, proyectos, web... haciendo más fácil nuestro trabajo diario y con la posibilidad de generar informes de cualquiera de las actividades generadas.
+										</p>
+									</div>
+								</div>
+							</div>
+							<!-- Navigation start -->
+							<div class="customNavigation cyprass-carousel-controller">
+								<a class="prev left">
+									<i class="fa fa-chevron-left"></i>
+								</a>
+								<a class="next right">
+									<i class="fa fa-chevron-right"></i>
+								</a>
+							</div>
+							<!-- Navigation ENd -->
+						</div>
+					</div> <!-- Row End -->
+				</section> <!-- Section Testimonial End -->
+
+				<!-- Testimonial Area End -->
+
+				<!-- Client Carousel Start -->
+				<section id="client">
+					<div class="container">
+						<!-- <h2 class="text-center wow slideInLeft"> Our Respectable client</h2> -->
+						<div class="row wow fadeInLeft">
+							<div id="client-carousel"
+								class="col-sm-12 owl-carousel owl-theme text-center client-carousel">
+								<div class="item client_logo">
+									<a href="bodegaslodeiros.com" target="_blank">
+										<img src="/aloxa_eiqui/static/src/img/clients/bodegaslodeiros.jpg" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="http://dolmarproductos.com/es" target="_blank">
+										<img src="/aloxa_eiqui/static/src/img/clients/dolmar.jpg" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="http://www.herculescontrol.com/" target="_blank">
+										<img src="/aloxa_eiqui/static/src/img/clients/herculescontrol.png" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="http://innovacion-sostenible.es" target="_blank">
+										<img src="/aloxa_eiqui/static/src/img/clients/logoinys.jpeg" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="http://www.sevigal.com/" target="_blank">
+										<img src="/aloxa_eiqui/static/src/img/clients/LogoSevigal.png" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="#">
+										<img src="/aloxa_eiqui/static/src/img/clients/maismetal1.png" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="http://www.vemo.tv/" target="_blank">
+										<img src="/aloxa_eiqui/static/src/img/clients/vemotv.png" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+								<div class="item client_logo">
+									<a href="#">
+										<img src="/aloxa_eiqui/static/src/img/clients/iwinetours1.png" alt="client"
+											class="img-responsive"/>
+									</a>
+								</div>
+							</div><!-- Owl carousel end -->
+						</div><!-- Main row end -->
+					</div>
+				</section>
+				<!-- Client Carousel End -->
+
+				<!-- Conatct Area Start -->
+
+				<section id="contact">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="feature_header text-center">
+									<h3 class="feature_title">
+										Ponte en 
+										<b>contacto</b>
+									</h3>							
+									<div class="divider"></div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<form id="contactus" action="/crm/contactus" method="POST">
+								<div class="contact_full">
+									<div class="col-md-6 left">
+										<div class="left_contact">
+												<div class="form-level">
+													<input name="contact_name" placeholder="Name" id="name"
+														value="" type="text" class="input-block"/>
+														<span class="form-icon fa fa-user"></span>
+												</div>
+												<div class="form-level">
+													<input name="email_from" placeholder="Email" id="mail"
+														class="input-block" value="" type="email"/>
+														<span class="form-icon fa fa-envelope-o"></span>
+												</div>
+												<div class="form-level">
+													<input name="phone" placeholder="Phone" id="phone"
+														class="input-block" value="" type="text"/>
+														<span class="form-icon fa fa-phone"></span>
+												</div>
+										</div>
+									</div>
+	
+									<div class="col-md-6 right">
+										<div class="form-level">
+											<textarea name="description" id="messege" rows="5" class="textarea-block"
+												placeholder="message"></textarea>
+											<span class="form-icon fa fa-pencil"></span>
+										</div>
+									</div>
+									<div class="col-md-12 text-center">
+										<button type="submit" class="btn btn-main featured">Submit Now</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+
+				<div id="g-map" class="no-padding">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="map" id="map"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Back To Top Button -->
+				<div id="back-top">
+					<a href="#slider_part" class="scroll" data-scroll="">
+						<button class="btn btn-primary" title="Back to Top">
+							<i class="fa fa-angle-up"></i>
+						</button>
+					</a>
+				</div>
+				<!-- End Back To Top Button -->
+
+				<t t-set="end">
+					<!-- Owl Carousel -->
+					<script src="/aloxa_eiqui/static/src/js/owl.carousel.min.js"></script>
+					<!-- Isotope -->
+					<script src="/aloxa_eiqui/static/src/js/jquery.isotope.js"></script>
+					<!-- Pretty Photo -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.prettyPhoto.js"></script>
+					<!-- SmoothScroll -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/smooth-scroll.js"></script>
+					<!-- Image Fancybox -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.fancybox.pack.js?v=2.1.5"></script>
+					<!-- Counter -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.counterup.min.js"></script>
+					<!-- waypoints -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/waypoints.min.js"></script>
+					<!-- Bx slider -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.bxslider.min.js"></script>
+					<!-- Scroll to top -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.scrollTo.js"></script>
+					<!-- Easing js -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.easing.1.3.js"></script>
+					<!-- PrettyPhoto -->
+					<script src="/aloxa_eiqui/static/src/js/jquery.singlePageNav.js"></script>
+					<!-- Wow Animation -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/wow.min.js"></script>
+					<!-- Google Maps -->
+					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+					<!-- Google Map Source -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/gmaps.js"></script>
+					<!-- Bootstrap Switcher -->
+					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/bootstrap-switch.min.js"></script>
+				
+					<!-- Custom js -->
+					<script src="/aloxa_eiqui/static/src/js/home.js"></script>
+					<!-- Serialize Object -->
+					<script>
+						// Google Map - with support of gmaps.js
+						var map;
+						map = new GMaps({
+						div: '#map',
+						
+						lat: 42.882908,
+						lng: -8.534425,
+						scrollwheel: false,
+						panControl: false,
+						zoomControl: false,
+						});
+
+						map.addMarker({
+						lat: 42.882908,
+						lng: -8.534425,
+						title: 'eiqui',
+						infoWindow: {
+						content: '<p>eiqui, Concheiros Nº15 Baixo, Santiago de Compostela</p>'
+						},
+						icon: "/aloxa_eiqui/static/src/img/map1.png"
+						});
+					</script>
+				</t>
+			</t>
+		</template>
+		
+	</data>
+</openerp>

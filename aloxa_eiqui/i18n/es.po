@@ -1,0 +1,1729 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* aloxa_eiqui
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-24 17:10+0000\n"
+"PO-Revision-Date: 2016-05-24 17:10+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "&copy;\n"
+"										Copyright reserved to"
+msgstr "&copy;\n"
+"										Copyright reserved to"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "+ de 2.000.000"
+msgstr "+ de 2.000.000"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "+ de 312"
+msgstr "+ de 312"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "+ de 5.400"
+msgstr "+ de 5.400"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "+880-12345678"
+msgstr "+880-12345678"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid ", la tienes en la nube"
+msgstr ", la tienes en la nube"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "- Contact Information -"
+msgstr "- Datos de Contacto -"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "- User Information -"
+msgstr "- Datos del usuario -"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid ".eiqui.com"
+msgstr ".eiqui.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "10/21/2013"
+msgstr "10/21/2013"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "10:57 AM"
+msgstr "10:57 AM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "11 hours ago via Twitter"
+msgstr "11 hours ago via Twitter"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "11:13 AM"
+msgstr "11:13 AM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "11:32 AM"
+msgstr "11:32 AM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "12 mins ago"
+msgstr "12 mins ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "12 minutes ago"
+msgstr "12 minutes ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "13 mins ago"
+msgstr "13 mins ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "14 mins ago"
+msgstr "14 mins ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "15 mins ago"
+msgstr "15 mins ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "15TB de transferencia"
+msgstr "15TB de transferencia"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "1Click&Go!"
+msgstr "1Click&Go!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "1TB de transferencia"
+msgstr "1TB de transferencia"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "20% Complete"
+msgstr "20% Complete"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "20GB de espacio en disco"
+msgstr "20GB de espacio en disco"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "27 minutes ago"
+msgstr "27 minutes ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "2:13 PM"
+msgstr "2:13 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "2:15 PM"
+msgstr "2:15 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "2:23 PM"
+msgstr "2:23 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "2:49 PM"
+msgstr "2:49 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "2GB de RAM"
+msgstr "2GB de RAM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "3 New Followers"
+msgstr "3 New Followers"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "3:00 PM"
+msgstr "3:00 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "3:03 PM"
+msgstr "3:03 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "3:20 PM"
+msgstr "3:20 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "3:29 PM"
+msgstr "3:29 PM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "3TB de transferencia"
+msgstr "3TB de transferencia"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "4 minutes ago"
+msgstr "4 minutes ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "40% Complete"
+msgstr "40% Complete"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "40% Complete (success)"
+msgstr "40% Complete (success)"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "40GB de espacio en disco"
+msgstr "40GB de espacio en disco"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "43 minutes ago"
+msgstr "43 minutes ago"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "512MB de RAM"
+msgstr "512MB de RAM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "60% Complete"
+msgstr "60% Complete"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "60% Complete (warning)"
+msgstr "60% Complete (warning)"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "73lines.com"
+msgstr "73lines.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "80% Complete"
+msgstr "80% Complete"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "80% Complete (danger)"
+msgstr "80% Complete (danger)"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "80GB de espacio en disco"
+msgstr "80GB de espacio en disco"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "8GB de RAM"
+msgstr "8GB de RAM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "9:49 AM"
+msgstr "9:49 AM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "A cualquier hora"
+msgstr "A cualquier hora"
+
+#. module: aloxa_eiqui
+#: view:website.config.settings:aloxa_eiqui.view_website_config_settings
+msgid "API Key's"
+msgstr "API Key's"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Action"
+msgstr "Action"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Actions"
+msgstr "Actions"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Aliment"
+msgstr "Aliment"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Almacén"
+msgstr "Almacén"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Alto rendimiento"
+msgstr "Alto rendimiento"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Amount"
+msgstr "Amount"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Another action"
+msgstr "Another action"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Aplicaciones"
+msgstr "Aplicaciones"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "App"
+msgstr "App"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Area Chart Example"
+msgstr "Area Chart Example"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "As soon as possible we will contact with you"
+msgstr "Nos pondremos en contacto contigo a la mayor brevedad posible"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Asp.net"
+msgstr "Asp.net"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Available"
+msgstr "Available"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Awards"
+msgstr "Awards"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Away"
+msgstr "Away"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Back to Top"
+msgstr "Back to Top"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Bar Chart Example"
+msgstr "Bar Chart Example"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Bhaumik Patel"
+msgstr "Bhaumik Patel"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Bienvenido al Software Libre"
+msgstr "Bienvenido al Software Libre"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Blank Page"
+msgstr "Blank Page"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Blog"
+msgstr "Blog"
+
+#. module: aloxa_eiqui
+#: model:ir.model,name:aloxa_eiqui.model_blog_post
+msgid "Blog Post"
+msgstr "Entrada del blog"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Bootstrap"
+msgstr "Bootstrap"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Bunny"
+msgstr "Bunny"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Busy"
+msgstr "Busy"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Buttons"
+msgstr "Buttons"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "CRM"
+msgstr "CRM"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Cada empresa tiene sus peculiaridades, Odoo nos permite \n"
+"										personalizar sus funciones para adaptarlo todo lo posible\n"
+"										a tus necesidades"
+msgstr "Cada empresa tiene sus peculiaridades, Odoo nos permite \n"
+"										personalizar sus funciones para adaptarlo todo lo posible\n"
+"										a tus necesidades"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Cantidad"
+msgstr "Cantidad"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Charts"
+msgstr "Charts"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Chat"
+msgstr "Chat"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Chief Designer"
+msgstr "Chief Designer"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "City"
+msgstr "Población"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Clientes"
+msgstr "Clientes"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Clients"
+msgstr "Clientes"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Company Name"
+msgstr "Empresa"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Compras"
+msgstr "Compras"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Concheiros n15 baixo, Santiago de Compostela"
+msgstr "Concheiros n15 baixo, Santiago de Compostela"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Condiciones de Servicio"
+msgstr "Condiciones de Servicio"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Contacta"
+msgstr "Contacta"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Contacto"
+msgstr "Contacto"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Contructor Web"
+msgstr "Contructor Web"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Coompetencia"
+msgstr "Coompetencia"
+
+#. module: aloxa_eiquit
+#: view:website:aloxa_eiqui.signup_page
+msgid "Country..."
+msgstr "País..."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Crea tu Plan"
+msgstr "Crea t Plan"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Creating your account"
+msgstr "Creating your account"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Cyprass"
+msgstr "Cyprass"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "DESCUBRELO"
+msgstr "DESCUBRELO"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Date"
+msgstr "Date"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "David Pacheco"
+msgstr "David Pacheco"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Descripción"
+msgstr "Descripción"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Descuento"
+msgstr "Descuento"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Desde cualquier sitio"
+msgstr "Desde cualquier sitio"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Desde el autónomo en sus primeros pasos, hasta las grandes corporaciones"
+msgstr "Desde el autónomo en sus primeros pasos, hasta las grandes corporaciones"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Design"
+msgstr "Design"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Development"
+msgstr "Development"
+
+#. module: aloxa_eiqui
+#: field:website,digital_ocean_api_key:0
+#: field:website.config.settings,digital_ocean_api_key:0
+msgid "Digital Ocean Api Key"
+msgstr "Digital Ocean Api Key"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Director Ejecutivo VEMO.TV"
+msgstr "Director Ejecutivo VEMO.TV"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Domain"
+msgstr "Dominio"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Donut Chart Example"
+msgstr "Donut Chart Example"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Dusty"
+msgstr "Dusty"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "EXENTO"
+msgstr "EXENTO"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Eiqui is the best place for your business"
+msgstr "Eiqui es el mejor lugar para	 tu negocio"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "El ERP más intuitivo del mercado"
+msgstr "El ERP más intuitivo del mercado"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "El potencial de tener la web en el \n"
+"									propio ERP es la mayor fluidez de comunicación de cara al exterior que te hayas podido imaginar"
+msgstr "El potencial de tener la web en el \n"
+"									propio ERP es la mayor fluidez de comunicación de cara al exterior que te hayas podido imaginar"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+#: view:website:aloxa_eiqui.signup_page
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Empresa"
+msgstr "Empresa"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Estándar"
+msgstr "Estándar"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+msgid "Factura"
+msgstr "Factura"
+
+#. module: aloxa_eiqui
+#: model:ir.actions.report.xml,name:aloxa_eiqui.eiqui_report_invoice_action
+msgid "Factura Eiqui"
+msgstr "Factura Eiqui"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Facturación"
+msgstr "Facturación"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Fecha"
+msgstr "Fecha"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Feedback"
+msgstr "Feedback"
+
+#. module: aloxa_eiqui
+#: view:project.project:aloxa_eiqui.project_inherit_form
+#: field:project.project,final_partner_id:0
+msgid "Final Customer"
+msgstr "Final Customer"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Fivepath"
+msgstr "Fivepath"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Flot Charts"
+msgstr "Flot Charts"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Formación & Análisis"
+msgstr "Formación & Análisis"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Forms"
+msgstr "Forms"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "FreeSoftware&FairShare"
+msgstr "FreeSoftware&FairShare"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Gerente Innovacion Sostenible"
+msgstr "Gerente Innovacion Sostenible"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Graphics"
+msgstr "Graphics"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Grid"
+msgstr "Grid"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "HOME"
+msgstr "HOME"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Icons"
+msgstr "Icons"
+
+#. module: aloxa_eiqui
+#: field:blog.post,website_image:0
+msgid "Imagen"
+msgstr "Imagen"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Implantar Odoo en VEMO.TV ha sido un paso fundamental que sitúa la empresa en el prestente tecnológico. Un software de gestión para empresas del siglo XXI, ajustado a tus necesidades y flujos de trabajo."
+msgstr "Implantar Odoo en VEMO.TV ha sido un paso fundamental que sitúa la empresa en el prestente tecnológico. Un software de gestión para empresas del siglo XXI, ajustado a tus necesidades y flujos de trabajo."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Importe"
+msgstr "Importe"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Impuestos"
+msgstr "Impuestos"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Inicio"
+msgstr "Inicio"
+
+#. module: aloxa_eiqui
+#: field:res.partner,is_manager:0
+msgid "Is Manager?"
+msgstr "Is Manager?"
+
+#. module: aloxa_eiqui
+#: view:res.partner:aloxa_eiqui.view_partner_form
+msgid "Is a Manager?"
+msgstr "Is a Manager?"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Jack Sparrow"
+msgstr "Jack Sparrow"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "John Abraham"
+msgstr "John Abraham"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "John Smith"
+msgstr "John Smith"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Joomla"
+msgstr "Joomla"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Juan Peon"
+msgstr "Juan Peon"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "LLevamos un año trabajando con la plataforma Odoo, un erp/crm modular integrado que nos permite controlar en todo momento las tareas asociadas a contabilidad, proyectos, web... haciendo más fácil nuestro trabajo diario y con la posibilidad de generar informes de cualquiera de las actividades generadas."
+msgstr "LLevamos un año trabajando con la plataforma Odoo, un erp/crm modular integrado que nos permite controlar en todo momento las tareas asociadas a contabilidad, proyectos, web... haciendo más fácil nuestro trabajo diario y con la posibilidad de generar informes de cualquiera de las actividades generadas."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Leer Más"
+msgstr "Leer Más"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Lightwood"
+msgstr "Lightwood"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Login Page"
+msgstr "Login Page"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.panel_page
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor"
+msgstr "Lorem ipsum dolor"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Lorem ipsum dolor sit amet, consectetur\n"
+"										adipisicing elit."
+msgstr "Lorem ipsum dolor sit amet, consectetur\n"
+"										adipisicing elit."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend..."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend..."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing\n"
+"														elit. Possimus dignissimos, maxime ea excepturi veritatis\n"
+"														itaque."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing\n"
+"														elit. Possimus dignissimos, maxime ea excepturi veritatis\n"
+"														itaque."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi."
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!"
+msgstr "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Mails"
+msgstr "Mails"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "MaisMetal construcciones metalicas"
+msgstr "MaisMetal construcciones metalicas"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Marketing & Web"
+msgstr "Marketing & Web"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Menu Principal"
+msgstr "Menu Principal"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Message Sent"
+msgstr "Message Sent"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Morris.js Charts"
+msgstr "Morris.js Charts"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Movilidad"
+msgstr "Movilidad"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Mucho más que una web"
+msgstr "Mucho más que una web"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Multi-Level Dropdown"
+msgstr "Multi-Level Dropdown"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+msgid "My Account"
+msgstr "Mi cuenta"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Más de 300 cada día!"
+msgstr "Más de 300 cada día!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Más!"
+msgstr "Más!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+#: view:website:aloxa_eiqui.signup_page
+msgid "Name"
+msgstr "Nombre"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Necesito un ERP?"
+msgstr "Necesito un ERP?"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "New Comment"
+msgstr "New Comment"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "New Comments!"
+msgstr "New Comments!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "New Order Placed"
+msgstr "New Order Placed"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "New Orders!"
+msgstr "New Orders!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "New Task"
+msgstr "New Task"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "New Tasks!"
+msgstr "New Tasks!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Next"
+msgstr "Siguiente"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Noticias"
+msgstr "Noticias"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Notifications"
+msgstr "Notifications"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Notifications Panel"
+msgstr "Notifications Panel"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Nuestra\n"
+"										c"
+msgstr "Nuestra\n"
+"										c"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Odoo"
+msgstr "Odoo"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Odoo nos ha proporcionado una herramienta esencial personalizada para el desarrollo y gestion de la empresa."
+msgstr "Odoo nos ha proporcionado una herramienta esencial personalizada para el desarrollo y gestion de la empresa."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Odoo.com"
+msgstr "Odoo.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Operaciones"
+msgstr "Operaciones"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Origen"
+msgstr "Origen"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Our"
+msgstr "Our"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "PRUEBALO AHORA"
+msgstr "PRUEBALO AHORA"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Panels and Wells"
+msgstr "Panels and Wells"
+
+#. module: aloxa_eiqui
+#: model:ir.model,name:aloxa_eiqui.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Password"
+msgstr "Contraseña"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Payment Received"
+msgstr "Payment Received"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Personalización"
+msgstr "Personalización"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+#: view:website:aloxa_eiqui.signup_page
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Plan"
+msgstr "Plan"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Plan Anual"
+msgstr "Plan Anual"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Please, wait..."
+msgstr "Please, wait..."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Plenus"
+msgstr "Plenus"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Política de Privacidad"
+msgstr "Política de Privacidad"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Ponte en"
+msgstr "Ponte en"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Precio Unidad"
+msgstr "Precio Unidad"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+#: view:website:aloxa_eiqui.home_page
+msgid "Precios"
+msgstr "Precios"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Preguntas Frecuentes"
+msgstr "Preguntas Frecuentes"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Presupuesto"
+msgstr "Presupuesto"
+
+#. module: aloxa_eiqui
+#: model:ir.actions.report.xml,name:aloxa_eiqui.eiqui_report_sale_order_action
+msgid "Presupuesto Eiqui"
+msgstr "Presupuesto Eiqui"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Prev"
+msgstr "Anterior"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Procesador 1Core"
+msgstr "Procesador 1Core"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Procesador 2Cores"
+msgstr "Procesador 2Cores"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Procesador 4Cores"
+msgstr "Procesador 4Cores"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Productividad"
+msgstr "Productividad"
+
+#. module: aloxa_eiqui
+#: model:ir.model,name:aloxa_eiqui.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Projects"
+msgstr "Proyectos"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Proyectos"
+msgstr "Proyectos"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Read All Messages"
+msgstr "Read All Messages"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Recursos Humanos"
+msgstr "Recursos Humanos"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Refresh"
+msgstr "Refresh"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Repeat Password"
+msgstr "Repetir Contraseña"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Responsive Timeline"
+msgstr "Responsive Timeline"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "SEO"
+msgstr "SEO"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "SaaS"
+msgstr "SaaS"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Sample Pages"
+msgstr "Sample Pages"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Search..."
+msgstr "Search..."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Second Level Item"
+msgstr "Second Level Item"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "See All Alerts"
+msgstr "See All Alerts"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "See All Tasks"
+msgstr "See All Tasks"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Send"
+msgstr "Send"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Separated link"
+msgstr "Separated link"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Server Crashed!"
+msgstr "Server Crashed!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Server Not Responding"
+msgstr "Server Not Responding"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Server Rebooted"
+msgstr "Server Rebooted"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.footer_layout
+#: view:website:aloxa_eiqui.home_page
+msgid "Servicios"
+msgstr "Servicios"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Settings"
+msgstr "Settings"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Si necesitas una covertura para una mayor seguridad y no\n"
+"										perder el tiempo por pequeñas dudas,\n"
+"									    cuenta con nuestros servicios de apoyo"
+msgstr "Si necesitas una covertura para una mayor seguridad y no\n"
+"										perder el tiempo por pequeñas dudas,\n"
+"									    cuenta con nuestros servicios de apoyo"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Sign Out"
+msgstr "Sign Out"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Sign UP Now!"
+msgstr "Regístrate ahora!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Sin instalaciones, sin licencias, puedes estrenar ya mismo\n"
+"										tu nuevo sistema. Podrás ampliarlo y contratar nuevos\n"
+"										servicios siempre que lo necesites"
+msgstr "Sin instalaciones, sin licencias, puedes estrenar ya mismo\n"
+"										tu nuevo sistema. Podrás ampliarlo y contratar nuevos\n"
+"										servicios siempre que lo necesites"
+
+#. module: aloxa_eiqui
+#: view:website.config.settings:aloxa_eiqui.view_website_config_settings
+msgid "Social Media"
+msgstr "Medios sociales"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Solo queremos clientes satisfechos. Sin permanencia, sin trucos. Garantizamos que tu sistema, es eso, tuyo."
+msgstr "Solo queremos clientes satisfechos. Sin permanencia, sin trucos. Garantizamos que tu sistema, es eso, tuyo."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Something else here"
+msgstr "Something else here"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Soporte"
+msgstr "Soporte"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Start with your new"
+msgstr "Comienza con tu nuevo"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "State..."
+msgstr "Provincia..."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Step 2 of 3"
+msgstr "Paso 2 de 3"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Step 3 of 3"
+msgstr "Paso 3 de 3"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Street"
+msgstr "Calle"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Street II"
+msgstr "Calle II"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Submit Now"
+msgstr "Enviar ahora"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Support Tickets!"
+msgstr "Support Tickets!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Tables"
+msgstr "Tables"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Tamara Rodriguez Silva"
+msgstr "Tamara Rodriguez Silva"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Tanto para dudas concretas, como si deseas una\n"
+"										orientación personalizada para diseñar tu sistema,\n"
+"										decenas de especialistas a tu disposición"
+msgstr "Tanto para dudas concretas, como si deseas una\n"
+"										orientación personalizada para diseñar tu sistema,\n"
+"										decenas de especialistas a tu disposición"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+msgid "Tarifas"
+msgstr "Tarifas"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Task 1"
+msgstr "Task 1"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Task 2"
+msgstr "Task 2"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Task 3"
+msgstr "Task 3"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Task 4"
+msgstr "Task 4"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Te presentamos las principales Apps de Odoo para construir tu sistema, \n"
+"									a mayores Odoo dispone de miles de módulos para añadir funcionalidades,\n"
+"									y lo mejor, la libertad para crear los que aún no existan"
+msgstr "Te presentamos las principales Apps de Odoo para construir tu sistema, \n"
+"									a mayores Odoo dispone de miles de módulos para añadir funcionalidades,\n"
+"									y lo mejor, la libertad para crear los que aún no existan"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Terminos de uso"
+msgstr "Terminos de uso"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Thanks for your trust"
+msgstr "Gracias por tu confianza"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Third Level"
+msgstr "Third Level"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Third Level Item"
+msgstr "Third Level Item"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Tienda Online"
+msgstr "Tienda Online"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Time"
+msgstr "Time"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+#: view:website:aloxa_eiqui.panel_page
+msgid "Toggle navigation"
+msgstr "Intercambiar navegación"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Type your message here..."
+msgstr "Type your message here..."
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Typography"
+msgstr "Typography"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "Términos y Condiciones"
+msgstr "Términos y Condiciones"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "UI Elements"
+msgstr "UI Elements"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Una"
+msgstr "Una"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Urban"
+msgstr "Urban"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Usabilidad"
+msgstr "Usabilidad"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Useful Links"
+msgstr "Useful Links"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "User Avatar"
+msgstr "User Avatar"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "User Interface"
+msgstr "User Interface"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "User Profile"
+msgstr "User Profile"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Vehicle"
+msgstr "Vehicle"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Ventas"
+msgstr "Ventas"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Ventas, Compras y Facturación"
+msgstr "Ventas, Compras y Facturación"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Ver Demo Online"
+msgstr "Ver Demo Online"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "View All Alerts"
+msgstr "View All Alerts"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "View Details"
+msgstr "View Details"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+msgid "Válido hasta"
+msgstr "Válido hasta"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Web Design"
+msgstr "Web Design"
+
+#. module: aloxa_eiqui
+#: model:ir.model,name:aloxa_eiqui.model_website
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Wineyard"
+msgstr "Wineyard"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "Wordepress"
+msgstr "Wordepress"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.panel_page
+msgid "Yesterday"
+msgstr "Yesterday"
+
+#. module: aloxa_eiqui
+#: view:website.config.settings:aloxa_eiqui.view_website_config_settings
+msgid "Your Digital Ocean Api Key"
+msgstr "Your Digital Ocean Api Key"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Your request for"
+msgstr "Tu solicitud para"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "Zip Code"
+msgstr "Código Postal"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "ahora"
+msgstr "ahora"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "client"
+msgstr "client"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "contacto"
+msgstr "contacto"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "de usuarios"
+msgstr "de usuarios"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "desarrolladores"
+msgstr "desarrolladores"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "eiqui"
+msgstr "eiqui"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_external_layout_footer
+msgid "eiqui.com"
+msgstr "eiqui.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "elegante"
+msgstr "elegante"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "emiprotechnologies.com"
+msgstr "emiprotechnologies.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "en eiqui encontrarás todos los servicios que puedes necesitar para\n"
+"										implantar la gestión adecuadamente en tu proyecto"
+msgstr "en eiqui encontrarás todos los servicios que puedes necesitar para\n"
+"										implantar la gestión adecuadamente en tu proyecto"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_external_layout_footer
+#: view:website:aloxa_eiqui.footer_layout
+msgid "info@eiqui.com"
+msgstr "info@eiqui.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "integrada en el ERP"
+msgstr "integrada en el ERP"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.signup_page
+msgid "is being processed"
+msgstr "está siendo procesada"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "la gestión,"
+msgstr "la gestión,"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "message"
+msgstr "Mensaje"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "mpetencia"
+msgstr "mpetencia"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "nuevas apps CADA MES!"
+msgstr "nuevas apps CADA MES!"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "para cada necesidad"
+msgstr "para cada necesidad"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "testimonial"
+msgstr "testimonial"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.eiqui_report_invoice_document
+#: view:website:aloxa_eiqui.eiqui_report_sale_order_document
+msgid "total sin impuestos"
+msgstr "total sin impuestos"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.footer_layout
+msgid "www.eiqui.com"
+msgstr "www.eiqui.com"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+msgid "¿Necesito un ERP?"
+msgstr "¿Necesito un ERP?"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.base_layout
+msgid "¿Qué te ofrece Odoo?"
+msgstr "¿Qué te ofrece Odoo?"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "Ágil, rápido y"
+msgstr "Ágil, rápido y"
+
+#. module: aloxa_eiqui
+#: view:website:aloxa_eiqui.home_page
+msgid "€/mes"
+msgstr "€/mes"
+

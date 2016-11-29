@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<record id="eiqui_menu_git_repos_action" model="ir.actions.act_window">
+			<field name="name">Git Repositories</field>
+			<field name="res_model">eiqui.repos</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+			<field name="context">{}</field>
+		</record>
+
+		<record id="eiqui_menu_git_odoo_modules_action" model="ir.actions.act_window">
+			<field name="name">Git Odoo Modules</field>
+			<field name="res_model">eiqui.modules</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+			<field name="context">{'search_default_installable':1}</field>
+		</record>
+		
+		<record id="eiqui_action_project_messages" model="ir.actions.act_window">
+			<field name="name">Project Messages</field>
+			<field name="res_model">eiqui.messages</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+		</record>
+		
+		<record id="eiqui_action_project_types" model="ir.actions.act_window">
+			<field name="name">Project Types</field>
+			<field name="res_model">eiqui.project.type</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+		</record>
+		
+		<record id="eiqui_menu_verticales_action" model="ir.actions.act_window">
+			<field name="name">Verticales</field>
+			<field name="res_model">eiqui.vertical</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+			<field name="context">{}</field>
+		</record>
+		
+		<record id="eiqui_action_config" model="ir.actions.act_window">
+            <field name="name">Eiqui Settings</field>
+            <field name="res_model">eiqui.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+        
+		<record id="action_repo_import_modules" model="ir.actions.server">
+            <field name="name">Import Modules</field>
+            <field name="model_id" ref="model_eiqui_repos"/>
+            <field name="state">code</field>
+            <field name="code">
+                if context.get('active_model') == 'eiqui.repos' and context.get('active_ids'):
+                	self.browse(cr, uid, context.get('active_ids')).import_git_odoo_modules()
+            </field>
+        </record>
+        
+		<record id="ir_values_eiqui_repos_import_modules" model="ir.values">
+			<field name="key2" eval="'client_action_multi'"/>
+			<field name="model" eval="'eiqui.repos'"/>
+			<field name="name">Import Modules</field>
+			<field name="value" eval="'ir.actions.server,%d'%action_repo_import_modules"/>
+		</record>
+
+		<record id="action_eiqui_import_contacts" model="ir.actions.server">
+            <field name="name">Import from PaxinasGalegas</field>
+            <field name="model_id" ref="model_mail_mass_mailing_list"/>
+            <field name="state">code</field>
+            <field name="code">
+                if context.get('active_model') == 'mail.mass_mailing.list' and context.get('active_ids'):
+                	self.browse(cr, uid, context.get('active_ids')).import_contacts()
+            </field>
+        </record>
+        
+		<record id="ir_values_eiqui_import_contacts" model="ir.values">
+			<field name="key2" eval="'client_action_multi'"/>
+			<field name="model" eval="'mail.mass_mailing.list'"/>
+			<field name="name">Import from PaxinasGalegas</field>
+			<field name="value" eval="'ir.actions.server,%d'%action_eiqui_import_contacts"/>
+		</record>
+		
+	</data>
+</openerp>

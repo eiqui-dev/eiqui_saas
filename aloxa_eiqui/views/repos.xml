@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<!-- FORM -->
+		<record id="eiqui_repos_form" model="ir.ui.view">
+			<field name="name">Git Repositories</field>
+			<field name="model">eiqui.repos</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Git Repositories">
+					<header>
+						<button name="import_git_odoo_modules" string="Import Modules" type="object" class="oe_highlight" />
+					</header>
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="url"/>
+							<field name="branch"/>
+							<field name="description"/>
+						</group>
+						<group>
+							<field name="commit"/>
+							<field name="last_import_date"/>
+							<field name="num_modules"/>
+							<label for="get_modules_view" string=""/>
+							<button string="⇒ View Modules" type="object" name="get_modules_view" class="oe_link"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<!-- TREE -->
+		<record id="eiqui_repos_tree" model="ir.ui.view">
+			<field name="name">Git Repositories</field>
+			<field name="model">eiqui.repos</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Git Repositories">
+					<field name="name"/>
+					<field name="url"/>
+					<field name="branch"/>
+					<field name="last_import_date"/>
+					<field name="num_modules"/>
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>

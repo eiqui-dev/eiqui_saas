@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<template id="search">
+			<form id="search_plans" t-att-class="search_class">
+		    	<t t-if="attrib_values">
+		      		<t t-foreach="attrib_values" t-as="a">
+		        		<input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+		      		</t>
+		    	</t>
+		    	<div class="input-group">
+		      		<input type="text" name="search" id="search" class="search-query form-control" placeholder="Search..."/>
+		      		<span class="input-group-btn">
+		        		<a href="#" class="btn btn-default a-submit"><i class="fa fa-search"/></a>
+		      		</span>
+		  		</div>
+		  	</form>
+		</template>
+		
+		<template id="panel_plans_list">
+			<t t-if="not projects and search">
+				<div class="alert alert-danger" role="alert"><strong>No Plans Found!</strong> Try with other word...</div>
+			</t>
+			<t t-if="not projects and not search">
+				<div class="text-center text-muted" style="margin-top:6em;">
+					<i class="fa fa-exclamation-circle fa-3x"></i>
+					<span style="font-size:xx-large; display:block;">NO CONTRACTED PLANS</span>
+					<button class="btn btn-link btn-lg" data-toggle="modal" data-target="#modal_new_plan">Start controlling my business!</button>
+				</div>
+			</t>
+			<table t-if="projects" id="panel-projects" class="table eiqui-table col-md-12">
+				<thead>
+					<th>&amp;nbsp;</th>
+					<th>Name</th>
+					<th>Size</th>
+					<th>Ends in</th>
+					<th>&amp;nbsp;</th>
+				</thead>
+				<tbody>
+					<t t-foreach="projects" t-as="proj">
+						<t t-set="server_created" t-value="proj.server_state == 'created'" />
+						<t t-set="server_error" t-value="proj.server_state == 'error'" />
+						<t t-set="line_class" t-value="''"/>
+						<t t-if="server_error"><t t-set="line_class" t-value="'bg-danger'"/></t>
+						<t t-if="not server_error and not server_created"><t t-set="line_class" t-value="'bg-warning'"/></t>
+						<tr t-data="proj.id" t-att-class="'panel-project-plan %s' % line_class">
+							<t t-set="ram" t-value="proj.plan_type_id.ram/1024/1024 or 0"/>
+							<t t-set="storage" t-value="proj.plan_type_id.storage/1024/1024 or 0"/>
+							<t t-set="url" t-value="'%s.eiqui.com' % proj.name"/>
+							<td class="project-status text-muted col-md-3">
+								<a t-if="server_created" t-att-href="'/panel/plan/%d' % proj.id">	
+									<img t-att-src="'https://%s/logo.png' % url" class="img-responsive img-small pull-right" />
+								</a>
+								<t t-if="not server_created">
+									<i t-att-class="'fa %s' % (server_error and 'fa-warning' or 'fa-circle-o-notch fa-spin')"></i> <strong t-esc="dict(proj.fields_get(allfields=['server_state'])['server_state']['selection'])[proj.server_state]" />
+								</t>
+							</td>
+							<td style="text-align:center;" class="project-name text-muted col-md-4">
+								<t t-if="server_created">
+									<a t-att-href="'/panel/plan/%d' % proj.id" t-esc="proj.name"/>
+								</t>
+								<t t-if="not server_created">
+									<t t-esc="proj.name"/>
+								</t>
+							</td>
+							<td style="text-align:center;" class="project-type text-muted col-md-2"><t t-esc="proj.plan_type_id.name"/><div class="eiqui-small-text" t-esc="'\n%sGiB/%sGiB Disco' % (ram, storage)"/></td>
+							<td style="text-align:center;" class="project-enddate text-muted col-md2" t-esc="proj.date or 'NEVER'"/>
+							<td style="text-align:left;" class="project-options text-muted col-md-1">
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    	More
+								    	<span class="caret"></span>
+								  	</button>
+								  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a t-att-href="'/panel/plan/%d#modules_apps' % proj.id">Add Modules</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#" t-esc="'Clone %s' % url"/></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Upgrade Server</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Create Security Copy</a></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Restore Security Copy</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li><a href="#">Create Issue</a></li>
+								    	<li role="separator" class="divider"></li>
+								    	<li><a href="#">Renew Contract</a></li>
+								    	<li><a href="#">Duplicate Plan</a></li>
+								  	</ul>
+								</div>
+							</td>
+						</tr>
+					</t>
+				</tbody>
+			</table>
+		</template>
+
+		<template id="panel_page" name="eiqui - Panel de Control" page="True">
+			<t t-call="website.layout">
+				<t t-set="title" t-value="'eiqui - Panel de Control'" />
+				
+				<div id="header" class="container">
+					<table>
+						<tbody>
+							<tr>
+								<td class="col-md-7"><div class="col-md-5"><t t-call="aloxa_eiqui.search"/></div></td>
+								<td class="col-md-1">
+									<span id='eiqui_plans_text' class="eiqui-big-text text-muted">Plans</span>
+								</td>
+								<td class="col-md-3" style="text-align:right;"><button class="btn btn-lg eiqui-bg-color" data-toggle="modal" data-target="#modal_new_plan">Create new Plan</button></td>
+								<td clasS="col-md-1">
+									<t t-call="aloxa_eiqui.user_menu" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="container">
+					<div class="row">
+						<div id="alerts" />
+						<div class="col-md-9" id="eiqui-ajax" data-page="panel"></div>
+					
+						<div class="col-md-3">
+							<img src="/logo.png" class="img-responsive" id="eiqui-logo" />
+							<t t-call="aloxa_eiqui.eiqui_messages" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade" id="modal_new_plan" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&amp;times;</span></button>
+								<h4 class="modal-title">Create New Plan</h4>
+							</div>
+							<div class="modal-body">
+								<form id="form_new_plan">
+									<div class="form-group" id="plan_domain">
+										<label class="control-label" for="domain">Domain</label>
+										<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Create Plan</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</t>
+		</template>
+		
+	</data>
+</openerp>

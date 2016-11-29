@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+		<menuitem id="eiqui_menu_main" name="eiqui" sequence="1" />
+		
+		<menuitem id="eiqui_menu_git" parent="eiqui_menu_main" name="Git Control" sequence="10" />
+		<menuitem id="eiqui_menu_git_repos" parent="eiqui_menu_git" name="Repositories" sequence="10"
+			action="eiqui_menu_git_repos_action" />
+		<menuitem id="eiqui_menu_git_odoo_modules" parent="eiqui_menu_git" name="Odoo Modules" sequence="20"
+			action="eiqui_menu_git_odoo_modules_action" />
+			
+		<menuitem id="eiqui_menu_project" parent="eiqui_menu_main" name="Projects" sequence="20" />
+		<menuitem id="eiqui_menu_project_messages" parent="eiqui_menu_project" name="Messages" sequence="10"
+			action="eiqui_action_project_messages" />
+			
+		<menuitem id="eiqui_menu_general" parent="eiqui_menu_main" name="General" sequence="30" />
+		<menuitem id="eiqui_menu_verticales" parent="eiqui_menu_general" name="Verticales" sequence="10"
+			action="eiqui_menu_verticales_action" />
+		<menuitem id="eiqui_menu_config" name="Eiqui Config" parent="eiqui_menu_general" sequence="20"
+			action="eiqui_action_config" />
+			
+			
+		<menuitem id="eiqui_menu_project_types" parent="project.menu_project_management" name="Types" sequence="30"
+			action="eiqui_action_project_types" />
+	
+	</data>
+</openerp>

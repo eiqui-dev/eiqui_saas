@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_website_config_settings" model="ir.ui.view">
+            <field name="name">Website settings</field>
+            <field name="model">website.config.settings</field>
+            <field name="inherit_id" ref="website.view_website_config_settings" />
+            <field name="arch" type="xml">
+                <group string="Social Media" position="after">
+                    <group string="API Key's">
+                        <label for="digital_ocean_api_key"/>
+                        <div name="digital_ocean_api_key">
+                            <div class="oe_inline">
+                                <field name="digital_ocean_api_key" placeholder="Your Digital Ocean Api Key"/>
+                            </div>
+                        </div>
+                    </group>
+                </group>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

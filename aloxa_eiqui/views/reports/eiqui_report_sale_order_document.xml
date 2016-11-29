@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+	<template id="eiqui_report_sale_order_document">
+		<t t-set="has_discount" t-value="False" />
+		<t t-foreach="o.order_line" t-as="l">
+			<t t-if="l.discount"><t t-set="has_discount" t-value="True"/></t>
+		</t>
+		
+		<t t-call="aloxa_eiqui.eiqui_external_layout">
+			<div class="page" style="margin-top:2em;">
+				<!-- PANEL DERECHO -->
+				<div class="row bg-color-eiqui margen" style="color:white; padding-top:2em; padding-bottom:1.3em; margin-top:1.2em; position:relative">
+					<span class="deco-circle"></span>
+					<div class="col-md-7 col-xs-7">
+						<h1 style="font-size:250%; margin:0;">Presupuesto <t t-esc="o.name" /></h1>
+						<table class="table table-eiqui table-eiqui-invoice-info">
+							<thead>
+								<th>Descripción</th>
+								<th>Fecha</th>
+								<th>Origen</th>
+							</thead>
+							<tbody>
+								<td><span t-field="o.name"/></td>
+								<td><span t-field="o.date_order"/></td>
+								<td><span t-field="o.origin"/></td>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-md-5 col-xs-5" style="text-align:right;">
+						<b t-field="o.partner_id.name" style="text-transform:uppercase;"/><br/>
+							<t t-if="o.partner_id.street"><span t-esc="o.partner_id.street.upper()" /><br/></t>
+							<t t-if="o.partner_id.street2"><span t-esc="o.partner_id.street2.upper()"/><br/></t>
+							<t t-if="o.partner_id.zip or o.partner_id.city"><t t-if="o.partner_id.zip"><span t-esc="o.partner_id.zip"/></t> <t t-if="o.partner_id.city"><span t-esc="o.partner_id.city" /></t><br/></t>
+							<t t-if="o.partner_id.state_id or o.partner_id.country_id"><t t-if="o.partner_id.state_id"><span t-field="o.partner_id.state_id" /></t><t t-if="o.partner_id.country_id">, <span t-field="o.partner_id.country_id" /></t><br/></t>
+							<t t-if="o.partner_id.vat"><span t-field="o.partner_id.vat" style="text-transform:uppercase;"/></t>
+					</div>
+				</div>
+				<div class="row">
+					<table class="table table-eiqui">
+						<thead>
+							<th>&amp;nbsp;</th>
+							<th>Descripción</th>
+							<th>Cantidad</th>
+							<th>Precio Unidad</th>
+							<t t-if="has_discount"><th>Descuento</th></t>
+							<th>Impuestos</th>
+							<th>Importe</th>
+							<th>&amp;nbsp;</th>
+						</thead>
+						<tbody class="invoice_tbody">
+							<tr t-foreach="o.order_line" t-as="l">
+								<td>&amp;nbsp;</td>       	 
+								<td>
+									<span style="text-align:justify;" t-field="l.name" />
+								</td>
+						  		<td class="text-right" style="font-size: x-large;">
+						        	<span t-esc="int(l.product_uom_qty)"/>
+								</td>
+								<td class="text-right" style="font-size: x-large;">
+						  			<span t-field="l.price_unit"/>
+						   		</td>
+						   		<td style="font-size: x-large; white-space: nowrap;">
+						   			<t t-if="l.tax_id">
+						  				<span t-esc="', '.join(map(lambda x: x.name.upper(), l.tax_id))"/>
+						  			</t>
+						  			<t t-if="not l.tax_id">EXENTO</t>
+						   		</td>
+								<t t-if="has_discount">
+									<td class="text-right" style="font-size: x-large;" groups="sale.group_discount_per_so_line">
+										<t t-if="l.discount"><span t-field="l.discount"/></t>
+									</td>
+								</t>	                      
+					            <td class="text-right" style="font-size: xx-large;">
+					                <span t-field="l.price_subtotal" />
+					            </td>
+					            <td>&amp;nbsp;</td>
+						  	</tr>
+						  	<tr>
+						  		<td>&amp;nbsp;</td>
+						  		<td>&amp;nbsp;</td>
+						  		<td>&amp;nbsp;</td>
+						  		<td>&amp;nbsp;</td>
+						  		<td>&amp;nbsp;</td>
+						  		<t t-if="has_discount"><td>&amp;nbsp;</td></t>
+						  		<td>&amp;nbsp;</td>
+						  		<td>&amp;nbsp;</td>
+						  	</tr>
+						  	<tr class="table-eiqui-subtotal">
+						  		<td class="text-right" t-att-colspan="has_discount and '7' or '6'"><span>total sin impuestos</span> <b t-field="o.amount_untaxed" /></td><td>&amp;nbsp;</td>
+						  	</tr>
+						  	<tr class="table-eiqui-impuestos">
+						  		<td class="text-right" t-att-colspan="has_discount and '7' or '6'"><span>Impuestos</span> <b t-field="o.amount_tax" /></td><td>&amp;nbsp;</td>
+						  	</tr>
+						  	<tr class="table-eiqui-total color-eiqui">
+						  		<td class="text-right" t-att-colspan="has_discount and '7' or '6'"><span>TOTAL</span> <b t-field="o.amount_total" /></td><td>&amp;nbsp;</td>
+						  	</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="row bg-color-eiqui margen" style="color:white; margin-top: -0.8em;">
+					<div class="col-md-12 col-xs-12">
+						<t t-if="o.payment_term.note">
+							<h3>Términos y Condiciones</h3>
+							<span t-field="o.payment_term.note" />
+						</t>
+						<t t-if="not o.payment_term.note">
+							<div style="height:10px;"></div>
+						</t>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template> 
+
+</data>
+</openerp>

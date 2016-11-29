@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+<record model="ir.ui.view" id="project_task_kanban_eiqui_inherit">
+      <field name="name">project.task.kanban.eiqui.inherit</field>
+      <field name="model">project.task</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="project.view_task_kanban" />
+      <field name="arch" type="xml">
+  
+         <xpath expr="//field[@name='name']"  position="before">
+  
+                  <h3><field name="id" /></h3>
+         
+         </xpath>
+    </field>
+        
+         
+   	</record>
+   </data>
+</openerp>

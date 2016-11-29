@@ -1,0 +1,3 @@
+dosa
+pygithub
+configparser

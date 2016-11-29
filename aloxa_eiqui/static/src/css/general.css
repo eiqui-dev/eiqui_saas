@@ -1,0 +1,144 @@
+:root {
+	--eiqui-color: #68b581;
+	--eiqui-color-dark: #345A40;
+	--eiqui-color-light: #86C39A;
+	--eiqui-color-slight: #F2F9F4;
+	
+	--eiqui-color-black: #4e4e4e;
+	--eiqui-color-black-dark: #2e2e2e;
+	--eiqui-color-black-light: #717171;
+	
+	--odoo-color: #A24689;
+}
+
+html, body {
+	font-family: 'Dosis', sans-serif;
+}
+a:hover {
+	text-decoration: none;
+}
+
+.navigation {
+	font-family: 'Dosis', sans-serif;
+}
+
+.form-control {
+    -webkit-box-shadow:none!important ;
+    box-shadow: none!important;
+}
+
+div#header {
+	padding: 1em 0;
+}
+
+.img-small {
+	width: 32%;
+}
+
+.eiqui-big-text {
+	font-size: 36px;
+	font-weight: bold;
+}
+
+#search_modules_apps {
+	margin-bottom: 2em;
+}
+
+.btn-flat {
+	border-width:0;
+}
+
+.eiqui-small-text {
+	font-size: x-small;
+}
+
+.project-plan-url {
+	margin: 0;
+	font-weight: bold;
+	font-size: 42px;
+	margin-left: -150px;
+	opacity: 0;
+}
+
+.eiqui-bg-color {
+	background-color: var(--eiqui-color);
+	color: white;
+}
+
+.eiqui-message-title {
+	border: 0 solid var(--eiqui-color-light);
+	border-width: 0 0 1px 0;
+}
+.eiqui-message-options {
+	text-align: right;
+}
+.eiqui-message-options a {
+	color: var(--eiqui-color);
+	font-weight: bold;
+}
+.eiqui-message-options a:hover {
+	color: var(--eiqui-color-dark);
+	text-decoration:none;
+}
+.eiqui-message-item {
+	opacity: 0;
+	margin-top: 50px;
+	padding: 5px;
+	background-color: var(--eiqui-color-slight);
+}
+.eiqui-message-item:not(:first-child) {
+	border: 0 dotted white;
+	border-width: 10px 0 0 0;
+}
+
+.eiqui-table tbody tr td {
+	border-color: var(--eiqui-color) !important;
+	vertical-align: middle !important;
+}
+.eiqui-table tbody tr:not([class*='bg-warning']):not([class*='bg-danger']):hover {
+	background-color: var(--eiqui-color-slight);
+}
+.eiqui-table thead tr th {
+	border-color: var(--eiqui-color) !important;
+}
+.eiqui-nav li.active a {
+	background-color: var(--eiqui-color-light) !important;
+	border-color: var(--eiqui-color-dark) !important;
+}
+.eiqui-nav li:not([class]) a:hover {
+	background-color: var(--eiqui-color-slight) !important;
+}
+
+.eiqui-load-ajax {
+	padding: 10px;
+	background-color: white;
+	border: 1px solid #c3c3c3;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px #CCC;
+	color: var(--eiqui-color-dark);
+}
+
+#project-plan-menu li a {
+	font-size: 16px;
+}
+
+#eiqui-logo {
+	margin: 0 auto;
+}
+#panel-projects th {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+#panel-projects td {
+	font-size: 20px;
+}
+
+#panel-modules td {
+	vertical-align: middle;
+}
+
+/* OCULTAR MENU Y PIE QUE IMPONE ODOO */
+header:not([id]), footer:not([id]) {
+	display: none;
+}
