@@ -44,7 +44,7 @@
 						<t t-set="line_class" t-value="''"/>
 						<t t-if="server_error"><t t-set="line_class" t-value="'bg-danger'"/></t>
 						<t t-if="not server_error and not server_created"><t t-set="line_class" t-value="'bg-warning'"/></t>
-						<tr t-data="proj.id" t-att-class="'panel-project-plan %s' % line_class">
+						<tr t-att-data-id="proj.id" t-att-data-name="proj.name" t-att-data-state="proj.server_state" t-att-class="'panel-project-plan %s' % line_class">
 							<t t-set="ram" t-value="proj.plan_type_id.ram/1024/1024 or 0"/>
 							<t t-set="storage" t-value="proj.plan_type_id.storage/1024/1024 or 0"/>
 							<t t-set="url" t-value="'%s.eiqui.com' % proj.name"/>

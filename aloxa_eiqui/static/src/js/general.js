@@ -28,56 +28,56 @@ function check_response(data)
 	return true;
 }
 
-$(function(){
-	$('.select2-control').each(function(){ $(this).select2(); });
+var loadTimeout = false;
+function load_eiqui_ajax(url, params, callback)
+{
+	$('#eiqui-ajax').css({'padding':'15px'});
+	loadTimeout = setTimeout(function($this){
+		var offLeft = $this[0].offsetLeft;
+		var offTop = $this[0].offsetTop;
+		var $div = $('<div/>', {
+		    id: 'load_ajax_info',
+		    title: _t('Loading Data...'),
+		    class: 'eiqui-load-ajax text-center',
+		    css: {
+		    	'position':'absolute', 
+		    	'z-index': 110,
+		    }
+		});
+		var $shadow = $('<div/>', {
+			id: 'load_ajax_shadow',
+			css: {
+				'position': 'absolute',
+				'top': offTop+'px',
+				'left': offLeft+'px',
+				'width': $this[0].offsetWidth+'px',
+				'height': '10px',
+				'background-color': '#333',
+				'opacity': '0',
+				'z-index': 100,
+				'border-radius':'25%',
+			}
+		});
+		$('<span/>', {
+			html: "<i class='fa fa-spinner fa-spin fa-2x fa-fw'></i><br/>"+_t('LOADING...')
+		}).appendTo($div);
+		$shadow.appendTo('body');
+		$shadow.animate({
+			'opacity':'0.5', 
+			'border-radius':'0%', 
+			'height': $this[0].offsetHeight+'px',
+		});
+		$div.appendTo('body');
+		$div.css({
+	    	'left': ((offLeft+$this[0].offsetWidth/2)-$div.width()/2)+'px', 
+	    	'top': ((offTop+$this[0].offsetHeight/2)-$div.height()/2)+'px',
+		});
+	}, '250', $('#eiqui-ajax'));
 	
-	var loadTimeout = false;
-	$(document).ajaxStart(function(){
-		$('#eiqui-ajax').css({'padding':'15px'});
-		loadTimeout = setTimeout(function($this){
-			var offLeft = $this[0].offsetLeft;
-			var offTop = $this[0].offsetTop;
-			var $div = $('<div/>', {
-			    id: 'load_ajax_info',
-			    title: _t('Loading Data...'),
-			    class: 'eiqui-load-ajax text-center',
-			    css: {
-			    	'position':'absolute', 
-			    	'z-index': 110,
-			    }
-			});
-			var $shadow = $('<div/>', {
-				id: 'load_ajax_shadow',
-				css: {
-					'position': 'absolute',
-					'top': offTop+'px',
-					'left': offLeft+'px',
-					'width': $this[0].offsetWidth+'px',
-					'height': '10px',
-					'background-color': '#333',
-					'opacity': '0',
-					'z-index': 100,
-					'border-radius':'25%',
-				}
-			});
-			$('<span/>', {
-				html: "<i class='fa fa-spinner fa-spin fa-2x fa-fw'></i><br/>"+_t('LOADING...')
-			}).appendTo($div);
-			$shadow.appendTo('body');
-			$shadow.animate({
-				'opacity':'0.5', 
-				'border-radius':'0%', 
-				'height': $this[0].offsetHeight+'px',
-			});
-			$div.appendTo('body');
-			$div.css({
-		    	'left': ((offLeft+$this[0].offsetWidth/2)-$div.width()/2)+'px', 
-		    	'top': ((offTop+$this[0].offsetHeight/2)-$div.height()/2)+'px',
-			});
-		}, '250', $('#eiqui-ajax'));
-	}).ajaxComplete(function(){
+	$.post(url, params, function(data){
 		clearTimeout(loadTimeout);
 		var $this = $('#eiqui-ajax');
+		$this.html(data);
 		$this.css({'visibility':'initial'});
 		$this.animate({'padding': 0, 'opacity':'1.0'}, 'fast');
 		$('#load_ajax_info').remove();
@@ -86,7 +86,12 @@ $(function(){
 			'border-radius':'25%', 
 			'height': 0,
 		}, 'fast', function(){ $(this).remove(); });
-	});
+		callback(data);
+	})
+}
+
+$(function(){
+	$('.select2-control').each(function(){ $(this).select2(); });
 	
 	$('.eiqui-message-item').each(function(i, elm){
 		setTimeout(function(){
@@ -112,9 +117,7 @@ function load_panel_section(project_id, section, payload)
 	$('#project-plan-menu li[class="active"]').removeClass('active');
 	$('#project-plan-menu li a[data-section="'+section+'"]').parent().addClass('active');
 	
-	$.post(url, function(data){
-		$('#eiqui-ajax').html(data);
-		
+	load_eiqui_ajax(url, {}, function(data){
 		// Initialize Tooltips
 		//$(function () {
 		//	$('[data-toggle="tooltip"]').tooltip();
@@ -191,15 +194,58 @@ $(function(){
  */
 $(function(){
 	var $eiqui = $('#eiqui-ajax');
+	var INTER_TIMERS={};
 	if ($eiqui.length && $eiqui.data('page') == 'panel')
 	{
 		$('#search_plans').on('submit', function(ev){
 			var search = $("#search").val();
-			$.post('/panel/search?search='+search, function(data){
-				$('#eiqui-ajax').html(data);
+			load_eiqui_ajax('/panel/search', {search:search}, function(data){
 				$(".disabled").click(function(event) {
 					event.preventDefault();
 					return false;
+				});
+				
+				// Create intervals
+				for (var timer in INTER_TIMERS)
+					clearInterval(INTER_TIMERS[timer]);
+				$('#panel-projects tr').each(function(index, elm){
+					var $this = $(elm);
+					var server_state = $this.data('state');
+					if (!server_state || server_state === 'created' || server_state === 'error')
+						return true;
+					var proj_id = $this.data('id');
+					var name = $this.data('name');
+					
+					INTER_TIMERS[proj_id]=setInterval(function($parent, proj_id, name){
+						openerp.jsonRpc('/_get_plan_status', 'call', {id:proj_id}).then(function(data){
+							if (!check_response(data))
+								return;
+							
+							if (data['check'] && data['status'])
+							{
+								$parent.data('state', data['status']);
+								if (data['status'] === 'created')
+								{
+									clearInterval(INTER_TIMERS[proj_id]);
+									delete INTER_TIMERS[proj_id];
+									$parent.children('td.project-status').html("<img src='https://"+name+".eiqui.com/logo.png' alt='"+name+"' class='img-responsive img-small pull-right' />");
+									$parent.children('td.project-name').html("<a href='/panel/plan/"+proj_id+"'>"+name+"</a>");
+									$parent.children('td.project-options ul li').each(function(i, e){ 
+										$(e).removeClass('disabled'); 
+									});
+									$parent.removeClass('bg-warning bg-danger');
+								}
+								else if (data['status'] === 'error')
+								{
+									clearInterval(INTER_TIMERS[proj_id]);
+									delete INTER_TIMERS[proj_id];
+									$parent.children('td.project-status').html("<i class='fa fa-warning'></i> <strong>"+_t("Error!")+"</strong>");
+									$parent.children('td.project-name').text(name);
+									$parent.removeClass('bg-warning').addClass('bg-danger');
+								}
+							}
+						});
+					}, 60*1000, $this, proj_id, name);
 				});
 			});
 			ev.preventDefault();
@@ -218,6 +264,7 @@ $(function(){
 					
 					if (data['check'])
 					{
+						$('#search_plans #search').val("");
 						$('#search_plans').submit();
 						$(form)[0].reset();
 					}

@@ -72,7 +72,7 @@ class EiquiWebsite(webmain.Home):
     @http.route('/panel/search', auth="user", type="http", methods=['POST'], website=True)
     def _panel_search(self, search=None, **kw):
         user = request.env['res.users'].browse([request.uid])
-        domain = [('user_id', '=', user.id)]
+        domain = [('final_partner_id', '=', user.partner_id.id)]
         if search:
             domain.append(('name', 'ilike', '%%%s%%' % search))
         projects = request.env['project.project'].search(domain, order='create_date desc', limit=10)
@@ -85,18 +85,18 @@ class EiquiWebsite(webmain.Home):
     
     @http.route('/panel', auth="user", type="http", website=True)
     def panel(self, **kw):        
-        user = request.env['res.users'].browse([request.uid])
+        user_id = request.env['res.users'].browse([request.uid])
         keep = QueryURL('/panel', search='', attrib=None)
         
         messages = request.env['eiqui.messages'].search([
             '|',
-            ('project_id.user_id', '=', user.id), 
+            ('project_id.final_partner_id', '=', user_id.partner_id.id), 
             ('project_id', '=', False),
         ])
         
         values = {
             'keep':keep, 
-            'user':user,
+            'user':user_id,
             'messages':messages,
         }
 
@@ -104,8 +104,8 @@ class EiquiWebsite(webmain.Home):
     
     @http.route('/panel/plan/<int:id>', auth="user", type="http", website=True)
     def panel_plan(self, id, **kw):   
-        user = request.env['res.users'].browse([request.uid])
-        project = request.env['project.project'].search([('user_id', '=', user.id), ('id', '=', id)])
+        user_id = request.env['res.users'].browse([request.uid])
+        project = request.env['project.project'].search([('final_partner_id', '=', user_id.partner_id.id), ('id', '=', id)])
         if not project or project.server_state != 'created':
             raise werkzeug.exceptions.NotFound()
         
@@ -113,7 +113,7 @@ class EiquiWebsite(webmain.Home):
             ('project_id', '=', id),
         ])
         
-        values = {'project':project, 'user':user, 'messages':messages}
+        values = {'project':project, 'user':user_id, 'messages':messages}
 
         return request.website.render("aloxa_eiqui.panel_plan_page", values)
     
@@ -125,12 +125,12 @@ class EiquiWebsite(webmain.Home):
         attrib_values = [map(int, v.split("-")) for v in attrib_list if v]
         attrib_set = set([v[1] for v in attrib_values])
         
-        user = request.env['res.users'].browse([request.uid])
-        project = request.env['project.project'].search([('user_id', '=', user.id), ('id', '=', id)])
+        user_id = request.env['res.users'].browse([request.uid])
+        project = request.env['project.project'].search([('final_partner_id', '=', user_id.partner_id.id), ('id', '=', id)])
         if not project:
             raise werkzeug.exceptions.NotFound()
         
-        values = {'project':project, 'user':user}
+        values = {'project':project, 'user':user_id}
 
         if section == 'modules_apps':
             # SEARCH HELPER
@@ -258,7 +258,7 @@ class EiquiWebsite(webmain.Home):
         # Check Data
         if not re.match(r'^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$', kw['email']):
             return { 'error': True, 'errormsg': "Email appear to be invalid" }
-        if not re.match(r'^[a-zA-Z0-9-_]+$', kw['domain']):
+        if not re.match(eiqui_utils.EIQUI_CLIENTNAME_REGEX, kw['domain']):
             return { 'error': True, 'errormsg': "Domain appear to be invalid" }
         if request.env['project.project'].sudo().search([('name','=ilike',kw['domain'])]):
             return { 'error': True, 'errormsg': "Domain currently in use!" }
@@ -311,6 +311,14 @@ class EiquiWebsite(webmain.Home):
         user_id.partner_id.sudo(user=uid).write(regData)
 
         return { 'check': True if user_id and user_id.exists() else False }
+    
+    @http.route(['/_get_plan_status'], auth="user", type='json', website=True)  
+    def _get_plan_status(self, id):
+        proj_id = request.env['project.project'].browse([id])
+        if not proj_id:
+            return { 'error' : True, 'errormsg': "Invalid project id!" }
+        return { 'check':True, 'status':proj_id.server_state }
+              
           
     @http.route(['/_create_plan'], auth="user", type='json', website=True)  
     def _create_plan(self, domain):
@@ -325,9 +333,10 @@ class EiquiWebsite(webmain.Home):
         # Create Project
         regData = {
             'name': domain,
-            'user_id': user_id.id,
+            'user_id': None,
             'partner_id': user_id.partner_id.id,
             'alias_name': domain,
+            'final_partner_id': user_id.partner_id.id
         }
         proj_id = request.env['project.project'].sudo().create(regData)
         if not proj_id or not proj_id.exists():
@@ -337,7 +346,9 @@ class EiquiWebsite(webmain.Home):
                 'priority': '2',
             })
             return { 'error': True, 'errormsg': _("Can't create the plan! Please try again in few minutes...") }
-        request.cr.commit() # Por algun extraño motivo a veces el entorno no pilla que se ha creado un nuevo proyecto
+        # En ocasiones el hilo aun no puede ver el nuevo proyecto creado
+        # forzamos que se guarden los cambios para asegurarnos de que el hilo pueda ver el nuevo proyecto
+        request.cr.commit()
         kwargs = {'uid': request.uid, 'db': request.db, 'project_id': proj_id.id}
         thread.start_new_thread(self._thread_create_docker, (kwargs,))   
         return { 'check': True }
@@ -373,14 +384,12 @@ class EiquiWebsite(webmain.Home):
                     project.write({'server_state':'created'})
                     # Send Creation Mail
                     try:
-                        plan_info = {
+                        project.send_mail_plan_creation({
                             'inst_info': inst_info,
                             'adminpasswd': adminpasswd,
                             'url': odoo_url,
-                        }
-                        template = env['ir.model.data'].get_object('aloxa_eiqui', 'plan_created_mail')
-                        env['email.template'].with_context(plan_info=plan_info).send_mail(template.id, project.id, force_send=True, raise_exception=True)
-                    except ValueError:
+                        })
+                    except:
                         pass
                 except Exception as e:
                     env['project.issue'].create({
@@ -392,9 +401,8 @@ class EiquiWebsite(webmain.Home):
                     project.write({'server_state':'error'})
                     # Send Error Mail
                     try:
-                        template = env['ir.model.data'].get_object('aloxa_eiqui', 'plan_error_mail')
-                        env['email.template'].send_mail(template.id, project.id, force_send=True, raise_exception=True)
-                    except ValueError:
+                        project.send_mail_plan_creation()
+                    except:
                         pass
                     # Revert all changes
                     #try:

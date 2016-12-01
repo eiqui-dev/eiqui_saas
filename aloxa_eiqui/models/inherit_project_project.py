@@ -36,6 +36,35 @@ Modelo que sobreescribe project.project
 '''
 class project_project(models.Model):
     _inherit='project.project'
+    
+    # Se hace así para poder enviar correos desde el hilo...
+    # Por algún extraño motivo cuando se llama a "send_mail" dede la nueva api, no funciona.
+    # TODO: Modificar en versiones superiores de Odoo ¿10.0?
+    @api.model
+    def send_mail_plan_creation(self, plan_values=None):
+        self.ensure_one();
+        template = False
+        if self.server_state == 'created':
+            template = self.env['ir.model.data'].get_object('aloxa_eiqui', 'plan_created_mail')
+        elif self.server_state == 'error':
+            template = self.env['ir.model.data'].get_object('aloxa_eiqui', 'plan_error_mail')
+        if not template:
+            raise Exception("Can't found template for current plan state")
+        if plan_values:
+            self.env.context.update({
+                'plan_info': plan_values
+            })
+            
+        try:
+            # Todo por esto...
+            self.pool['email.template'].send_mail(
+                self.env.cr, 
+                self.env.uid, 
+                template.id, 
+                self.id, 
+                force_send=True, raise_exception=True, context=self.env.context)
+        except ValueError:
+            pass
 
     final_partner_id = fields.Many2one('res.partner', 'Final Customer')
     repo_modules_ids = fields.Many2many('eiqui.project.modules', string="Project Modules")
@@ -45,7 +74,7 @@ class project_project(models.Model):
         ('creating', 'Creating...'),
         ('created', 'Created'),
         ('deleting', 'Deleting...')
-        ], string='Server Sate', default='creating', required=True, readonly=True)
+        ], string='Server Sate', default='creating', required=True)#, readonly=True)
     #credentials = La idea es tener aqui el "aloxapass" en cuanto a eiqui se refiere (postgres, odoo, docker...)
     #recipe = ��Puede ser interesante tener aqui el .ini del cliente??
     #Server_Details = Informaci�n del droplet (RAM, disco, etc...)

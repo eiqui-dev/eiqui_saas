@@ -32,6 +32,7 @@ from openerp import models, fields
 
 class eiqui_messages(models.Model):
     _name = 'eiqui.messages'
+    _order = 'create_date DESC'
 
     project_id = fields.Many2one('project.project', 'Project')
     readed_users_ids = fields.Many2many('res.users')
