@@ -4,7 +4,6 @@
 
 		<template id="search">
 			<form id="search_plans" t-att-class="search_class">
-				<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 		    	<t t-if="attrib_values">
 		      		<t t-foreach="attrib_values" t-as="a">
 		        		<input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
@@ -137,7 +136,6 @@
 							</div>
 							<div class="modal-body">
 								<form id="form_new_plan">
-									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 									<div class="form-group" id="plan_domain">
 										<label class="control-label" for="domain">Domain</label>
 										<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
