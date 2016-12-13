@@ -11,12 +11,7 @@
 				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/bootbox-4.4.0/bootbox.js"></script>
 				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/select2-4.0.3/select2.js"></script>
 				<script type="text/javascript" src="/aloxa_eiqui/static/src/js/general.js"></script>
-		    </xpath>
-		</template>
-		
-		
-		<template id="theme" inherit_id="website.theme">
-		     <xpath expr="." position="inside">
+				
 				<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Dosis:400,700' rel='stylesheet' type='text/css'/>
 				<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/lib/select2-4.0.3/select2.css" />
 				<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/general.css" />

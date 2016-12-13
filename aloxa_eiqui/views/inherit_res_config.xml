@@ -7,7 +7,7 @@
             <field name="model">website.config.settings</field>
             <field name="inherit_id" ref="website.view_website_config_settings" />
             <field name="arch" type="xml">
-                <group string="Social Media" position="after">
+                <group name="social" position="after">
                     <group string="API Key's">
                         <label for="digital_ocean_api_key"/>
                         <div name="digital_ocean_api_key">

@@ -19,6 +19,5 @@
 #
 #################################################################################
 from . import website
-from . import inherit_contactus
 from . import mass_mailing
 from . import eiqui_utils

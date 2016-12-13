@@ -11,8 +11,12 @@
 					<newline/>
 					<field name="final_partner_id" string="Final Customer"/>
 				</xpath>
-				<xpath expr="//page[@string='Other Info']" position="after">
-					<page string="Repositories &amp; Modules">
+				<xpath expr="//notebook/page[1]" position="after">
+					<page string="Plan Info">
+						<group>
+							<field name="plan_type_id" />
+							<field name="server_state" />
+						</group>
 						<field name="repo_modules_ids">
 							<tree string="Modules" create="false" editable="bottom">
 				            	<!--field name="project_id" invisible="1"/-->
@@ -21,10 +25,6 @@
 				          	</tree>
               			</field>
 					</page>
-				</xpath>
-				<xpath expr="//field[@name='date']" position="after">
-					<field name="plan_type_id" />
-					<field name="server_state" />
 				</xpath>
 							 	
 	        </field>

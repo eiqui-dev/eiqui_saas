@@ -2,7 +2,7 @@
 <openerp>
 <data>
 
-	<template id="style" inherit_id="report.style">
+	<template id="style" inherit_id="report.assets_backend">
 		<xpath expr="."><t>
 			@font-face {
 	   			font-family: Dosis-Regular;

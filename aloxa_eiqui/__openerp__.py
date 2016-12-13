@@ -33,15 +33,12 @@
     },
     "depends": [
         'project', 
-        'website', 
-        'website_blog', 
-        'website_crm', 
-        'base_location',
-        'l10n_es_aeat',
+        'website',
+        'website_blog',
         'mass_mailing',
-        'crm_mass_mailing',
         'project_issue',
         'sale',
+        'report',
     ],
     "data": [
     	'views/res_config.xml',

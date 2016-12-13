@@ -7,8 +7,8 @@
 	        <field name="inherit_id" ref="base.view_partner_form" /> 
 	        <field name="arch" type="xml">
 
-				<xpath expr="//label[@for='is_company']" position="after">
-					<field name="is_manager" class="oe_inline"/> <label for="is_manager" string="Is a Manager?"/>
+				<xpath expr="//field[@name='is_company']" position="after">
+					<field name="is_manager" />
 				</xpath>
 							 	
 	        </field>

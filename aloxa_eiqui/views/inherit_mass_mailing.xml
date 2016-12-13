@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_list_form"/>
             <field name="arch" type="xml">
             
-            	<xpath expr="//form[@string='Contact List']//sheet" position="before">
+            	<xpath expr="//form[1]//sheet" position="before">
             		<header>
             			<button name="import_contacts" string="Import Contacts" type="object" class="oe_highlight" />
             		</header>
