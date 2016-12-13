@@ -18,6 +18,11 @@
 		  	</form>
 		</template>
 		
+		<template id="panel_assets">
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/website.js"></script>
+			<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/website.css" />
+		</template>
+		
 		<template id="panel_plans_list">
 			<t t-if="not projects and search">
 				<div class="alert alert-danger" role="alert"><strong>No Plans Found!</strong> Try with other word...</div>
@@ -97,6 +102,10 @@
 		<template id="panel_page" name="eiqui - Panel de Control" page="True">
 			<t t-call="website.layout">
 				<t t-set="title" t-value="'eiqui - Panel de Control'" />
+				<t t-set="head">
+					<t t-call-assets="aloxa_eiqui.panel_assets" t-js="False" />
+					<t t-call-assets="aloxa_eiqui.panel_assets" t-css="False" />
+				</t>
 				
 				<div id="header" class="container">
 					<table>

@@ -1,21 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
+	
+		<template id="home_assets">
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/animate.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/owl.carousel.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/owl.theme.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/prettyPhoto.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/red.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/home.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/responsive.css" />
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/external/bootstrap-switch.min.css" />
+			<link rel="stylesheet"
+				href="/aloxa_eiqui/static/src/css/external/jquery.fancybox.css?v=2.1.5" type="text/css"
+				media="screen" />
+				
+			<!-- Owl Carousel -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/owl.carousel.min.js"></script>
+			<!-- Isotope -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.isotope.js"></script>
+			<!-- Pretty Photo -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.prettyPhoto.js"></script>
+			<!-- SmoothScroll -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/smooth-scroll.js"></script>
+			<!-- Image Fancybox -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.fancybox.pack.js?v=2.1.5"></script>
+			<!-- Counter -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.counterup.min.js"></script>
+			<!-- waypoints -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/waypoints.min.js"></script>
+			<!-- Bx slider -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.bxslider.min.js"></script>
+			<!-- Scroll to top -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.scrollTo.js"></script>
+			<!-- Easing js -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.easing.1.3.js"></script>
+			<!-- PrettyPhoto -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/jquery.singlePageNav.js"></script>
+			<!-- Wow Animation -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/wow.min.js"></script>
+			<!-- Bootstrap Switcher -->
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/external/bootstrap-switch.min.js"></script>
+			<!-- Custom js -->
+			<script src="/aloxa_eiqui/static/src/js/external/home.js"></script>
+		</template>
 
 		<template id="home_page" name="eiqui - Developing Open Future" page="True">
 			<t t-call="aloxa_eiqui.base_layout">
 				<t t-set="head">
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/animate.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/owl.carousel.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/owl.theme.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/prettyPhoto.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/red.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/home.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/responsive.css" />
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/bootstrap-switch.min.css" />
-					<link rel="stylesheet"
-						href="/aloxa_eiqui/static/src/css/jquery.fancybox.css?v=2.1.5" type="text/css"
-						media="screen" />
+					<t t-call-assets="aloxa_eiqui.home_assets" t-js="False" />
 				</t>
 			
 				<t t-set="clickandgo" t-value="True"/>
@@ -1781,14 +1814,6 @@
 					</div>
 				</section>
 
-				<div id="g-map" class="no-padding">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="map" id="map"></div>
-						</div>
-					</div>
-				</div>
-
 				<!-- Back To Top Button -->
 				<div id="back-top">
 					<a href="#slider_part" class="scroll" data-scroll="">
@@ -1800,63 +1825,7 @@
 				<!-- End Back To Top Button -->
 
 				<t t-set="end">
-					<!-- Owl Carousel -->
-					<script src="/aloxa_eiqui/static/src/js/owl.carousel.min.js"></script>
-					<!-- Isotope -->
-					<script src="/aloxa_eiqui/static/src/js/jquery.isotope.js"></script>
-					<!-- Pretty Photo -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.prettyPhoto.js"></script>
-					<!-- SmoothScroll -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/smooth-scroll.js"></script>
-					<!-- Image Fancybox -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.fancybox.pack.js?v=2.1.5"></script>
-					<!-- Counter -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.counterup.min.js"></script>
-					<!-- waypoints -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/waypoints.min.js"></script>
-					<!-- Bx slider -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.bxslider.min.js"></script>
-					<!-- Scroll to top -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.scrollTo.js"></script>
-					<!-- Easing js -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/jquery.easing.1.3.js"></script>
-					<!-- PrettyPhoto -->
-					<script src="/aloxa_eiqui/static/src/js/jquery.singlePageNav.js"></script>
-					<!-- Wow Animation -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/wow.min.js"></script>
-					<!-- Google Maps -->
-					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-					<!-- Google Map Source -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/gmaps.js"></script>
-					<!-- Bootstrap Switcher -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/bootstrap-switch.min.js"></script>
-				
-					<!-- Custom js -->
-					<script src="/aloxa_eiqui/static/src/js/home.js"></script>
-					<!-- Serialize Object -->
-					<script>
-						// Google Map - with support of gmaps.js
-						var map;
-						map = new GMaps({
-						div: '#map',
-						
-						lat: 42.882908,
-						lng: -8.534425,
-						scrollwheel: false,
-						panControl: false,
-						zoomControl: false,
-						});
-
-						map.addMarker({
-						lat: 42.882908,
-						lng: -8.534425,
-						title: 'eiqui',
-						infoWindow: {
-						content: '<p>eiqui, Concheiros Nº15 Baixo, Santiago de Compostela</p>'
-						},
-						icon: "/aloxa_eiqui/static/src/img/map1.png"
-						});
-					</script>
+					<t t-call-assets="aloxa_eiqui.home_assets" t-css="False" />
 				</t>
 			</t>
 		</template>

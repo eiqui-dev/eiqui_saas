@@ -4,17 +4,15 @@
 		
 		<template id="assets_frontend" inherit_id="website.assets_frontend">
 		     <xpath expr="." position="inside">
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/jquery-extensions/jquery.serialize-object.js"></script>
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/jquery-extensions/jquery.validate.js"></script>
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/jquery-extensions/additional-methods.js"></script>
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/jquery-extensions/messages_es.js"></script>
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/bootbox-4.4.0/bootbox.js"></script>
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/lib/select2-4.0.3/select2.js"></script>
-				<script type="text/javascript" src="/aloxa_eiqui/static/src/js/general.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/jquery.serialize-object.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/jquery.validate.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/additional-methods.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/messages_es.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/bootbox-4.4.0/bootbox.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/select2-4.0.3/select2.js"></script>
 				
-				<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Dosis:400,700' rel='stylesheet' type='text/css'/>
-				<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/lib/select2-4.0.3/select2.css" />
-				<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/general.css" />
+				<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/libs/select2-4.0.3/select2.css" />
+				<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Dosis:400,700' />
 		    </xpath>
 		</template>
 		
