@@ -14,6 +14,19 @@
 html, body {
 	font-family: 'Dosis', sans-serif;
 }
+
+#wrapwrap {
+	padding: 4em !important;
+}
+
+table thead th {
+	font-weight: lighter !important;
+	font-size: x-large !important;
+}
+
+a, button.btn-link {
+	color: var(--eiqui-color) !important;
+}
 a:hover {
 	text-decoration: none;
 }
@@ -84,11 +97,10 @@ div#header {
 	opacity: 0;
 	margin-top: 50px;
 	padding: 5px;
-	background-color: var(--eiqui-color-slight);
+	background-color: #fafafa;
 }
-.eiqui-message-item:not(:first-child) {
-	border: 0 dotted white;
-	border-width: 10px 0 0 0;
+.eiqui-message-item {
+	border: 1px solid #c5c5c5;
 }
 
 .eiqui-table tbody tr td {
@@ -140,5 +152,5 @@ div#header {
 
 /* OCULTAR MENU Y PIE QUE IMPONE ODOO */
 header:not([id]), footer:not([id]) {
-	display: none;
+	display: none !important;
 }

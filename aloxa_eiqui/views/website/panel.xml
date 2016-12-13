@@ -4,6 +4,7 @@
 
 		<template id="search">
 			<form id="search_plans" t-att-class="search_class">
+				<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 		    	<t t-if="attrib_values">
 		      		<t t-foreach="attrib_values" t-as="a">
 		        		<input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
@@ -29,7 +30,7 @@
 					<button class="btn btn-link btn-lg" data-toggle="modal" data-target="#modal_new_plan">Start controlling my business!</button>
 				</div>
 			</t>
-			<table t-if="projects" id="panel-projects" class="table eiqui-table col-md-12">
+			<table t-if="projects" id="panel-projects" class="table eiqui-table">
 				<thead>
 					<th>&amp;nbsp;</th>
 					<th>Name</th>
@@ -50,7 +51,7 @@
 							<t t-set="url" t-value="'%s.eiqui.com' % proj.name"/>
 							<td class="project-status text-muted col-md-3">
 								<a t-if="server_created" t-att-href="'/panel/plan/%d' % proj.id">	
-									<img t-att-src="'https://%s/logo.png' % url" class="img-responsive img-small pull-right" />
+									<img t-att-src="'https://%s/logo.png' % url" class="img-responsive img-small pull-left" />
 								</a>
 								<t t-if="not server_created">
 									<i t-att-class="'fa %s' % (server_error and 'fa-warning' or 'fa-circle-o-notch fa-spin')"></i> <strong t-esc="dict(proj.fields_get(allfields=['server_state'])['server_state']['selection'])[proj.server_state]" />
@@ -65,7 +66,7 @@
 								</t>
 							</td>
 							<td style="text-align:center;" class="project-type text-muted col-md-2"><t t-esc="proj.plan_type_id.name"/><div class="eiqui-small-text" t-esc="'\n%sGiB/%sGiB Disco' % (ram, storage)"/></td>
-							<td style="text-align:center;" class="project-enddate text-muted col-md2" t-esc="proj.date or 'NEVER'"/>
+							<td style="text-align:center;" class="project-enddate text-muted col-md-2" t-esc="proj.date or 'NEVER'"/>
 							<td style="text-align:left;" class="project-options text-muted col-md-1">
 								<div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -102,11 +103,11 @@
 					<table>
 						<tbody>
 							<tr>
-								<td class="col-md-7"><div class="col-md-5"><t t-call="aloxa_eiqui.search"/></div></td>
+								<td class="col-md-9"><div class="col-md-5"><t t-call="aloxa_eiqui.search"/></div></td>
 								<td class="col-md-1">
 									<span id='eiqui_plans_text' class="eiqui-big-text text-muted">Plans</span>
 								</td>
-								<td class="col-md-3" style="text-align:right;"><button class="btn btn-lg eiqui-bg-color" data-toggle="modal" data-target="#modal_new_plan">Create new Plan</button></td>
+								<td class="col-md-1" style="text-align:right;"><button class="btn btn-lg eiqui-bg-color" data-toggle="modal" data-target="#modal_new_plan">Create new Plan</button></td>
 								<td clasS="col-md-1">
 									<t t-call="aloxa_eiqui.user_menu" />
 								</td>
@@ -136,6 +137,7 @@
 							</div>
 							<div class="modal-body">
 								<form id="form_new_plan">
+									<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 									<div class="form-group" id="plan_domain">
 										<label class="control-label" for="domain">Domain</label>
 										<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
