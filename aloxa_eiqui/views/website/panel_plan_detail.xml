@@ -153,12 +153,21 @@
 			<p>ADVANCE!</p>
 		</template>
 
+		<template id="panel_detail_assets">
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/plan_detail.js"></script>
+			<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/generic.css" />
+		</template>
+
 		<template id="panel_plan_page" name="eiqui - Panel de Control: Plan" page="True">
 			<t t-set="ram" t-value="project.plan_type_id.ram/1024/1024 or 0"/>
 			<t t-set="storage" t-value="project.plan_type_id.storage/1024/1024 or 0"/>
 			<t t-set="url" t-value="'%s.eiqui.com' % project.name"/>
 			<t t-call="website.layout">
 				<t t-set="title" t-value="'eiqui - Panel de Control: Plan'" />
+				<t t-set="head">
+					<t t-call-assets="aloxa_eiqui.panel_detail_assets" t-js="False" />
+					<t t-call-assets="aloxa_eiqui.panel_detail_assets" t-css="False" />
+				</t>
 				
 				<div id="header" class="container">
 					<table class="col-md-12">

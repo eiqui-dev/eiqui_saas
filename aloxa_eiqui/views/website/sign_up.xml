@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
+	
+		<template id="signup_assets">
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/sign_up.css" />
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/sign_up.js"/>
+		</template>
 
 		<template id="signup_page" name="eiqui - Register User Account" page="True">
 			<t t-call="aloxa_eiqui.minimal_layout">
 				<t t-set="head">
-					<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/alta.css" />
+					<t t-call-assets="aloxa_eiqui.signup_assets" t-js="False" />
 				</t>
 			
 				<!-- div class="fixed-black-background"></div-->
@@ -119,8 +124,7 @@
 				</div>
 				
 				<t t-set="end">
-					<!-- Page Scripting -->
-					<script type="text/javascript" src="/aloxa_eiqui/static/src/js/alta.js"/>
+					<t t-call-assets="aloxa_eiqui.signup_assets" t-css="False" />
 				</t>
 			</t>
 		</template>

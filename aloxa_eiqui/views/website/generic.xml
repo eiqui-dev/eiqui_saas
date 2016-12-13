@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+		<template id="assets_frontend" inherit_id="website.assets_frontend">
+		     <xpath expr="." position="inside">
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/jquery.serialize-object.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/jquery.validate.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/additional-methods.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/jquery-extensions/messages_es.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/bootbox-4.4.0/bootbox.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/libs/select2-4.0.3/select2.js"></script>
+				<script type="text/javascript" src="/aloxa_eiqui/static/src/js/main.js"></script>
+				
+				<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/libs/select2-4.0.3/select2.css" />
+				<link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Dosis:400,700' />
+		    </xpath>
+		</template>
+		
+		<template id="eiqui_messages">
+			<div>
+				<t t-foreach="messages" t-as="message">
+					<div class="eiqui-message-item">
+						<div class="eiqui-message-title">
+							<t t-if="message.type == 'news'">NEWS</t>
+							<t t-if="message.type == 'alert'">ALERT</t>
+							#<t t-esc="message.id"/>
+							<small class="pull-right text-muted" t-esc="message.create_date.split()[0]"/>
+						</div>
+						<div class="eiqui-message-body">
+							<t t-if="len(message.message) &gt;= 200"><t t-raw="'%s...' % message.message[:200]" /></t>
+							<t t-if="len(message.message) &lt; 200"><t t-raw="message.message" /></t>
+						</div>
+						<div class="eiqui-message-options">
+							<t t-if="message.project_id and message.type == 'alert'">
+								<a class="btn btn-link" t-att-href="'/panel/plan/%d' % message.project_id.id">Configure <i class="fa fa-arrow-right"></i></a>
+							</t>
+							<t t-if="message.type == 'news'">
+								<a class="btn btn-link" t-att-href="'/panel/message/%d' % message.id">View <i class="fa fa-arrow-right"></i></a>
+							</t>
+						</div>
+					</div>
+				</t>
+				<t t-if="not messages">
+					<div class="eiqui-message-item">
+						<div class="text-center">No News!</div>
+					</div>
+				</t>
+			</div>
+		</template>
+		
+		<template id="user_menu">
+			<div class="dropdown">
+				<button class="btn btn-default btn-flat dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    	<span class="caret"></span>
+			    	<span t-field="user.partner_id.image_small" t-field-options='{"widget": "image", "class": "img img-responsive img-circle", "style": "display:inline-block;"}' />
+			  	</button>
+			  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    	<li><a href="/web/session/logout?redirect=/">Close Session</a></li>
+			  	</ul>
+			</div>
+		</template>
+			
+	</data>
+</openerp>

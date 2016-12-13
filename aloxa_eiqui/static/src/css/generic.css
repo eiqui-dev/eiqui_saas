@@ -28,6 +28,11 @@
 	--eiqui-color-black-dark: #2e2e2e;
 	--eiqui-color-black-light: #717171;
 	
+	--eiqui-color-white: white;
+	
+	--eiqui-color-gray-light: #fafafa;
+	--eiqui-color-gray-dark: #c5c5c5;
+	
 	--odoo-color: #A24689;
 }
 
@@ -113,10 +118,10 @@ div#header {
 	opacity: 0;
 	margin-top: 50px;
 	padding: 5px;
-	background-color: #fafafa;
+	background-color: var(--eiqui-color-gray-light);
 }
 .eiqui-message-item {
-	border: 1px solid #c5c5c5;
+	border: 1px solid var(--eiqui-color-gray-dark);
 }
 
 .eiqui-table tbody tr td {
@@ -132,6 +137,7 @@ div#header {
 .eiqui-nav li.active a {
 	background-color: var(--eiqui-color-light) !important;
 	border-color: var(--eiqui-color-dark) !important;
+	color: var(--eiqui-color-white) !important;
 }
 .eiqui-nav li:not([class]) a:hover {
 	background-color: var(--eiqui-color-slight) !important;

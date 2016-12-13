@@ -18,6 +18,8 @@
 #
 #################################################################################*/
 'use strict;'
+throw new FatalError("NO FUNCIONA EN 9.0! A LA ESPERA DE DEFINIR LOS NUEVOS PROCEDIMIENTOS");
+
 
 jQuery(function($){	
   var Step = {

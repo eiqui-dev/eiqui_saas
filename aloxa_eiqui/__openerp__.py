@@ -58,11 +58,13 @@
         'views/menus.xml',
         'views/messages.xml',
              
-        'views/website/general.xml',
-        'views/website/alta.xml',
-    	'views/website/home.xml',
-    	'views/website/panel.xml',
-        'views/website/panel_plan.xml',
+        'views/website/external/compatibility.xml',
+        'views/website/external/home.xml',
+        
+        'views/website/generic.xml',
+        'views/website/sign_up.xml',
+    	'views/website/panel_plan_list.xml',
+        'views/website/panel_plan_detail.xml',
         'views/website/mail_campaign_eiqui.xml',
         
     	'views/reports/report_style.xml',
