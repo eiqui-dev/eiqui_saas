@@ -154,8 +154,9 @@
 		</template>
 
 		<template id="panel_detail_assets">
-			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/plan_detail.js"></script>
 			<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/generic.css" />
+			<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/panel_plan_detail.css" />
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/panel_plan_detail.js"></script>
 		</template>
 
 		<template id="panel_plan_page" name="eiqui - Panel de Control: Plan" page="True">

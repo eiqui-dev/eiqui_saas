@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #################################################################################*/
-odoo.define('aloxa_eiqui.plan_list', function (require) {
+odoo.define('aloxa_eiqui.plan_list', function(require) {
 	'use strict';
 	var eiqui = require('aloxa_eiqui.main');
 	var _t = eiqui.getCoreBabel();
@@ -54,8 +54,8 @@ odoo.define('aloxa_eiqui.plan_list', function (require) {
 						var name = $this.data('name');
 						
 						AloxaEiquiPlanList.INTER_TIMERS[proj_id] = setInterval(function($parent, proj_id, name) {
-							eiqui.jsonRpc('/_get_plan_status', {id:proj_id}, function(data){
-								if (!check_response(data))
+							eiqui.jsonRPC('/_get_plan_status', {id:proj_id}, function(data){
+								if (!eiqui.checkResponse(data))
 									return;
 								
 								if (data['check'] && data['status']) {
@@ -93,8 +93,8 @@ odoo.define('aloxa_eiqui.plan_list', function (require) {
 			$('#form_new_plan').validate({
 				submitHandler: function(form) {
 					$('#modal_new_plan').modal('hide');
-					eiqui.jsonRpc('/_create_plan', $(form).serializeObject(), function(data) {
-						if (!check_response(data))
+					eiqui.jsonRPC('/_create_plan', $(form).serializeObject(), function(data) {
+						if (!eiqui.checkResponse(data))
 							return;
 						
 						if (data['check'])

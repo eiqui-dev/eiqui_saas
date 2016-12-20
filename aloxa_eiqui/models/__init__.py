@@ -27,7 +27,7 @@ from . import inherit_res_config
 from . import inherit_blog_post
 from . import modules
 from . import project_modules
-from . import project_type
+from . import plan_type
 from . import odoo_versions
 from . import vertical
 from . import inherit_mail_mass_mailing_list

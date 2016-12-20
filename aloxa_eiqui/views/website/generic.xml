@@ -19,6 +19,7 @@
 		
 		<template id="eiqui_messages">
 			<div>
+				<t t-esc="messages.type" />
 				<t t-foreach="messages" t-as="message">
 					<div class="eiqui-message-item">
 						<div class="eiqui-message-title">

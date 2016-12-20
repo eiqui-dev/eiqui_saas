@@ -29,7 +29,7 @@
     "description": "Módulo base para solucións aloxa",
     "init_xml": [],
     'external_dependencies': {
-        #'python': ['dosa'],
+        #'python': ['dosa', 'pygithub', 'erppeek', 'configparser'],
     },
     "depends": [
         'project', 
@@ -52,7 +52,7 @@
         'views/repos.xml',
         'views/modules.xml',
         'views/project_modules.xml',
-        'views/project_type.xml',
+        'views/plan_type.xml',
         'views/vertical.xml',
         'views/actions.xml',
         'views/menus.xml',

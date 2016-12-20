@@ -133,6 +133,7 @@ div#header {
 }
 .eiqui-table thead tr th {
 	border-color: var(--eiqui-color) !important;
+	font-weight: lighter !important;
 }
 .eiqui-nav li.active a {
 	background-color: var(--eiqui-color-light) !important;
@@ -150,32 +151,6 @@ div#header {
 	border-radius: 2px;
 	box-shadow: 0 1px 2px #CCC;
 	color: var(--eiqui-color-dark);
-}
-
-
-/* PAG: LISTA PLANES */
-#search_modules_apps {
-	margin-bottom: 2em;
-}
-
-#project-plan-menu li a {
-	font-size: 16px;
-}
-
-#eiqui-logo {
-	margin: 0 auto;
-}
-#panel-projects th {
-	font-size: 18px;
-	font-weight: bold;
-	text-align: center;
-}
-#panel-projects td {
-	font-size: 20px;
-}
-
-#panel-modules td {
-	vertical-align: middle;
 }
 
 

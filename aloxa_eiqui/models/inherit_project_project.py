@@ -68,7 +68,7 @@ class project_project(models.Model):
 
     final_partner_id = fields.Many2one('res.partner', 'Final Customer')
     repo_modules_ids = fields.Many2many('eiqui.project.modules', string="Project Modules")
-    plan_type_id = fields.Many2one('eiqui.project.type', string="Plan Type")
+    plan_type_id = fields.Many2one('eiqui.plan.type', string="Plan Type")
     server_state = fields.Selection([
         ('error', 'Error!'),
         ('creating', 'Creating...'),

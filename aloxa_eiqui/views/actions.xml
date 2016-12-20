@@ -25,9 +25,9 @@
 			<field name="view_type">form</field>
 		</record>
 		
-		<record id="eiqui_action_project_types" model="ir.actions.act_window">
-			<field name="name">Project Types</field>
-			<field name="res_model">eiqui.project.type</field>
+		<record id="eiqui_action_plan_types" model="ir.actions.act_window">
+			<field name="name">Plan Types</field>
+			<field name="res_model">eiqui.plan.type</field>
 			<field name="view_mode">tree,form</field>
 			<field name="view_type">form</field>
 		</record>

@@ -64,9 +64,12 @@
 									<t t-esc="proj.name"/>
 								</t>
 							</td>
-							<td style="text-align:center;" class="project-type text-muted col-md-2"><t t-esc="proj.plan_type_id.name"/><div class="eiqui-small-text" t-esc="'\n%sGiB/%sGiB Disco' % (ram, storage)"/></td>
+							<td style="text-align:center;" class="project-type text-muted col-md-2">								
+								<t t-esc="proj.plan_type_id.name"/>
+								<div class="eiqui-small-text" t-esc="'\n%sGiB/%sGiB Disco' % (ram, storage)"/>
+							</td>
 							<td style="text-align:center;" class="project-enddate text-muted col-md-2" t-esc="proj.date or 'NEVER'"/>
-							<td style="text-align:left;" class="project-options text-muted col-md-1">
+							<td style="text-align:right;" class="project-options text-muted col-md-1">
 								<div class="dropdown">
 									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								    	More
@@ -75,13 +78,10 @@
 								  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 								    	<li t-att-class="not server_created and 'disabled' or ''"><a t-att-href="'/panel/plan/%d#modules_apps' % proj.id">Add Modules</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#" t-esc="'Clone %s' % url"/></li>
-								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Upgrade Server</a></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Update Test</a></li>
 								    	<li role="separator" class="divider"></li>
 								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Create Security Copy</a></li>
 								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Restore Security Copy</a></li>
-								    	<li role="separator" class="divider"></li>
-								    	<li><a href="#">Create Issue</a></li>
 								    	<li role="separator" class="divider"></li>
 								    	<li><a href="#">Renew Contract</a></li>
 								    	<li><a href="#">Duplicate Plan</a></li>
@@ -95,8 +95,9 @@
 		</template>
 		
 		<template id="panel_list_assets">
-			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/plan_list.js"></script>
 			<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/generic.css" />
+			<link rel="stylesheet" type='text/css' href="/aloxa_eiqui/static/src/css/panel_plan_list.css" />
+			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/panel_plan_list.js"></script>
 		</template>
 
 

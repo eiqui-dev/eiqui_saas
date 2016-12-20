@@ -21,8 +21,8 @@
 			action="eiqui_action_config" />
 			
 			
-		<menuitem id="eiqui_menu_project_types" parent="project.menu_project_management" name="Types" sequence="30"
-			action="eiqui_action_project_types" />
+		<menuitem id="eiqui_menu_plan_types" parent="base.menu_sales" name="Plan Types" sequence="30"
+			action="eiqui_action_plan_types" />
 	
 	</data>
 </openerp>

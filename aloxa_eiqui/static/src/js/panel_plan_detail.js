@@ -17,7 +17,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #################################################################################*/
-odoo.define('aloxa_eiqui.plan_detail', function (require) {
+odoo.define('aloxa_eiqui.plan_detail', function(require) {
 	'use strict';
 	var eiqui = require('aloxa_eiqui.main');
 	

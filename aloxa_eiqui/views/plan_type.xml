@@ -3,15 +3,18 @@
 	<data>
     
 		<!-- FORM -->
-		<record id="eiqui_project_type_form" model="ir.ui.view">
+		<record id="eiqui_plan_type_form" model="ir.ui.view">
 			<field name="name">Project Types</field>
-			<field name="model">eiqui.project.type</field>
+			<field name="model">eiqui.plan.type</field>
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-				<form string="Project Types">
+				<form string="Plan Types">
 					<sheet>
 						<group>
 							<field name="name"/>
+						</group>
+						<group>
+							<field name="product_tmpl_id" readonly="True" />
 						</group>
 						<group>
 							<field name="ram"/>
@@ -23,9 +26,9 @@
 		</record>
 		
 		<!-- TREE -->
-		<record id="eiqui_types_tree" model="ir.ui.view">
-			<field name="name">Project Types</field>
-			<field name="model">eiqui.project.type</field>
+		<record id="eiqui_plan_types_tree" model="ir.ui.view">
+			<field name="name">Plan Types</field>
+			<field name="model">eiqui.plan.type</field>
 			<field name="type">tree</field>
 			<field name="arch" type="xml">
 				<tree string="Project Types">

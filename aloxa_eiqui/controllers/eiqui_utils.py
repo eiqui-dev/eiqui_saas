@@ -132,7 +132,30 @@ def create_client(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client])
-    #print "OUT:\n%s\n\nERROR:\n%s\n" % (out,err)
+    if rcode == 0:
+        return True
+    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
+def create_snapshot(client):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    (rcode, out, err) = call_eiqui_script("crear_snapshot", ['-c',"'%s'" % client])
+    if rcode == 0:
+        return True
+    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
+def create_snapshot(client):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    (rcode, out, err) = call_eiqui_script("crear_snapshot", ['-c',"'%s'" % client])
+    if rcode == 0:
+        return True
+    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
+def restore_snapshot(client, snapshot):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    (rcode, out, err) = call_eiqui_script("resturar_snapshot", ['-c',"'%s'" % client])
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
@@ -144,7 +167,6 @@ def remove_client(client, full=False):
     if full:
         params += ['-b','-v']
     (rcode, out, err) = call_eiqui_script("borrar_host", params)
-    #print "OUT:\n%s\n\nERROR:\n%s\n" % (out,err)
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
@@ -153,7 +175,6 @@ def update_client_buildbot(client, is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     (rcode, out, err) = call_eiqui_script("actualizar_buildout", ['-c',"'%s'" % client,'-t' if is_test else '-p'])
-    #print "OUT:\n%s\n\nERROR:\n%s\n" % (out,err)
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))

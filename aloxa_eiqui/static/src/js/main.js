@@ -17,12 +17,12 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #################################################################################*/
-odoo.define('aloxa_eiqui.main', function (require) {
+odoo.define('aloxa_eiqui.main', function(require) {
 	'use strict';
 	var ajax = require('web.ajax');
 	var core = require('web.core');
 	var _t = core._t;
-
+	
 	
 	/** GENERAL EIQUI **/
 	var AloxaEiqui = {
@@ -74,11 +74,7 @@ odoo.define('aloxa_eiqui.main', function (require) {
 		
 		////////////////////////
 		loadAjax: function(url, params, callback)
-		{
-			if (typeof params === 'undefined')
-				params['csrf_token'] = [];
-			params['csrf_token'] = core.csrf_token;
-			
+		{	
 			$('#eiqui-ajax').css({'padding':'15px'});
 			this.loadTimeout = setTimeout(function($this){
 				var offLeft = $this[0].offsetLeft;
@@ -122,7 +118,7 @@ odoo.define('aloxa_eiqui.main', function (require) {
 				});
 			}, '250', $('#eiqui-ajax'));
 			
-			$.post(url, params, function(data){
+			ajax.post(url, params).then(function(data){
 				clearTimeout(AloxaEiqui.loadTimeout);
 				var $this = $('#eiqui-ajax');
 				$this.html(data);
@@ -139,7 +135,9 @@ odoo.define('aloxa_eiqui.main', function (require) {
 		},
 		
 		jsonRPC: function(url, params, callback) {
-			ajax.jsonRpc(url, 'call', params).then(callback);
+			ajax.jsonRpc(url, 'call', params).then(callback).fail(function(){
+				AloxaEiqui.addAlert(_t("Odoo Error"), _("Something went really wrong! Please try again... or <a href='#'>contact with us!</a>"));
+			});
 		}
 	};
 	
