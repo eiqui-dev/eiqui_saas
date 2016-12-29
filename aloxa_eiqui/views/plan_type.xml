@@ -14,7 +14,7 @@
 							<field name="name"/>
 						</group>
 						<group>
-							<field name="product_tmpl_id" readonly="True" />
+							<field name="product_tmpl_id" required="False" readonly="True" attrs="{'invisible': [('name', '=', False)]}" />
 						</group>
 						<group>
 							<field name="ram"/>

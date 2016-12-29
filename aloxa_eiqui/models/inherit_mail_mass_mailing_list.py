@@ -61,7 +61,7 @@ def import_contacts_paxinas_galegas(mails, activity, city="", npag=1):
                 mails.update({res.group(2):res.group(1)})
                 has_mails = True
         else:
-            print "Error ocurred while import mails from page %d of '%s'" % (pag, actividad)
+            print "Error ocurred while import mails from page %d of '%s'" % (npag, activity)
         
         if npag <= pags[-1:][0]:
             import_contacts_paxinas_galegas(mails, activity=activity, city=city, npag=npag+1)
