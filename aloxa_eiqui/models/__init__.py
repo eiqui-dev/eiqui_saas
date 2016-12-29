@@ -31,5 +31,6 @@ from . import plan_type
 from . import odoo_versions
 from . import vertical
 from . import inherit_mail_mass_mailing_list
+from . import inherit_mail_mass_mailing_contact
 from . import res_config
 from . import messages

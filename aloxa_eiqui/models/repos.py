@@ -33,7 +33,7 @@ def get_repo_info(git_user, git_pass, repo, branch):
         base_dir = 'addons'
     try:
         dirs = github_repo.get_dir_contents(base_dir, branch)    
-    except GithubException as e:
+    except GithubException:
         raise Exception("Branch '%s' not exists! repository omitted..." % branch)
     
     master = github_repo.get_git_ref('heads/%s' % branch)
@@ -86,7 +86,7 @@ def get_repo_info(git_user, git_pass, repo, branch):
                 modulesInfo[d.name]['icon_image'] = None
                 icon_file_path = '%s/static/description/icon.png' % d.name
                 if not base_dir == '.':
-                  icon_file_path = '%s/%s/static/description/icon.png' % (base_dir,d.name)  
+                    icon_file_path = '%s/%s/static/description/icon.png' % (base_dir,d.name)  
                 try:
                     modulesInfo[d.name]['icon_image'] = github_repo.get_contents(icon_file_path, branch)
                 except GithubException:
@@ -191,3 +191,4 @@ class repos(models.Model):
     num_modules = fields.Integer(compute='_get_num_modules', string="Num. Modules")
     last_import_date = fields.Date(string="Last Import Date", readonly=True)
     commit = fields.Char('Current Commit', readonly=True)
+    plan_ids = fields.Many2many('project.project', string="Plans Associated")

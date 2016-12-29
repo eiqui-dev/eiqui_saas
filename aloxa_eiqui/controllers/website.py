@@ -26,14 +26,12 @@ import re
 import thread
 import math
 import traceback
-import time
 
 import openerp
 from openerp import http, models, api, exceptions, SUPERUSER_ID, _
 from openerp.http import request
 from openerp.api import Environment
 from openerp.addons.website.models.website import slug
-from subprocess import call
 import openerp.addons.web.controllers.main as webmain
 from . import eiqui_utils
 import logging
@@ -102,15 +100,15 @@ class EiquiWebsite(webmain.Home):
 
         return request.website.render("aloxa_eiqui.panel_page", values)
     
-    @http.route('/panel/plan/<int:id>', auth="user", type="http", website=True)
-    def panel_plan(self, id, **kw):   
+    @http.route('/panel/plan/<int:plan_id>', auth="user", type="http", website=True)
+    def panel_plan(self, plan_id, **kw):   
         user_id = request.env['res.users'].browse([request.uid])
-        project = request.env['project.project'].search([('final_partner_id', '=', user_id.partner_id.id), ('id', '=', id)])
+        project = request.env['project.project'].search([('final_partner_id', '=', user_id.partner_id.id), ('id', '=', plan_id)])
         if not project or project.server_state != 'created':
             raise werkzeug.exceptions.NotFound()
         
         messages = request.env['eiqui.messages'].search([
-            ('project_id', '=', id),
+            ('project_id', '=', plan_id),
         ])
         
         values = {'project':project, 'user':user_id, 'messages':messages}
@@ -119,14 +117,14 @@ class EiquiWebsite(webmain.Home):
     
     @http.route(['/panel/plan/<int:id>/<string:section>',
                  '/panel/plan/<int:id>/<string:section>/<int:pag>',], auth="user", type="http", methods=['POST'], website=True)
-    def panel_plan_section(self, id, section, search=None, module_filter='all', pag=0, **kw):
+    def panel_plan_section(self, plan_id, section, search=None, module_filter='all', pag=0, **kw):
         NUM_REGS = 20.0
         attrib_list = request.httprequest.args.getlist('attrib')
-        attrib_values = [map(int, v.split("-")) for v in attrib_list if v]
-        attrib_set = set([v[1] for v in attrib_values])
+        #attrib_values = [map(int, v.split("-")) for v in attrib_list if v]
+        #attrib_set = set([v[1] for v in attrib_values])
         
         user_id = request.env['res.users'].browse([request.uid])
-        project = request.env['project.project'].search([('final_partner_id', '=', user_id.partner_id.id), ('id', '=', id)])
+        project = request.env['project.project'].search([('final_partner_id', '=', user_id.partner_id.id), ('id', '=', plan_id)])
         if not project:
             raise werkzeug.exceptions.NotFound()
         
@@ -138,8 +136,7 @@ class EiquiWebsite(webmain.Home):
             # DEFAULT VALUES
             modules_installed = project.repo_modules_ids.mapped('installed_modules_ids')
             modules = []
-            modules_count = 0
-            domain = []
+            domain = ['|',('plan_ids','in', [plan_id]),('plan_ids', '=', False)]
             # SEARCH
             if search:
                 domain.append(('name', 'ilike', '%%%s%%' % search))
@@ -195,12 +192,12 @@ class EiquiWebsite(webmain.Home):
         return request.website.render("aloxa_eiqui.signup_page", values)
     
     @http.route(['/_get_states'], auth="public", type='json', website=True)
-    def get_states(self, id):
-        if not id or id == '':
+    def get_states(self, country_id):
+        if not country_id or country_id == '':
             return { 'states': [] }
         
         state_orm = request.env['res.country.state']
-        state_ids = state_orm.search([('country_id.id', '=', id)])
+        state_ids = state_orm.search([('country_id.id', '=', country_id)])
         
         states = []
         for state in state_ids:
@@ -209,12 +206,12 @@ class EiquiWebsite(webmain.Home):
         return { 'states': states }
     
     @http.route(['/_get_bzip'], auth="public", type='json', website=True)
-    def get_bzip(self, zip):
-        if not zip or zip == '':
+    def get_bzip(self, zip_name):
+        if not zip_name or zip_name == '':
             return { 'bzip': [] }
         
         better_zip_orm = request.env['res.better.zip']
-        better_zip_id = better_zip_orm.sudo().search([('name', '=', zip)], limit=1)
+        better_zip_id = better_zip_orm.sudo().search([('name', '=', zip_name)], limit=1)
             
         return { 'bzip': [better_zip_id.id,better_zip_id.name,better_zip_id.state_id.id,better_zip_id.country_id.id,better_zip_id.city] }
     
@@ -313,8 +310,8 @@ class EiquiWebsite(webmain.Home):
         return { 'check': True if user_id and user_id.exists() else False }
     
     @http.route(['/_get_plan_status'], auth="user", type='json', website=True)  
-    def _get_plan_status(self, id):
-        proj_id = request.env['project.project'].browse([id])
+    def _get_plan_status(self, plan_id):
+        proj_id = request.env['project.project'].browse([plan_id])
         if not proj_id:
             return { 'error' : True, 'errormsg': "Invalid project id!" }
         return { 'check':True, 'status':proj_id.server_state }
@@ -342,7 +339,7 @@ class EiquiWebsite(webmain.Home):
         if not proj_id or not proj_id.exists():
             request.env['project.issue'].create({
                 'name': _('Error creating plan project'),
-                'description': _("One error ocurred while creating the project (%s) for '%s'..." % (name, user_id.name)),
+                'description': _("One error ocurred while creating the project (%s) for '%s'..." % (domain, user_id.name)),
                 'priority': '2',
             })
             return { 'error': True, 'errormsg': _("Can't create the plan! Please try again in few minutes...") }
@@ -361,7 +358,6 @@ class EiquiWebsite(webmain.Home):
                 try:
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
-                    errors = True
                     # Crear cliente
                     eiqui_utils.create_client(project.name)
                     # Preparar Odoo (Produccion)
@@ -391,7 +387,7 @@ class EiquiWebsite(webmain.Home):
                         })
                     except:
                         pass
-                except Exception as e:
+                except Exception:
                     env['project.issue'].create({
                         'name': _('Error while creating a new plan'),
                         'description': traceback.format_exc(),

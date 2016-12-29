@@ -65,19 +65,19 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
     config = configparser.ConfigParser()
     config.read(path_file)
     for repo in repos:
-	(name, sha) = get_repo_commit_info(git_user, git_pass, repo, branch)
+        (name, sha) = get_repo_commit_info(git_user, git_pass, repo, branch)
         # Si es OCB se trata de otra forma
-	if name.lower() == 'ocb':
-	    nrepo = "git %s odoo %s depth=10" % (repo, sha)
+        if name.lower() == 'ocb':
+            nrepo = "git %s odoo %s depth=10" % (repo, sha)
             config['openerp']['version'] = nrepo
         else:
-	    nrepo = "git %s parts/%s %s" % (repo, name, sha)
+            nrepo = "git %s parts/%s %s" % (repo, name, sha)
             addons = 'addons' in config['openerp'] and config['openerp']['addons'].split('\n') or []
             found = False
-            for (id, addon) in enumerate(addons):
+            for (index, addon) in enumerate(addons):
                 results = re.search(r'^git\s([^\s]+)', addon)
                 if results and results.group(1) == repo:
-                    addons[id] = nrepo
+                    addons[index] = nrepo
                     found = True
                     break
             if not found:
@@ -87,11 +87,11 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
         config.write(configfile)
     # Cambiar 'addons =' por 'addons +='
     # FIXME: No me parece una solucion elegante
-    file = fileinput.input(path_file, inplace=1)
-    for line in file:
+    cfg_file = fileinput.input(path_file, inplace=1)
+    for line in cfg_file:
         line = line.replace('addons =', 'addons +=').rstrip()
         print line
-    file.close()
+    cfg_file.close()
 
 # Recolecta informacion de la receta.
 # INPUT
@@ -128,18 +128,10 @@ def call_eiqui_script(script, params):
     (out, err) = proc.communicate()
     return (proc.returncode, out, err)
 
-def create_client(client):
+def create_client(client, version="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client])
-    if rcode == 0:
-        return True
-    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
-
-def create_snapshot(client):
-    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
-        raise Exception('Invalid Client Name!')
-    (rcode, out, err) = call_eiqui_script("crear_snapshot", ['-c',"'%s'" % client])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % version])
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
@@ -211,7 +203,7 @@ def get_client_host_url(client, is_test=False, is_host=False):
 #
 def odoo_create_db(url, masterpasswd, dbname, lang, adminpasswd):
     try:
-    	client = erppeek.Client(url)
+        client = erppeek.Client(url)
         res = client.create_database(masterpasswd, dbname, lang=lang, user_password=adminpasswd)
     except:
         raise
@@ -230,7 +222,7 @@ def odoo_create_db(url, masterpasswd, dbname, lang, adminpasswd):
 #
 def odoo_install_modules(url, dbname, user, userpasswd, modules):
     try:
-    	client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
+        client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
         client.install(*modules)
     except:
         raise

@@ -26,6 +26,9 @@
 							<label for="get_modules_view" string=""/>
 							<button string="⇒ View Modules" type="object" name="get_modules_view" class="oe_link"/>
 						</group>
+						<group>
+							<field name="plan_ids"/>
+						</group>
 					</sheet>
 				</form>
 			</field>

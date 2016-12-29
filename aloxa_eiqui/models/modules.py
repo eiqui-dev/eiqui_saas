@@ -3,8 +3,6 @@ from docutils.core import publish_string
 from openerp import models, fields, api, exceptions
 from openerp.addons.base.module.module import MyWriter
 from openerp.tools import html_sanitize
-import re
-from fnmatch import translate
 
 
 class modules(models.Model):
