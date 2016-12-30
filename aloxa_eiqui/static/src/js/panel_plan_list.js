@@ -54,7 +54,7 @@ odoo.define('aloxa_eiqui.plan_list', function(require) {
 						var name = $this.data('name');
 						
 						AloxaEiquiPlanList.INTER_TIMERS[proj_id] = setInterval(function($parent, proj_id, name) {
-							eiqui.jsonRPC('/_get_plan_status', {id:proj_id}, function(data){
+							eiqui.jsonRPC('/_get_plan_status', {plan_id:proj_id}, function(data){
 								if (!eiqui.checkResponse(data))
 									return;
 								

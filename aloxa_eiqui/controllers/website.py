@@ -115,8 +115,8 @@ class EiquiWebsite(webmain.Home):
 
         return request.website.render("aloxa_eiqui.panel_plan_page", values)
     
-    @http.route(['/panel/plan/<int:id>/<string:section>',
-                 '/panel/plan/<int:id>/<string:section>/<int:pag>',], auth="user", type="http", methods=['POST'], website=True)
+    @http.route(['/panel/plan/<int:plan_id>/<string:section>',
+                 '/panel/plan/<int:plan_id>/<string:section>/<int:pag>',], auth="user", type="http", methods=['POST'], website=True)
     def panel_plan_section(self, plan_id, section, search=None, module_filter='all', pag=0, **kw):
         NUM_REGS = 20.0
         attrib_list = request.httprequest.args.getlist('attrib')
