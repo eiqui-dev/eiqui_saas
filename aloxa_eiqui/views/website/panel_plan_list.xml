@@ -75,13 +75,13 @@
 								    	More
 								    	<span class="caret"></span>
 								  	</button>
-								  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" class="panel-menu" t-att-data-id="proj.id">
 								    	<li t-att-class="not server_created and 'disabled' or ''"><a t-att-href="'/panel/plan/%d#modules_apps' % proj.id">Add Modules</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Update Test</a></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#" class="menu-update-test">Update Test</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Create Security Copy</a></li>
-								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#">Restore Security Copy</a></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#" class="menu-create-security-copy">Create Security Copy</a></li>
+								    	<li t-att-class="not server_created and 'disabled' or ''"><a href="#" class="menu-restore-security-copy">Restore Security Copy</a></li>
 								    	<li role="separator" class="divider"></li>
 								    	<li><a href="#">Renew Contract</a></li>
 								    	<li><a href="#">Duplicate Plan</a></li>

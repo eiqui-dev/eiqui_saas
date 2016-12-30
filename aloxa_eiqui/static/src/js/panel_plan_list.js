@@ -112,6 +112,27 @@ odoo.define('aloxa_eiqui.plan_list', function(require) {
 				ev.preventDefault();
 			});
 			
+			console.log("PASA!!");
+			$('.panel-menu li').on('click', function(ev) {
+				var $elm = $(this);
+				var preventDef = false;
+				if ($elm.hasClass('menu-update-test')) {
+					console.log("UPDATE TEST!");
+					preventDef = true;
+				}
+				if ($elm.hasClass('menu-create-security-copy')) {
+					console.log("CREATE COPY!");
+					preventDef = true;
+				}
+				if ($elm.hasClass('menu-restore-security-copy')) {
+					console.log("RESTORE COPY!");
+					preventDef = true;
+				}
+				
+				if (preventDef)
+					ev.preventDefault();
+			});
+			
 			$('#search_plans').submit();
 		}
 	};

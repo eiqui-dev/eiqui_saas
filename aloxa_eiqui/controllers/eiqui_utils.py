@@ -128,10 +128,18 @@ def call_eiqui_script(script, params):
     (out, err) = proc.communicate()
     return (proc.returncode, out, err)
 
-def create_client(client, version="9.0"):
+def create_client(client, branch="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % version])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
+    if rcode == 0:
+        return True
+    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
+def create_client_test(client):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    (rcode, out, err) = call_eiqui_script("crear_test", ['-c',"'%s'" % client])
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
@@ -222,7 +230,7 @@ def odoo_create_db(url, masterpasswd, dbname, lang, adminpasswd):
 #
 def odoo_install_modules(url, dbname, user, userpasswd, modules):
     try:
-        client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
+    	client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
         client.install(*modules)
     except:
         raise
