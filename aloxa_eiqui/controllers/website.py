@@ -347,8 +347,9 @@ class EiquiWebsite(webmain.Home):
         # forzamos que se guarden los cambios para asegurarnos de que el hilo pueda ver el nuevo proyecto
         request.cr.commit()
         kwargs = {'uid': request.uid, 'db': request.db, 'project_id': proj_id.id}
-        p = Process(target=self._thread_create_docker, args=(kwargs,))
-        p.start()
+        #p = Process(target=self._thread_create_docker, args=(kwargs,))
+        #p.start()
+        self._thread_create_docker(kwargs)
         return { 'check': True }
         
     def _thread_create_docker(self, kwargs):
