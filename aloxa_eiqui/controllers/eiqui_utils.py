@@ -138,7 +138,7 @@ def call_eiqui_script(script, params):
     _logger.info("CALL SCRIPT 1")
     eiquiscript = "/usr/bin/sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
     _logger.info("CALL SCRIPT 2")
-    proc = Popen(eiquiscript, shell=False, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
+    proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD, close_fds=True, preexec_fn=os.setsid)
     _logger.info("CALL SCRIPT 3")
     (out, err) = proc.communicate()
     _logger.info("CALL SCRIPT 4")
