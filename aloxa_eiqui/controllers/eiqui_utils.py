@@ -230,7 +230,7 @@ def odoo_create_db(url, masterpasswd, dbname, lang, adminpasswd):
 #
 def odoo_install_modules(url, dbname, user, userpasswd, modules):
     try:
-    	client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
+        client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
         client.install(*modules)
     except:
         raise
