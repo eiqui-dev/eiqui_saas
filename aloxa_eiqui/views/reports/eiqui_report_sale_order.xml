@@ -5,8 +5,8 @@
 	<template id="eiqui_report_sale_order" inherit_id="sale.report_saleorder">
 		<xpath expr="//t[@t-call='report.html_container']" position="replace">
 		    <t t-call="report.html_container">
-		        <t t-foreach="doc_ids" t-as="doc_id">
-		            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'aloxa_eiqui.eiqui_report_sale_order_document')"/>
+		        <t t-foreach="docs" t-as="o">
+		        	<t t-call="aloxa_eiqui.eiqui_report_sale_order_document" t-lang="o.partner_id.lang"/>
 		        </t>
 		    </t>
 		</xpath>

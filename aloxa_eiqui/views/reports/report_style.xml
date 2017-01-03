@@ -2,94 +2,96 @@
 <openerp>
 <data>
 
-	<template id="style" inherit_id="report.assets_backend">
+	<template id="style" inherit_id="report.assets_common">
 		<xpath expr="."><t>
-			@font-face {
-	   			font-family: Dosis-Regular;
-	   			src: url('aloxa_eiqui/static/src/fonts/Dosis-Regular.otf') format('opentype');
-			}
-			
-			body {
-				font-family: Dosis-Regular;
-				font-size: large;
-			}
-			
-			.color-eiqui {
-				color: rgb(104, 181, 129);
-			}
-			.bg-color-eiqui {
-				background-color: rgb(104, 181, 129);
-			}
-			
-			.nopadding {
-	   			padding: 0 !important;
-	   			margin: 0 !important;
-			}
-			
-			.deco-circle {
-				background-color: #FFF;
-				width: 60px;
-				border-radius: 50%;
-				position: absolute;
-				top: -30px;
-				left: 30px;
-				height: 60px;
-			}
-			
-			.table-eiqui {
-				margin: 0;
-			}
-			.table-eiqui th {
-				white-space: nowrap;
-			}
-			.table-eiqui, .table-eiqui td, .table-eiqui th {
-				border: 0 !important;
-				vertical-align: middle !important;
-			}
-			
-			.table-eiqui-total td, .table-eiqui-subtotal td, .table-eiqui-impuestos td {
-				vertical-align: bottom !important;
-				font-size: x-large;
-				padding: 0 !important;
-			}
-			.table-eiqui-total td span, .table-eiqui-subtotal td span, .table-eiqui-impuestos td span {
-				padding-left: 1em;
-			}
-			.table-eiqui-total td b, .table-eiqui-subtotal td b, .table-eiqui-impuestos td b {
-				font-size: xx-large;
-				vertical-align: bottom !important;
-			}
-			
-			.table-eiqui-total td b {
-				font-size: 42px;
-			}
-			.table-eiqui-total td span {
-				font-size: xx-large;
-				line-height: 1.6em;
-			}
-			
-			.margen {
-				padding: 0 2em;
-			}
-			
-			.table-eiqui-subtotal td, .table-eiqui-impuestos td {
-				color: #555;
-			}
-			.table-eiqui-subtotal td b, .table-eiqui-impuestos td b {
-				color: #959595;
-			}
-			
-			.table-eiqui thead {
-				background-color: rgb(104, 181, 129);
-				color: white;
-			}
-			
-			.table-eiqui-invoice-info {
-				color: white;
-			}
-			.table-eiqui-invoice-info td, .table-eiqui-invoice-info th {
-				padding: 0 !important;
-			}
+			<style type="text/css">
+				@font-face {
+		   			font-family: Dosis-Regular;
+		   			src: url('aloxa_eiqui/static/src/fonts/Dosis-Regular.otf') format('opentype');
+				}
+				
+				body {
+					font-family: Dosis-Regular;
+					font-size: large;
+				}
+				
+				.color-eiqui {
+					color: rgb(104, 181, 129);
+				}
+				.bg-color-eiqui {
+					background-color: rgb(104, 181, 129);
+				}
+				
+				.nopadding {
+		   			padding: 0 !important;
+		   			margin: 0 !important;
+				}
+				
+				.deco-circle {
+					background-color: #FFF;
+					width: 60px;
+					border-radius: 50%;
+					position: absolute;
+					top: -30px;
+					left: 30px;
+					height: 60px;
+				}
+				
+				.table-eiqui {
+					margin: 0;
+				}
+				.table-eiqui th {
+					white-space: nowrap;
+				}
+				.table-eiqui, .table-eiqui td, .table-eiqui th {
+					border: 0 !important;
+					vertical-align: middle !important;
+				}
+				
+				.table-eiqui-total td, .table-eiqui-subtotal td, .table-eiqui-impuestos td {
+					vertical-align: bottom !important;
+					font-size: x-large;
+					padding: 0 !important;
+				}
+				.table-eiqui-total td span, .table-eiqui-subtotal td span, .table-eiqui-impuestos td span {
+					padding-left: 1em;
+				}
+				.table-eiqui-total td b, .table-eiqui-subtotal td b, .table-eiqui-impuestos td b {
+					font-size: xx-large;
+					vertical-align: bottom !important;
+				}
+				
+				.table-eiqui-total td b {
+					font-size: 42px;
+				}
+				.table-eiqui-total td span {
+					font-size: xx-large;
+					line-height: 1.6em;
+				}
+				
+				.margen {
+					padding: 0 2em;
+				}
+				
+				.table-eiqui-subtotal td, .table-eiqui-impuestos td {
+					color: #555;
+				}
+				.table-eiqui-subtotal td b, .table-eiqui-impuestos td b {
+					color: #959595;
+				}
+				
+				.table-eiqui thead {
+					background-color: rgb(104, 181, 129);
+					color: white;
+				}
+				
+				.table-eiqui-invoice-info {
+					color: white;
+				}
+				.table-eiqui-invoice-info td, .table-eiqui-invoice-info th {
+					padding: 0 !important;
+				}
+			</style>
 		</t></xpath>
 	</template>
 	

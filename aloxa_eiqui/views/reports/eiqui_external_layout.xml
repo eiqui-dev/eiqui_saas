@@ -3,6 +3,7 @@
 <data>
 
 	<template id="eiqui_external_layout">
+		<t t-set="o" t-value="o.with_context({lang:o.partner_id.lang})" />
  		<t t-call="aloxa_eiqui.eiqui_external_layout_header"/> 
 		<t t-raw="0"/> 
  		<t t-call="aloxa_eiqui.eiqui_external_layout_footer"/>  
