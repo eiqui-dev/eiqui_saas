@@ -136,7 +136,7 @@ def call_test_dockermachine(params):
 
 def call_eiqui_script(script, params):
     _logger.info("CALL SCRIPT 1")
-    eiquiscript = "sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
+    eiquiscript = "/usr/bin/sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
     _logger.info("CALL SCRIPT 2")
     proc = Popen(eiquiscript, shell=False, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
     _logger.info("CALL SCRIPT 3")
