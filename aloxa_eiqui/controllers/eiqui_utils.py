@@ -8,6 +8,8 @@ import fileinput
 import binascii
 import os
 #import time
+import logging
+_logger = logging.getLogger(__name__)
 
 CWD = '/dockerbuild'
 EIQUI_CLIENTNAME_REGEX = r'^\w{4,12}$'
@@ -123,17 +125,24 @@ def get_client_recipe_info(client, is_test=False):
 #    Tupla: El código de salida del script, lo que imprimió por stdout y lo que imprimió por stderr
 #
 def call_eiqui_script(script, params):
+    _logger.info("CALL SCRIPT 1")
     eiquiscript = "sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
+    _logger.info("CALL SCRIPT 2")
     proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
+    _logger.info("CALL SCRIPT 3")
     (out, err) = proc.communicate()
+    _logger.info("CALL SCRIPT 4")
     return (proc.returncode, out, err)
 
 def create_client(client, branch="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
+    _logger.info("CREATE CLIENT 1")
     (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
+    _logger.info("CREATE CLIENT 2")
     if rcode == 0:
         return True
+    _logger.info("CREATE CLIENT 3")
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
 
 def create_client_test(client):
