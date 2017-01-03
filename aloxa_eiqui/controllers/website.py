@@ -402,18 +402,24 @@ class EiquiWebsite(webmain.Home):
                     except:
                         pass
                 except Exception:
+                    _logger.info("PASA THREAD EXCEPT 1")
                     env['project.issue'].create({
                         'name': _('Error while creating a new plan'),
                         'description': traceback.format_exc(),
                         'project_id': project.id,
                         'priority': '2',
                     })
+                    _logger.info("PASA THREAD EXCEPT 2")
                     project.write({'server_state':'error'})
                     # Send Error Mail
+                    _logger.info("PASA THREAD EXCEPT 3")
                     try:
+                        _logger.info("PASA THREAD EXCEPT 4")
                         project.send_mail_plan_creation()
+                        _logger.info("PASA THREAD EXCEPT 5")
                     except:
                         pass
+                    _logger.info("PASA THREAD EXCEPT 6")
                     # Revert all changes
                     #try:
                     #    eiqui_utils.remove_client(project.name, full=True)
