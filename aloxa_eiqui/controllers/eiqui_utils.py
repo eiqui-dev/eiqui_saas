@@ -144,6 +144,17 @@ def call_eiqui_script(script, params):
     _logger.info("CALL SCRIPT 4")
     return (proc.returncode, out, err)
 
+def create_dock_mach(client):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    _logger.info("CREATE DOCK MACH 1")
+    (rcode, out, err) = call_test_dockermachine([client])
+    _logger.info("CREATE DOCK MACH 2")
+    if rcode == 0:
+        return True
+    _logger.info("CREATE DOCK MACH 3")
+    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
 def create_client(client, branch="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
