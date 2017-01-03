@@ -126,7 +126,7 @@ def get_client_recipe_info(client, is_test=False):
 #
 def call_test_dockermachine(params):
     _logger.info("CALL SCRIPT 1")
-    eiquiscript = "sudo /usr/local/bin/docker-machine ip %s" % (CWD, ' '.join(params))
+    eiquiscript = "sudo /usr/local/bin/docker-machine ip %s" % (' '.join(params))
     _logger.info("CALL SCRIPT 2")
     proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
     _logger.info("CALL SCRIPT 3")
@@ -148,7 +148,7 @@ def create_dock_mach(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     _logger.info("CREATE DOCK MACH 1")
-    (rcode, out, err) = call_test_dockermachine(['%s' % client])
+    (rcode, out, err) = call_test_dockermachine([client])
     _logger.info("CREATE DOCK MACH 2")
     if rcode == 0:
         return True
