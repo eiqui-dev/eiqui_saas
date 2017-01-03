@@ -39,6 +39,7 @@
         'project_issue',
         'sale',
         'report',
+        'account_payment_sale',
     ],
     "data": [
     	'views/res_config.xml',
