@@ -367,7 +367,8 @@ class EiquiWebsite(webmain.Home):
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-                    eiqui_utils.create_client(project.name)
+                    eiqui_utils.call_test_dockermachine([project.name])
+                    #eiqui_utils.create_client(project.name)
                     _logger.info("PASA THREAD 7")
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
