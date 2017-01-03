@@ -148,7 +148,7 @@ def create_dock_mach(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     _logger.info("CREATE DOCK MACH 1")
-    (rcode, out, err) = call_test_dockermachine([client])
+    (rcode, out, err) = call_test_dockermachine(['%s' % client])
     _logger.info("CREATE DOCK MACH 2")
     if rcode == 0:
         return True
