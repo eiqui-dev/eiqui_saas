@@ -160,7 +160,7 @@ def create_client(client, branch="9.0"):
         raise Exception('Invalid Client Name!')
     _logger.info("CREATE CLIENT 1")
     (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
-    _logger.info("CREATE CLIENT 2")
+    _logger.info("CREATE CLIENT 2: %d" % rcode)
     if rcode == 0:
         return True
     _logger.info("CREATE CLIENT 3")
