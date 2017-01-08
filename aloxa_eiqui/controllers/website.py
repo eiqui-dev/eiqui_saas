@@ -136,7 +136,8 @@ class EiquiWebsite(webmain.Home):
             # DEFAULT VALUES
             modules_installed = project.repo_modules_ids.mapped('installed_modules_ids')
             modules = []
-            domain = ['|',('plan_ids','in', [plan_id]),('plan_ids', '=', False)]
+            #domain = ['|',('plan_ids','in', [plan_id]),('plan_ids', '=', False)]
+            domain = []
             # SEARCH
             if search:
                 domain.append(('name', 'ilike', '%%%s%%' % search))
@@ -348,31 +349,20 @@ class EiquiWebsite(webmain.Home):
         request.cr.commit()
         kwargs = {'uid': request.uid, 'db': request.db, 'project_id': proj_id.id}
         thread.start_new_thread(self._thread_create_docker, (kwargs,))
-        _logger.info("PASA THREAD COMIENZA")
-        #self._thread_create_docker(kwargs)
         return { 'check': True }
         
     def _thread_create_docker(self, kwargs):
-        _logger.info("PASA THREAD 1")
         with openerp.sql_db.db_connect(kwargs.get('db')).cursor() as new_cr:
-            _logger.info("PASA THREAD 2")
             with Environment.manage(): 
-                _logger.info("PASA THREAD 3")  
                 env = Environment(new_cr, kwargs.get('uid'), {})
-                _logger.info("PASA THREAD 4") 
                 project = env['project.project'].browse([kwargs.get('project_id')])
-                _logger.info("PASA THREAD 5")
                 try:
-                    _logger.info("PASA THREAD 6")
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-                    #eiqui_utils.create_dock_mach(project.name)
                     eiqui_utils.create_client(project.name)
-                    _logger.info("PASA THREAD 7")
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
-                    _logger.info("PASA THREAD 8")
                     git_username = None
                     git_password = None
                     if eiqui_config:
@@ -381,7 +371,6 @@ class EiquiWebsite(webmain.Home):
                     repos = []
                     modules = []
                     is_test = False
-                    _logger.info("PASA THREAD 9")
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(project.name, 
                                                         repos, 
                                                         '8.0', 
@@ -390,7 +379,6 @@ class EiquiWebsite(webmain.Home):
                                                         git_pass=git_password,
                                                         is_test=is_test)
                     project.write({'server_state':'created'})
-                    _logger.info("PASA THREAD 10")
                     # Send Creation Mail
                     try:
                         project.send_mail_plan_creation({
@@ -398,28 +386,21 @@ class EiquiWebsite(webmain.Home):
                             'adminpasswd': adminpasswd,
                             'url': odoo_url,
                         })
-                        _logger.info("PASA THREAD 11")
                     except:
                         pass
                 except Exception:
-                    _logger.info("PASA THREAD EXCEPT 1")
                     env['project.issue'].create({
                         'name': _('Error while creating a new plan'),
                         'description': traceback.format_exc(),
                         'project_id': project.id,
                         'priority': '2',
                     })
-                    _logger.info("PASA THREAD EXCEPT 2")
                     project.write({'server_state':'error'})
                     # Send Error Mail
-                    _logger.info("PASA THREAD EXCEPT 3")
                     try:
-                        _logger.info("PASA THREAD EXCEPT 4")
                         project.send_mail_plan_creation()
-                        _logger.info("PASA THREAD EXCEPT 5")
                     except:
                         pass
-                    _logger.info("PASA THREAD EXCEPT 6")
                     # Revert all changes
                     #try:
                     #    eiqui_utils.remove_client(project.name, full=True)
