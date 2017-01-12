@@ -112,7 +112,6 @@ odoo.define('aloxa_eiqui.plan_list', function(require) {
 				ev.preventDefault();
 			});
 			
-			console.log("PASA!!");
 			$('.panel-menu li').on('click', function(ev) {
 				var $elm = $(this);
 				var preventDef = false;

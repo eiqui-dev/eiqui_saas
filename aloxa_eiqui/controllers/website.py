@@ -136,8 +136,7 @@ class EiquiWebsite(webmain.Home):
             # DEFAULT VALUES
             modules_installed = project.repo_modules_ids.mapped('installed_modules_ids')
             modules = []
-            #domain = ['|',('plan_ids','in', [plan_id]),('plan_ids', '=', False)]
-            domain = []
+            domain = ['|',('repo_id.plan_ids','in', [plan_id]),('repo_id.plan_ids', '=', False)]
             # SEARCH
             if search:
                 domain.append(('name', 'ilike', '%%%s%%' % search))

@@ -101,11 +101,11 @@
 				</div>
 				<div class="row bg-color-eiqui margen" style="color:white; margin-top: -0.8em;">
 					<div class="col-md-12 col-xs-12">
-						<t t-if="o.payment_term.note">
+						<t t-if="o.payment_term_id.note">
 							<h3>Términos y Condiciones</h3>
-							<span t-field="o.payment_term.note" />
+							<span t-field="o.payment_term_id.note" />
 						</t>
-						<t t-if="not o.payment_term.note">
+						<t t-if="not o.payment_term_id.note">
 							<div style="height:10px;"></div>
 						</t>
 					</div>
