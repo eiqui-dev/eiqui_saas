@@ -63,10 +63,10 @@
 						  			<span t-field="l.price_unit"/>
 						   		</td>
 						   		<td style="font-size: x-large; white-space: nowrap;">
-						   			<t t-if="l.invoice_line_tax_id">
-						  				<span t-esc="', '.join(map(lambda x: x.name.upper(), l.invoice_line_tax_id))"/>
+						   			<t t-if="l.invoice_line_tax_ids">
+						  				<span t-esc="', '.join(map(lambda x: x.name.upper(), l.invoice_line_tax_ids))"/>
 						  			</t>
-						  			<t t-if="not l.invoice_line_tax_id">EXENTO</t>
+						  			<t t-if="not l.invoice_line_tax_ids">EXENTO</t>
 						   		</td>
 								<t t-if="has_discount">
 									<td class="text-right" style="font-size: x-large;" groups="sale.group_discount_per_so_line">
