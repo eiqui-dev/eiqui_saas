@@ -4,7 +4,7 @@
 
 	<template id="eiqui_report_invoice_document">
 		<t t-set="has_discount" t-value="False" />
-		<t t-foreach="o.invoice_line" t-as="l">
+		<t t-foreach="o.invoice_line_ids" t-as="l">
 			<t t-if="l.discount"><t t-set="has_discount" t-value="True"/></t>
 		</t>
 		
@@ -51,7 +51,7 @@
 							<th>&amp;nbsp;</th>
 						</thead>
 						<tbody class="invoice_tbody">
-							<tr t-foreach="o.invoice_line" t-as="l">
+							<tr t-foreach="o.invoice_line_ids" t-as="l">
 								<td>&amp;nbsp;</td>       	 
 								<td>
 									<span style="text-align:justify;" t-field="l.name" />
