@@ -79,19 +79,19 @@
 								    	More
 								    	<span class="caret"></span>
 								  	</button>
-								  	<ul class="dropdown-menu eiqui-nav" aria-labelledby="dropdownMenu1">
-								    	<li><a href="#">Complete Description</a></li>
+								  	<ul class="dropdown-menu eiqui-nav" aria-labelledby="dropdownMenu1" t-att-data-id="module.id" >
+								    	<li><a class="menu-mod-complete-description" href="#">Complete Description</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li><a href="#">Check in Test"</a></li>
-								    	<li><a href="#">Install in Production</a></li>
+								    	<li><a class="menu-mod-check-test" href="#">Check in Test"</a></li>
+								    	<li><a class="menu-mod-install-prod" href="#">Install in Production</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li><a href="#">Add/Configure Functions</a></li>
-								    	<li><a href="#">Restore Last Version</a></li>
+								    	<li><a class="menu-mod-funcs" href="#">Add/Configure Functions</a></li>
+								    	<li><a class="menu-mod-restore-version" href="#">Restore Last Version</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li><a href="#">Training and Advice</a></li>
+								    	<li><a class="menu-mod-training-advice" href="#">Training and Advice</a></li>
 								    	<li role="separator" class="divider"></li>
-								    	<li><a href="#">Technical Info.</a></li>
-								    	<li><a href="#">Guide</a></li>
+								    	<li><a class="menu-mod-technical-info" href="#">Technical Info.</a></li>
+								    	<li><a class="menu-mod-guide" href="#">Guide</a></li>
 								  	</ul>
 								</div>
 							</td>

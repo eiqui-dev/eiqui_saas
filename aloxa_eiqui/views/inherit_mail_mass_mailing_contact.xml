@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+   
+		<record id="view_mail_mass_mailing_contact_tree" model="ir.ui.view">
+	        <field name="model">mail.mass_mailing.contact</field>
+	        <field name="inherit_id" ref="mass_mailing.view_mail_mass_mailing_contact_tree" /> 
+	        <field name="arch" type="xml">
+	        	<xpath expr="//tree/field[3]" position="before">
+	        		<field name="province"/>
+	        	</xpath>
+	    	</field>
+	    </record>
+	    
+	</data>
+</openerp>

@@ -96,12 +96,12 @@ def import_contacts_paginas_amarillas(contacts, api_user, api_pass, activity, ci
     frmt_page = u'/mactions/searchResults?where=%s&what=%s&rows=%d&seed=123&page=%d&format=json' % (urllib.quote_plus(city), urllib.quote_plus(activity), rows, npag)
     print frmt_page
     
-    auth_str = '%s:%s' % (api_user, api_pass)
+    auth_str = base64.encodestring('%s:%s' % (api_user, api_pass))
     headers = {
         # Yes.. i'm the app...
         'User-Agent': 'AndroidPA 4.2.4 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Galaxy Nexus Build/MOB31K)',
         'X-Client-Identifier': '7563686172',
-        'Authorization': 'Basic %s' % base64.encodestring(auth_str),
+        'Authorization': 'Basic %s' % auth_str,
         'X-Application-Name': 'YellSearch',
     }
     r = requests.post('%s%s' % (E_URL, frmt_page), json={}, headers=headers)
@@ -116,15 +116,17 @@ def import_contacts_paginas_amarillas(contacts, api_user, api_pass, activity, ci
             
             if 'email' in l['locationinfo'][0]:
                 adv_loc_info = l['locationinfo'][0]
-                contacts.append(Contact(
-                    mail = adv_loc_info['email'],
-                    name = l['basicinfo']['name'],
-                    phone = adv_loc_info['telephone'],
-                    address = adv_loc_info['cam'],
-                    city = adv_loc_info['locality'],
-                    province = adv_loc_info['province'],
-                    zipcode = adv_loc_info['postcode'],
-                    web = l['basicinfo']['urls']['web']))
+                ncontact = Contact(
+                    mail = 'email' in adv_loc_info and adv_loc_info['email'] or '',
+                    name = 'name' in l['basicinfo'] and l['basicinfo']['name'] or '',
+                    phone = 'telephone' in adv_loc_info and adv_loc_info['telephone'] or '',
+                    address = 'cam' in adv_loc_info and adv_loc_info['cam'] or '',
+                    city = 'locality' in adv_loc_info and adv_loc_info['locality'] or '',
+                    province = 'province' in adv_loc_info and adv_loc_info['province'] or '',
+                    zipcode = 'postcode' in adv_loc_info and adv_loc_info['postcode'] or '')
+                if 'urls' in l['basicinfo'] and 'web' in l['basicinfo']['urls']:
+                    ncontact.web = l['basicinfo']['urls']['web'] 
+                contacts.append(ncontact)
         
         # Recursive call
         if npag < total_pags:

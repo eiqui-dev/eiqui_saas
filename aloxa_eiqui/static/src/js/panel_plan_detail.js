@@ -42,6 +42,13 @@ odoo.define('aloxa_eiqui.plan_detail', function(require) {
 				ev.preventDefault();
 			});
 			
+			$('.menu-mod-check-test').on('click', function(ev){
+				var $this = $(this);
+				var section = $this.data('section');
+				AloxaEiquiPlan.loadPanelSection(project_id, section);
+				ev.preventDefault();
+			});
+			
 			var anchor = undefined;
 			if (window.location.href.indexOf("#") != -1)
 				anchor = window.location.href.substring(window.location.href.indexOf("#")+1);

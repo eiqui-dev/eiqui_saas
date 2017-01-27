@@ -70,7 +70,7 @@ div#header {
 }
 
 .img-small {
-	width: 32%;
+	width: 50% !important;
 }
 
 .eiqui-big-text {

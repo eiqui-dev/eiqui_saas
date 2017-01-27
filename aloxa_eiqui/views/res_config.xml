@@ -17,6 +17,11 @@
                     	<field name="git_username" />
                     	<field name="git_password" password="True" />
                 	</group>
+                	
+                	<group string="Páginas Amarillas API">
+                    	<field name="pags_amarillas_api_user" />
+                    	<field name="pags_amarillas_api_password" password="True" />
+                	</group>
                 </form>
             </field>
         </record>
