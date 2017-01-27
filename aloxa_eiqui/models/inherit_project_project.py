@@ -75,6 +75,7 @@ class project_project(models.Model):
         ('created', 'Created'),
         ('deleting', 'Deleting...')
         ], string='Server Sate', default='creating', required=True)#, readonly=True)
+    adminpass = fields.Char('Eiqui Admin Password', size=128)
     #credentials = La idea es tener aqui el "aloxapass" en cuanto a eiqui se refiere (postgres, odoo, docker...)
     #recipe = ��Puede ser interesante tener aqui el .ini del cliente??
     #Server_Details = Informaci�n del droplet (RAM, disco, etc...)

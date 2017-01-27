@@ -149,7 +149,10 @@
 								<form id="form_new_plan">
 									<div class="form-group" id="plan_domain">
 										<label class="control-label" for="domain">Domain</label>
-										<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
+										<div class="input-group">
+									      	<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
+									      	<div style="font-size:large;" class="input-group-addon">.eiqui.com</div>
+									    </div>
 									</div>
 								</form>
 							</div>

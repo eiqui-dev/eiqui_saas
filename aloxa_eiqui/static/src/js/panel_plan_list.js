@@ -117,7 +117,11 @@ odoo.define('aloxa_eiqui.plan_list', function(require) {
 				var $elm = $(this);
 				var preventDef = false;
 				if ($elm.hasClass('menu-update-test')) {
-					console.log("UPDATE TEST!");
+					eiqui.jsonRPC('/_update_plan_test', '', function(){
+						if (!eiqui.checkResponse(data))
+							return;
+						
+					});
 					preventDef = true;
 				}
 				if ($elm.hasClass('menu-create-security-copy')) {

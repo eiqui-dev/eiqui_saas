@@ -17,6 +17,9 @@
 							<field name="plan_type_id" />
 							<field name="server_state" />
 						</group>
+						<group>
+							<field name="adminpass" readonly="True" />
+						</group>
 						<field name="repo_modules_ids">
 							<tree string="Modules" create="false" editable="bottom">
 				            	<!--field name="project_id" invisible="1"/-->

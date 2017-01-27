@@ -347,32 +347,31 @@ class EiquiWebsite(webmain.Home):
         # forzamos que se guarden los cambios para asegurarnos de que el hilo pueda ver el nuevo proyecto
         request.cr.commit()
         kwargs = {'uid': request.uid, 'db': request.db, 'project_id': proj_id.id}
-        #thread.start_new_thread(self._thread_create_docker, (kwargs,))
-        _logger.info("PASA THREAD COMIENZA")
-        self._thread_create_docker(kwargs)
+        thread.start_new_thread(self._thread_create_docker, (kwargs,))
         return { 'check': True }
-        
+    
+    @http.route(['/_update_plan_test'], auth="user", type='json', website=True)  
+    def _update_plan_test(self, project_id):
+        proj_id = request.env['project.project'].browse([project_id])
+        try:
+            eiqui_utils.rebuild_test_instance(proj_id.name, proj_id.adminpasswd)
+        except Exception, e:
+            return { 'error': True, 'errormsg': str(e) }
+        return {'check': True}
+    
     def _thread_create_docker(self, kwargs):
-        _logger.info("PASA THREAD 1")
+        DEF_BRANCH = "9.0"
         with openerp.sql_db.db_connect(kwargs.get('db')).cursor() as new_cr:
-            _logger.info("PASA THREAD 2")
-            with Environment.manage(): 
-                _logger.info("PASA THREAD 3")  
+            with Environment.manage():  
                 env = Environment(new_cr, kwargs.get('uid'), {})
-                _logger.info("PASA THREAD 4") 
                 project = env['project.project'].browse([kwargs.get('project_id')])
-                _logger.info("PASA THREAD 5")
                 try:
-                    _logger.info("PASA THREAD 6")
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-                    eiqui_utils.create_dock_mach(project.name)
-                    #eiqui_utils.create_client(project.name)
-                    _logger.info("PASA THREAD 7")
+                    eiqui_utils.create_client(project.name, branch=DEF_BRANCH)
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
-                    _logger.info("PASA THREAD 8")
                     git_username = None
                     git_password = None
                     if eiqui_config:
@@ -380,17 +379,13 @@ class EiquiWebsite(webmain.Home):
                         git_password = eiqui_config.git_password
                     repos = []
                     modules = []
-                    is_test = False
-                    _logger.info("PASA THREAD 9")
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(project.name, 
                                                         repos, 
-                                                        '8.0', 
+                                                        DEF_BRANCH, 
                                                         modules_installed=modules,
                                                         git_user=git_username,
-                                                        git_pass=git_password,
-                                                        is_test=is_test)
-                    project.write({'server_state':'created'})
-                    _logger.info("PASA THREAD 10")
+                                                        git_pass=git_password)
+                    project.write({'server_state':'created', 'adminpasswd': adminpasswd})
                     # Send Creation Mail
                     try:
                         project.send_mail_plan_creation({
@@ -398,7 +393,6 @@ class EiquiWebsite(webmain.Home):
                             'adminpasswd': adminpasswd,
                             'url': odoo_url,
                         })
-                        _logger.info("PASA THREAD 11")
                     except:
                         pass
                 except Exception:

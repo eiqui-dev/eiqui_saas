@@ -12,6 +12,10 @@ import logging
 _logger = logging.getLogger(__name__)
 
 CWD = '/dockerbuild'
+CWD_BUILDS = '%s/builds' % CWD
+ADMIN_USER = 'admin'
+EIQUI_USER = 'eiqui'
+EIQUI_LOGIN = 'info@aloxa.eu'
 EIQUI_CLIENTNAME_REGEX = r'^\w{4,12}$'
 
 # Obtiene el nombre del repositorio y el hash del commit más reciente
@@ -124,46 +128,18 @@ def get_client_recipe_info(client, is_test=False):
 # RETURN
 #    Tupla: El código de salida del script, lo que imprimió por stdout y lo que imprimió por stderr
 #
-def call_test_dockermachine(params):
-    _logger.info("CALL SCRIPT 1")
-    eiquiscript = "sudo /usr/local/bin/docker-machine ip %s" % (CWD, ' '.join(params))
-    _logger.info("CALL SCRIPT 2")
-    proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
-    _logger.info("CALL SCRIPT 3")
-    (out, err) = proc.communicate()
-    _logger.info("CALL SCRIPT 4")
-    return (proc.returncode, out, err)
-
 def call_eiqui_script(script, params):
-    _logger.info("CALL SCRIPT 1")
-    eiquiscript = "sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
-    _logger.info("CALL SCRIPT 2")
+    eiquiscript = "%s/ei_%s %s" % (CWD, script, ' '.join(params))
     proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
-    _logger.info("CALL SCRIPT 3")
     (out, err) = proc.communicate()
-    _logger.info("CALL SCRIPT 4")
     return (proc.returncode, out, err)
-
-def create_dock_mach(client):
-    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
-        raise Exception('Invalid Client Name!')
-    _logger.info("CREATE DOCK MACH 1")
-    (rcode, out, err) = call_test_dockermachine(['%s' % client])
-    _logger.info("CREATE DOCK MACH 2")
-    if rcode == 0:
-        return True
-    _logger.info("CREATE DOCK MACH 3")
-    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
 
 def create_client(client, branch="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    _logger.info("CREATE CLIENT 1")
     (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
-    _logger.info("CREATE CLIENT 2")
     if rcode == 0:
         return True
-    _logger.info("CREATE CLIENT 3")
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
 
 def create_client_test(client):
@@ -222,11 +198,22 @@ def get_client_host_url(client, is_test=False, is_host=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     schema = 'http'
-    if is_host:
-        return '%s://host.%s.eiqui.com' % (schema, client)
+    if is_host and is_test:
+        return '%s://test.%s.eiqui.com:8169' % (schema, client)
+    elif is_host:
+        return '%s://host.%s.eiqui.com:8069' % (schema, client)
     elif is_test:
         return '%s://test.%s.eiqui.com' % (schema, client)
     return '%s://%s.eiqui.com' % (schema, client)
+
+def create_user(url, dbname, adminuser, adminpasswd, newuser, newlogin, newpasswd):
+    try:
+        client = erppeek.Client(url)
+        client.login(adminuser, password=adminpasswd, database=dbname)
+        res = client.create('res.users', {'name':newuser,'login':newlogin, 'new_password':newpasswd})
+    except:
+        raise
+    return res == 1
 
 # Crear una base de datos para Odoo
 # INPUT
@@ -266,21 +253,46 @@ def odoo_install_modules(url, dbname, user, userpasswd, modules):
         raise
     return True
 
-def prepare_client_instance(client, repos, branch, modules_installed=None, git_user='', git_pass='', is_test=False):
+def prepare_client_instance(client, repos, branch, modules_installed=None, git_user='', git_pass=''):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
     try:
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
+        # Produccion
         if repos and len(repos) > 0:
-            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=is_test)
-            update_client_buildbot(client, is_test)
-        inst_info = get_client_recipe_info(client, is_test)
-        odoo_url_host = '%s:8069' % get_client_host_url(client, is_test, True)
+            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+            update_client_buildbot(client, False)
+        inst_info = get_client_recipe_info(client, False)
+        odoo_url_host = get_client_host_url(client, False, True)
         #time.sleep(15) # No somos impacientes y esperamos a que se asiente todo...
         res = odoo_create_db(odoo_url_host, inst_info['admin_passwd'], client, 'es_ES', adminpasswd)
         if res:
             if modules_installed and len(modules_installed) > 0:
-                res = odoo_install_modules(odoo_url_host, client, 'admin', adminpasswd, modules_installed)
+                res = odoo_install_modules(odoo_url_host, client, ADMIN_USER, adminpasswd, modules_installed)
                 if not res:
                     print 'WARNING: Errors while installing modules!'
+        create_user(client, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, adminpasswd)
     except:
         raise
-    return (inst_info, adminpasswd, get_client_host_url(client, is_test, False))
+    return (inst_info, adminpasswd, get_client_host_url(client, False, False))
+
+def rebuild_test_instance(client, adminpasswd):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    try:
+        os.rename('/%s/odoo/prod.cfg' % CWD_BUILDS, '/%s/odoo/test.cfg' % CWD_BUILDS)
+        create_client_test(client)
+        odoo_url_host = get_client_host_url(client, True, True)
+        client = erppeek.Client(odoo_url_host)
+        db_list = client.db.list()
+        for db in db_list:
+            client.login(ADMIN_USER, password=adminpasswd, database=db) 
+            # Install "Test Ribbon" Module
+            client.install(*('web_environment_ribbon'))
+            # Remove Mail Data
+            record_ids = client.search("fetchmail.server", [()])
+            client.unlink("fetchmail.server", record_ids)
+            record_ids = client.search("ir.mail_server", [()])
+            client.unlink("ir.mail_server", record_ids) 
+    except:
+        raise
