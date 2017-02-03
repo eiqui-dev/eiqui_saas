@@ -5,10 +5,10 @@
 	<template id="eiqui_external_layout_header">
 		<div class="header">
 			<div class="row margen" style="margin-bottom:1.2em;">
-				<div class="col-md-8 col-xs-8" style="margin-top:50px;">
+				<div class="col-md-9 col-xs-9">
 					<img src="/aloxa_eiqui/static/src/img/eiqui.jpg" class="img" style="width:150px;" />
 				</div>
-				<div class="col-md-4 col-xs-4 color-eiqui" style="font-size: small;">
+				<div class="col-md-3 col-xs-3 color-eiqui" style="font-size: x-small;">
 					<t t-esc="o.company_id.name"/><br/>
 					<t t-esc="' '.join((o.company_id.street or '', o.company_id.street2 or ''))" />, <t t-esc="o.company_id.zip or ''" /><br/>
 					<t t-if="o.company_id.city"><t t-esc="o.company_id.city" />,</t><br/>
