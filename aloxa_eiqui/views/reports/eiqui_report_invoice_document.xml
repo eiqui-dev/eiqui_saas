@@ -41,14 +41,16 @@
 				<div class="row">
 					<table class="table table-eiqui">
 						<thead>
-							<th>&amp;nbsp;</th>
-							<th>Descripción</th>
-							<th>Cantidad</th>
-							<th>Precio Unidad</th>
-							<t t-if="has_discount"><th>Descuento</th></t>
-							<th>Impuestos</th>
-							<th>Importe</th>
-							<th>&amp;nbsp;</th>
+							<tr>
+								<th>&amp;nbsp;</th>
+								<th>Descripción</th>
+								<th>Cantidad</th>
+								<th>Precio Unidad</th>
+								<t t-if="has_discount"><th>Descuento</th></t>
+								<th>Impuestos</th>
+								<th>Importe</th>
+								<th>&amp;nbsp;</th>
+							</tr>
 						</thead>
 						<tbody class="invoice_tbody">
 							<tr t-foreach="o.invoice_line_ids" t-as="l">
