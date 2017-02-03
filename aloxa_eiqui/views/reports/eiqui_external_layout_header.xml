@@ -8,7 +8,7 @@
 				<div class="col-md-8 col-xs-8" style="margin-top:50px;">
 					<img src="/aloxa_eiqui/static/src/img/eiqui.jpg" class="img" style="width:150px;" />
 				</div>
-				<div class="col-md-4 col-xs-4 color-eiqui" style="font-size: x-large;">
+				<div class="col-md-4 col-xs-4 color-eiqui" style="font-size: small;">
 					<t t-esc="o.company_id.name"/><br/>
 					<t t-esc="' '.join((o.company_id.street or '', o.company_id.street2 or ''))" />, <t t-esc="o.company_id.zip or ''" /><br/>
 					<t t-if="o.company_id.city"><t t-esc="o.company_id.city" />,</t><br/>
