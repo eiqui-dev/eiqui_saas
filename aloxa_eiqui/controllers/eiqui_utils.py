@@ -133,7 +133,7 @@ def get_client_recipe_info(client, is_test=False):
 #    Tupla: El código de salida del script, lo que imprimió por stdout y lo que imprimió por stderr
 #
 def call_eiqui_script(script, params):
-    eiquiscript = "%s/ei_%s %s" % (CWD, script, ' '.join(params))
+    eiquiscript = "sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
     proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
     (out, err) = proc.communicate()
     return (proc.returncode, out, err)
