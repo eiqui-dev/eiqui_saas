@@ -379,6 +379,16 @@ class EiquiWebsite(webmain.Home):
                         git_password = eiqui_config.git_password
                     repos = []
                     modules = []
+                    # Obtener Modulos y Repos a Instalar Vertical Base
+                    vertical_base_id = env['eiqui.vertical'].search([('name', '=', '__base__')], limit=1)
+                    if vertical_base_id:
+                        for module in vertical_base_id.modules:
+                            modules.append(module.name)
+                            repos.append(module.repo_id.url)
+                    # Obtener repos a instalar
+                    for repo in project.repo_modules_ids:
+                        repos.append(repo.url)
+                    
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(project.name, 
                                                         repos, 
                                                         DEF_BRANCH, 

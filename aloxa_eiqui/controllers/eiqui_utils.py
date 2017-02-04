@@ -67,7 +67,8 @@ def get_repo_commit_info(git_user, git_pass, repo, branch):
 def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    path_file = '%s/builds/%s/odoo/%s.cfg' % (CWD, client, 'test' if is_test else 'prod')
+    instance_mode = 'test' if is_test else 'prod'
+    path_file = '%s/%s/%s/%s.cfg' % (CWD_BUILDS, client, instance_mode, instance_mode)
     config = configparser.ConfigParser()
     config.read(path_file)
     for repo in repos:
@@ -110,15 +111,18 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
 def get_client_recipe_info(client, is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    path_file = '%s/builds/%s/odoo/%s.cfg' % (CWD, client, 'test' if is_test else 'prod')
+    instance_mode = 'test' if is_test else 'prod'
+    path_file = '%s/%s/%s/%s.cfg' % (CWD_BUILDS, client, instance_mode, instance_mode)
     config = configparser.ConfigParser()
-    config.read(path_file)
-    values = ['xmlrpc_port', 'admin_passwd', 'db_user', 'db_password', 'data_dir', 'logfile']
     result = {}
-    for val in values:
-        valname = 'options.%s' % val
-        result.update({val: valname in config['openerp'] and config['openerp'][valname] or ''})
-    return result
+    if any(config.read(path_file)):
+        result = {}
+        values = ['xmlrpc_port', 'admin_passwd', 'db_user', 'db_password', 'data_dir', 'logfile']
+        for val in values:
+            valname = 'options.%s' % val
+            result.update({val: valname in config['openerp'] and config['openerp'][valname] or ''})
+        return result
+    return False
 
 # Wrapper para llamar a los script de eiqui
 # INPUT
@@ -263,6 +267,8 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
             add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
             update_client_buildbot(client, False)
         inst_info = get_client_recipe_info(client, False)
+        if not inst_info:
+            raise Exception("Error! Can't read recipe data")
         odoo_url_host = get_client_host_url(client, False, True)
         #time.sleep(15) # No somos impacientes y esperamos a que se asiente todo...
         res = odoo_create_db(odoo_url_host, inst_info['admin_passwd'], client, 'es_ES', adminpasswd)
