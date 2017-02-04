@@ -6,6 +6,7 @@ import erppeek
 import configparser
 import fileinput
 import binascii
+from shutil import copyfile
 import os
 #import time
 import logging
@@ -210,9 +211,9 @@ def get_client_host_url(client, is_test=False, is_host=False):
         return '%s://test.%s.eiqui.com' % (schema, client)
     return '%s://%s.eiqui.com' % (schema, client)
 
-def create_user(url, dbname, adminuser, adminpasswd, newuser, newlogin, newpasswd):
+def create_user(server_host, dbname, adminuser, adminpasswd, newuser, newlogin, newpasswd):
     try:
-        client = erppeek.Client(url)
+        client = erppeek.Client(str(server_host))
         client.login(adminuser, password=adminpasswd, database=dbname)
         res = client.create('res.users', {'name':newuser,'login':newlogin, 'new_password':newpasswd})
     except:
@@ -230,9 +231,9 @@ def create_user(url, dbname, adminuser, adminpasswd, newuser, newlogin, newpassw
 # RETURN
 #    Bool: True si todo fue bien
 #
-def odoo_create_db(url, masterpasswd, dbname, lang, adminpasswd):
+def odoo_create_db(server_host, masterpasswd, dbname, lang, adminpasswd):
     try:
-        client = erppeek.Client(url)
+        client = erppeek.Client(str(server_host))
         res = client.create_database(masterpasswd, dbname, lang=lang, user_password=adminpasswd)
     except:
         raise
@@ -277,7 +278,7 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
                 res = odoo_install_modules(odoo_url_host, client, ADMIN_USER, adminpasswd, modules_installed)
                 if not res:
                     print 'WARNING: Errors while installing modules!'
-        create_user(client, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, adminpasswd)
+        create_user(client, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, inst_info['admin_passwd'])
     except:
         raise
     return (inst_info, adminpasswd, get_client_host_url(client, False, False))
@@ -286,10 +287,10 @@ def rebuild_test_instance(client, adminpasswd):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     try:
-        os.rename('/%s/odoo/prod.cfg' % CWD_BUILDS, '/%s/odoo/test.cfg' % CWD_BUILDS)
+        copyfile('%s/%s/prod/prod.cfg' % (CWD_BUILDS, client), '%s/%s/test/test.cfg' % (CWD_BUILDS, client))
         create_client_test(client)
         odoo_url_host = get_client_host_url(client, True, True)
-        client = erppeek.Client(odoo_url_host)
+        client = erppeek.Client(str(odoo_url_host))
         db_list = client.db.list()
         for db in db_list:
             client.login(ADMIN_USER, password=adminpasswd, database=db) 
