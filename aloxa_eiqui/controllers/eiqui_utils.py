@@ -264,12 +264,13 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
     try:
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
-        if repos and len(repos) > 0:
-            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
-            update_client_buildbot(client, False)
+        ##if repos and len(repos) > 0:
+        ##    add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+        ##    update_client_buildbot(client, False)
         inst_info = get_client_recipe_info(client, False)
         if not inst_info:
             raise Exception("Error! Can't read recipe data")
+        _logger.info(inst_info)
         odoo_url_host = get_client_host_url(client, False, True)
         #time.sleep(15) # No somos impacientes y esperamos a que se asiente todo...
         res = odoo_create_db(odoo_url_host, inst_info['admin_passwd'], client, 'es_ES', adminpasswd)
