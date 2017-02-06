@@ -9,7 +9,7 @@
 		</t>
 		
 		<t t-call="aloxa_eiqui.eiqui_external_layout">
-			<div class="page" style="margin-top:2em;">
+			<div class="page">
 				<!-- PANEL DERECHO -->
 				<div class="row bg-color-eiqui margen" style="color:white; padding-top:2em; padding-bottom:1.3em; margin-top:1.2em; position:relative">
 					<span class="deco-circle"></span>
