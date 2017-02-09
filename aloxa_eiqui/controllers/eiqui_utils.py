@@ -279,7 +279,7 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
                 res = odoo_install_modules(odoo_url_host, client, ADMIN_USER, adminpasswd, modules_installed)
                 if not res:
                     print 'WARNING: Errors while installing modules!'
-        create_user(client, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, inst_info['admin_passwd'])
+        create_user(odoo_url_host, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, inst_info['admin_passwd'])
     except:
         raise
     return (inst_info, adminpasswd, get_client_host_url(client, False, False))
