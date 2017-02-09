@@ -395,7 +395,7 @@ class EiquiWebsite(webmain.Home):
                                                         modules_installed=modules,
                                                         git_user=git_username,
                                                         git_pass=git_password)
-                    project.write({'server_state':'created', 'adminpasswd': adminpasswd})
+                    project.write({'server_state':'created', 'adminpass': adminpasswd})
                     # Send Creation Mail
                     try:
                         project.send_mail_plan_creation({
