@@ -369,7 +369,7 @@ class EiquiWebsite(webmain.Home):
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-                    eiqui_utils.create_client(project.name, branch=DEF_BRANCH)
+                    #eiqui_utils.create_client(project.name, branch=DEF_BRANCH)
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
                     git_username = None
