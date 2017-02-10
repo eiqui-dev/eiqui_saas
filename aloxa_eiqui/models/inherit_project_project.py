@@ -50,14 +50,9 @@ class project_project(models.Model):
             template_id = self.env['ir.model.data'].get_object_reference('aloxa_eiqui', 'plan_error_mail')[1]
         if not template_id:
             raise Exception("Can't found template for current plan state")
-        
-        context_values = {
-            'plan_info': plan_values
-        }
-            
         try:
             template_rec = self.env['mail.template'].browse(template_id)
-            template_rec.send_mail(self.id, force_send=True, raise_exception=True, context=context_values)
+            template_rec.with_context(plan_info=plan_values).send_mail(self.id, force_send=True, raise_exception=True)
         except ValueError:
             pass
 
