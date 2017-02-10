@@ -67,17 +67,17 @@
 							<td class="text-right" style="font-size: x-large;">
 					  			<span t-field="l.price_unit"/>
 					   		</td>
+					   		<t t-if="has_discount">
+								<td class="text-right" style="font-size: x-large;" groups="sale.group_discount_per_so_line">
+									<t t-if="l.discount"><span t-field="l.discount"/></t>
+								</td>
+							</t>	
 					   		<td style="font-size: x-large; white-space: nowrap;">
 					   			<t t-if="l.tax_id">
 					  				<span t-esc="', '.join(map(lambda x: x.name.upper(), l.tax_id))"/>
 					  			</t>
 					  			<t t-if="not l.tax_id">EXENTO</t>
-					   		</td>
-							<t t-if="has_discount">
-								<td class="text-right" style="font-size: x-large;" groups="sale.group_discount_per_so_line">
-									<t t-if="l.discount"><span t-field="l.discount"/></t>
-								</td>
-							</t>	                      
+					   		</td>                      
 				            <td class="text-right" style="font-size: xx-large;">
 				                <span t-field="l.price_subtotal" />
 				            </td>
