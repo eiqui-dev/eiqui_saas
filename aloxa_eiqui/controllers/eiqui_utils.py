@@ -155,6 +155,14 @@ def create_client_test(client):
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
 
+def monitor_client(client):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    (rcode, out, err) = call_eiqui_script("monitorizar_host", ['-c',"'%s'" % client])
+    if rcode == 0:
+        return True
+    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
 def create_snapshot(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
@@ -264,9 +272,9 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
     try:
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
-        #if repos and len(repos) > 0:
-        #    add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
-        #    update_client_buildbot(client, False)
+        if repos and len(repos) > 0:
+            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+            update_client_buildbot(client, False)
         inst_info = get_client_recipe_info(client, False)
         if not inst_info:
             raise Exception("Error! Can't read recipe data")

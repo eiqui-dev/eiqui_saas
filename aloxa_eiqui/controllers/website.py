@@ -369,7 +369,7 @@ class EiquiWebsite(webmain.Home):
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-                    #eiqui_utils.create_client(project.name, branch=DEF_BRANCH)
+                    eiqui_utils.create_client(project.name, branch=DEF_BRANCH)
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
                     git_username = None
@@ -383,28 +383,33 @@ class EiquiWebsite(webmain.Home):
                     vertical_base_id = env['eiqui.vertical'].search([('name', '=', '__base__')], limit=1)
                     if vertical_base_id:
                         for module in vertical_base_id.modules:
-                            modules.append(module.name)
-                            repos.append(module.repo_id.url)
+                            if module.repo_id.branch == DEF_BRANCH:
+                                modules.append(module.name)
+                                repos.append(module.repo_id.url)
                     # Obtener repos a instalar
                     for repo in project.repo_modules_ids:
-                        repos.append(repo.url)
+                        if repo.branch == DEF_BRANCH:
+                            repos.append(repo.url)
                     
-                    (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(project.name, 
-                                                        repos, 
-                                                        DEF_BRANCH, 
-                                                        modules_installed=modules,
-                                                        git_user=git_username,
-                                                        git_pass=git_password)
-                    project.write({'server_state':'created', 'adminpass': adminpasswd})
+                    (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
+                        project.name,
+                        repos,
+                        DEF_BRANCH,
+                        modules_installed=modules,
+                        git_user=git_username,
+                        git_pass=git_password
+                    )
+                    eiqui_utils.monitor_client(project.name)
+                    project.write({
+                        'server_state': 'created',
+                        'adminpass': adminpasswd
+                    })
                     # Send Creation Mail
-                    try:
-                        project.send_mail_plan_creation({
-                            'inst_info': inst_info,
-                            'adminpasswd': adminpasswd,
-                            'url': odoo_url,
-                        })
-                    except:
-                        pass
+                    project.send_mail_plan_creation({
+                        'inst_info': inst_info,
+                        'adminpasswd': adminpasswd,
+                        'url': odoo_url,
+                    })
                 except Exception:
                     env['project.issue'].create({
                         'name': _('Error while creating a new plan'),
@@ -412,7 +417,7 @@ class EiquiWebsite(webmain.Home):
                         'project_id': project.id,
                         'priority': '2',
                     })
-                    project.write({'server_state':'error'})
+                    project.write({'server_state': 'error'})
                     # Send Error Mail
                     try:
                         project.send_mail_plan_creation()

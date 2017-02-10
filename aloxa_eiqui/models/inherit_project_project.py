@@ -43,12 +43,12 @@ class project_project(models.Model):
     @api.model
     def send_mail_plan_creation(self, plan_values=None):
         self.ensure_one();
-        template = False
+        template_id = False
         if self.server_state == 'created':
-            template = self.env['ir.model.data'].get_object('aloxa_eiqui', 'plan_created_mail')
+            template_id = self.env['ir.model.data'].get_object_reference('aloxa_eiqui', 'plan_created_mail')[1]
         elif self.server_state == 'error':
-            template = self.env['ir.model.data'].get_object('aloxa_eiqui', 'plan_error_mail')
-        if not template:
+            template_id = self.env['ir.model.data'].get_object_reference('aloxa_eiqui', 'plan_error_mail')[1]
+        if not template_id:
             raise Exception("Can't found template for current plan state")
         if plan_values:
             self.env.context.update({
@@ -56,13 +56,8 @@ class project_project(models.Model):
             })
             
         try:
-            # Todo por esto...
-            self.pool['email.template'].send_mail(
-                self.env.cr, 
-                self.env.uid, 
-                template.id, 
-                self.id, 
-                force_send=True, raise_exception=True, context=self.env.context)
+            template_rec = self.env['mail.template'].browse(template_id)
+            template_rec.send_mail(self.id, force_send=True, raise_exception=True)
         except ValueError:
             pass
 
