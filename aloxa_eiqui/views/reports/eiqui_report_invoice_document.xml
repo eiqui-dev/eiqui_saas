@@ -39,7 +39,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<table class="table table-eiqui">
+					<table class="table table-eiqui table-condensed">
 						<thead>
 							<tr>
 								<th>&amp;nbsp;</th>
@@ -52,7 +52,7 @@
 								<th>&amp;nbsp;</th>
 							</tr>
 						</thead>
-						<tbody class="invoice_tbody">
+						<tbody>
 							<tr t-foreach="o.invoice_line_ids" t-as="l">
 								<td>&amp;nbsp;</td>       	 
 								<td>
@@ -115,7 +115,7 @@
 					</div>
 				</div>
 				<div clas="row margen">
-					<div class="col-md-12 col-xs-12">
+					<div t-if="o.date_due" class="col-md-12 col-xs-12">
 						<span style="color: #555; font-size:x-large;">Válido hasta</span><br/>
 						<span style="margin-left:65px; font-size:xx-large; color:#959595; line-height:24px;" t-field="o.date_due" t-field-options='{"format": "dd/MM/yyyy"}'/>	
 					</div>
