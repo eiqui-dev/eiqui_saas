@@ -6,8 +6,8 @@
         <record id="plan_created_mail" model="mail.template">
             <field name="name">Plan Created</field>
             <field name="model_id" ref="model_project_project"/>
-            <field name="email_from"><![CDATA[${object.user_id.company_id.name} <${(object.user_id.company_id.email or user.email)|safe}>]]></field>
-            <field name="email_to">${object.user_id.email|safe}</field>
+            <field name="email_from"><![CDATA[${object.partner_id.company_id.name} <${(object.partner_id.company_id.email or user.email)|safe}>]]></field>
+            <field name="email_to">${object.partner_id.email|safe}</field>
             <field name="subject">Your plan is ready for use</field>
             <field name="body_html"><![CDATA[
 <p>PLAN PARAMETERS</p>

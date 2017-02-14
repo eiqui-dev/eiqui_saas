@@ -59,6 +59,10 @@ class project_project(models.Model):
     final_partner_id = fields.Many2one('res.partner', 'Final Customer')
     repo_modules_ids = fields.Many2many('eiqui.project.modules', string="Project Modules")
     plan_type_id = fields.Many2one('eiqui.plan.type', string="Plan Type")
+    odoo_version = fields.Selection([
+        ('8.0', '8.0'),
+        ('9.0', '9.0')
+        ], string='Odoo Version', default='9.0', required=True, readonly=True)
     server_state = fields.Selection([
         ('error', 'Error!'),
         ('creating', 'Creating...'),

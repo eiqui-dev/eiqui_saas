@@ -146,12 +146,21 @@
 								<h4 class="modal-title">Create New Plan</h4>
 							</div>
 							<div class="modal-body">
-								<form id="form_new_plan">
-									<div class="form-group" id="plan_domain">
-										<label class="control-label" for="domain">Domain</label>
-										<div class="input-group">
-									      	<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
-									      	<div style="font-size:large;" class="input-group-addon">.eiqui.com</div>
+								<form id="form_new_plan" class="form-horizontal container">
+									<div class="row">
+										<div class="col-md-4" id="plan_domain">
+											<label class="control-label" for="domain">Domain</label>
+											<div class="input-group">
+										      	<input type="text" name="domain" id="domain" pattern="^\w+$" data-error="#error_domain" class="form-control" minlength="4" maxlength="12" placeholder="Domain" required="required" autofocus="autofocus"/>
+										      	<div style="font-size:large;" class="input-group-addon">.eiqui.com</div>
+										    </div>
+										</div>
+									    <div class="col-md-2">
+									    	<label class="control-label" for="odoo_ver">Odoo Version</label>
+										    <select name="odoo_ver" id="odoo_ver" class="control-form" style="width:100%;">
+										    	<option value="9.0">9.0</option>
+										    	<option value="8.0">8.0</option>
+										    </select>
 									    </div>
 									</div>
 								</form>

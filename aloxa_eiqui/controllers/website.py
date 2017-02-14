@@ -318,7 +318,7 @@ class EiquiWebsite(webmain.Home):
               
           
     @http.route(['/_create_plan'], auth="user", type='json', website=True)  
-    def _create_plan(self, domain):
+    def _create_plan(self, domain, odoo_ver):
         domain = domain.lower()
         if not re.match(eiqui_utils.EIQUI_CLIENTNAME_REGEX, domain):
             return { 'error': True, 'errormsg': _("Invalid Domain Name: '%s'") % domain }
@@ -333,7 +333,8 @@ class EiquiWebsite(webmain.Home):
             'user_id': None,
             'partner_id': user_id.partner_id.id,
             'alias_name': domain,
-            'final_partner_id': user_id.partner_id.id
+            'final_partner_id': user_id.partner_id.id,
+            'odoo_version': odoo_ver
         }
         proj_id = request.env['project.project'].sudo().create(regData)
         if not proj_id or not proj_id.exists():
@@ -360,16 +361,16 @@ class EiquiWebsite(webmain.Home):
         return {'check': True}
     
     def _thread_create_docker(self, kwargs):
-        DEF_BRANCH = "9.0"
         with openerp.sql_db.db_connect(kwargs.get('db')).cursor() as new_cr:
-            with Environment.manage():  
+            with Environment.manage():
                 env = Environment(new_cr, kwargs.get('uid'), {})
                 project = env['project.project'].browse([kwargs.get('project_id')])
                 try:
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-                    eiqui_utils.create_client(project.name, branch=DEF_BRANCH)
+                    eiqui_utils.create_client(project.name, 
+                                              branch=project.odoo_version)
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
                     git_username = None
@@ -382,19 +383,19 @@ class EiquiWebsite(webmain.Home):
                     # Obtener Modulos y Repos a Instalar Vertical Base
                     vertical_base_id = env['eiqui.vertical'].search([('name', '=', '__base__')], limit=1)
                     if vertical_base_id:
-                        for module in vertical_base_id.modules:
-                            if module.repo_id.branch == DEF_BRANCH:
-                                modules.append(module.name)
-                                repos.append(module.repo_id.url)
+                        branch_modules = vertical_base_id.modules.search([('repo_id.branch', '=', project.odoo_version)])
+                        for module in branch_modules:
+                            modules.append(module.name)
+                            repos.append(module.repo_id.url)
                     # Obtener repos a instalar
-                    for repo in project.repo_modules_ids:
-                        if repo.branch == DEF_BRANCH:
-                            repos.append(repo.url)
+                    branch_repos = project.repo_modules_ids.search([('branch', '=', project.odoo_version)])
+                    for repo in branch_repos:
+                        repos.append(repo.url)
                     
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,
                         repos,
-                        DEF_BRANCH,
+                        project.odoo_version,
                         modules_installed=modules,
                         git_user=git_username,
                         git_pass=git_password

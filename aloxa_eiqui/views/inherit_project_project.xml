@@ -15,6 +15,7 @@
 					<page string="Plan Info">
 						<group>
 							<field name="plan_type_id" />
+							<field name="odoo_version" readonly="True" />
 							<field name="server_state" />
 						</group>
 						<group>
