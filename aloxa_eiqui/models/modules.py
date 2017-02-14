@@ -45,7 +45,7 @@ class modules(models.Model):
     eiqui_summary = fields.Char(string='Eiqui Summary')
     odoo_version_id = fields.Many2one('eiqui.odoo.versions', string='Odoo Version')
     tags_ids = fields.Many2many('eiqui.modules.tags', string='Tags')
-    vertical_ids = fields.Many2many('eiqui.vertical', string='Vertical')
+    vertical_ids = fields.Many2many('eiqui.vertical', 'modules', string='Vertical')
     Reviewed = fields.Boolean('Reviewed')
     folder = fields.Char('Folder Name')
     repo_branch = fields.Char('Repository Branch', compute='_get_repo_branch')
