@@ -8,7 +8,7 @@ import fileinput
 import binascii
 from shutil import copyfile
 import os
-#import time
+import time
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -281,14 +281,14 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
             raise Exception("Error! Can't read recipe data")
         _logger.info(inst_info)
         odoo_url_host = get_client_host_url(client, False, True)
-        #time.sleep(15) # No somos impacientes y esperamos a que se asiente todo...
+        time.sleep(60)  # No somos impacientes y esperamos a que se asiente todo...
         res = odoo_create_db(odoo_url_host, inst_info['admin_passwd'], client, 'es_ES', adminpasswd)
         if res:
             if modules_installed and any(modules_installed):
                 res = odoo_install_modules(odoo_url_host, client, ADMIN_USER, adminpasswd, modules_installed)
                 if not res:
                     print 'WARNING: Errors while installing modules!'
-        create_user(odoo_url_host, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, inst_info['admin_passwd'])
+            create_user(odoo_url_host, client, ADMIN_USER, adminpasswd, EIQUI_USER, EIQUI_LOGIN, inst_info['admin_passwd'])
     except:
         raise
     return (inst_info, adminpasswd, get_client_host_url(client, False, False))
