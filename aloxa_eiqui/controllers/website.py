@@ -395,6 +395,8 @@ class EiquiWebsite(webmain.Home):
                     _logger.info("PARA POR AKI")
                     _logger.info(repos)
                     _logger.info(modules)
+                    repos = []
+                    modules = []
                     
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,
