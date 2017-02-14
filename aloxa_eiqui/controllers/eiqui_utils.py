@@ -261,7 +261,7 @@ def odoo_create_db(server_host, masterpasswd, dbname, lang, adminpasswd):
 #
 def odoo_install_modules(url, dbname, user, userpasswd, modules):
     try:
-        client = erppeek.Client(url, db=dbname, user=user, password=userpasswd)
+        client = erppeek.Client(str(url), db=dbname, user=user, password=userpasswd)
         client.install(*modules)
     except:
         raise
@@ -284,7 +284,7 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
         #time.sleep(15) # No somos impacientes y esperamos a que se asiente todo...
         res = odoo_create_db(odoo_url_host, inst_info['admin_passwd'], client, 'es_ES', adminpasswd)
         if res:
-            if modules_installed and len(modules_installed) > 0:
+            if modules_installed and any(modules_installed):
                 res = odoo_install_modules(odoo_url_host, client, ADMIN_USER, adminpasswd, modules_installed)
                 if not res:
                     print 'WARNING: Errors while installing modules!'
