@@ -388,7 +388,7 @@ class EiquiWebsite(webmain.Home):
                             modules.append(module.name)
                             repos.append(module.repo_id.url)
                     # Obtener repos a instalar
-                    branch_repos = project.repo_modules_ids.search([('branch', '=', project.odoo_version)])
+                    branch_repos = project.repo_modules_ids.search([('repo_id.branch', '=', project.odoo_version)])
                     for repo in branch_repos:
                         repos.append(repo.url)
                     
