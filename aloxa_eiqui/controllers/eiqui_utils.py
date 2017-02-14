@@ -72,11 +72,12 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
     path_file = '%s/%s/%s/%s.cfg' % (CWD_BUILDS, client, instance_mode, instance_mode)
     config = configparser.ConfigParser()
     config.read(path_file)
+    repos = list(set(repos))  # Remove duplicate values
     for repo in repos:
         (name, sha) = get_repo_commit_info(git_user, git_pass, repo, branch)
         # Si es OCB se trata de otra forma
         if name.lower() == 'ocb':
-            nrepo = "git %s odoo %s depth=10" % (repo, sha)
+            nrepo = "git %s odoo %s depth=1" % (repo, sha)
             config['openerp']['version'] = nrepo
         else:
             nrepo = "git %s parts/%s %s" % (repo, name, sha)
@@ -90,7 +91,7 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
                     break
             if not found:
                 addons.append(nrepo)
-            config['openerp']['addons'] = '\n'.join(addons)
+    config['openerp']['addons'] = '\n'.join(addons)
     with open(path_file, 'w') as configfile:
         config.write(configfile)
     # Cambiar 'addons =' por 'addons +='
@@ -272,7 +273,7 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
     try:
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
-        if repos and len(repos) > 0:
+        if repos and any(repos):
             add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
             update_client_buildbot(client, False)
         inst_info = get_client_recipe_info(client, False)
