@@ -392,6 +392,10 @@ class EiquiWebsite(webmain.Home):
                     for repo in branch_repos:
                         repos.append(repo.url)
                     
+                    _logger.info("PARA POR AKI")
+                    _logger.info(repos)
+                    _logger.info(modules)
+                    
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,
                         repos,
