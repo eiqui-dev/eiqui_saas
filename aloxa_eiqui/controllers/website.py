@@ -385,18 +385,12 @@ class EiquiWebsite(webmain.Home):
                     if vertical_base_id:
                         branch_modules = vertical_base_id.modules.search([('repo_id.branch', '=', project.odoo_version)])
                         for module in branch_modules:
-                            modules.append(module.name)
+                            modules.append(module.folder)
                             repos.append(module.repo_id.url)
                     # Obtener repos a instalar
                     branch_repos = project.repo_modules_ids.search([('repo_id.branch', '=', project.odoo_version)])
                     for repo in branch_repos:
                         repos.append(repo.url)
-                    
-                    _logger.info("PARA POR AKI")
-                    _logger.info(repos)
-                    _logger.info(modules)
-                    repos = []
-                    modules = []
                     
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,

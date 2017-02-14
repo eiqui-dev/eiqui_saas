@@ -9,3 +9,4 @@ class project_modules(models.Model):
     repo_id = fields.Many2one('eiqui.repos')
     commit = fields.Char('Current Commit')
     installed_modules_ids = fields.Many2many('eiqui.modules')
+    
