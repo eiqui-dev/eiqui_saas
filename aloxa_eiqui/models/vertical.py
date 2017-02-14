@@ -8,5 +8,5 @@ class vertical(models.Model):
     name = fields.Char('Name', translate=True)
     image = fields.Binary('Image')
     description = fields.Char('Summary', translate=True)
-    modules = fields.Many2many('eiqui.modules','vertical_ids')
+    modules = fields.Many2many('eiqui.modules')
     
