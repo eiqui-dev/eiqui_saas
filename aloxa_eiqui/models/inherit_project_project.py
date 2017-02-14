@@ -73,7 +73,3 @@ class project_project(models.Model):
     #credentials = La idea es tener aqui el "aloxapass" en cuanto a eiqui se refiere (postgres, odoo, docker...)
     #recipe = ��Puede ser interesante tener aqui el .ini del cliente??
     #Server_Details = Informaci�n del droplet (RAM, disco, etc...)
-    
-    
-    
-

@@ -5,6 +5,7 @@ import re
 from github import Github, GithubException
 import ast
 
+
 def get_repo_info(git_user, git_pass, repo, branch):
     results = re.search('https?:\/\/(?:www\.)?github\.com\/(.+)\/([^\.]+)', repo)
     if not results:

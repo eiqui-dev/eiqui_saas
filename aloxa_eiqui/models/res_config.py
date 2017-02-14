@@ -27,7 +27,7 @@ class eiqui_config_settings(models.TransientModel):
     _name = 'eiqui.config.settings'
     _inherit = 'res.config.settings'
 
-    git_username = fields.Char(string="Git Username", size=64, default=get_default_git_username)
+    git_username = fields.Char(string="Git Username", size=64)
     git_password = fields.Char(string="Git Password", size=128)
     pags_amarillas_api_user = fields.Char(string="Páginas Amarillas User", size=32)
     pags_amarillas_api_password = fields.Char(string="Páginas Amarillas Password", size=32)
