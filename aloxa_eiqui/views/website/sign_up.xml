@@ -3,6 +3,7 @@
 	<data>
 	
 		<template id="signup_assets">
+			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/generic.css" />
 			<link rel="stylesheet" href="/aloxa_eiqui/static/src/css/sign_up.css" />
 			<script type="text/javascript" src="/aloxa_eiqui/static/src/js/sign_up.js"/>
 		</template>
