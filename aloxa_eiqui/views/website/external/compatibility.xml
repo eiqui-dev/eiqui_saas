@@ -35,6 +35,9 @@
 									<li>
 										<a href="#contact" class="page-scroll">Contacta</a>
 									</li>
+									<li>
+										<a href="/alta">Create new Plan</a>
+									</li>
 								</ul>
 								</div>
 							</div>
@@ -159,11 +162,8 @@
 		</template>
 		
 		<template id="base_layout" page="True">
-			<t t-call="aloxa_eiqui.minimal_layout">			
-			    <a t-if="clickandgo" class="clickandgo hidden-xs" href="/alta"><img src="/aloxa_eiqui/static/src/img/about/1clickandgo.png"/></a>
-				
+			<t t-call="aloxa_eiqui.minimal_layout">
 				<t t-raw="0" />
-				
 				<t t-call="aloxa_eiqui.footer_layout"/>
 			</t>
 		</template>
@@ -236,7 +236,7 @@
 							browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> 
 							to improve your experience.</p> <![endif] -->
 							
-						<div id="wrapwrap">
+						<div id="wraphome">
 							<t t-raw="0" />
 						</div>
 						
@@ -271,7 +271,7 @@
 		<template id="user_navbar" inherit_id="aloxa_eiqui.minimal_layout" groups="base.group_user">
 		<xpath expr="//body/div['id=wrawrap']" position="before">
 		<t t-if="website and menu_data">
-		    <nav id="oe_main_menu_navbar" class="navbar navbar-inverse" role="navigation">
+		    <nav id="oe_main_menu_navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		        <div class="navbar-header">
 		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#oe_applications">
 		                <span class="icon-bar"></span>

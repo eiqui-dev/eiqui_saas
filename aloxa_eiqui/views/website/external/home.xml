@@ -96,6 +96,9 @@
 								<li>
 									<a href="#contact" class="page-scroll">Contacta</a>
 								</li>
+								<li>
+									<a class="btn btn-lg" style="color:#68b581;" href="/alta">Create new Plan</a>
+								</li>
 
 								<!-- t t-foreach="website.menu_id.child_id" t-as="submenu">
 									<t t-call="website.submenu" />

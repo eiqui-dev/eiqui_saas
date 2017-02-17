@@ -509,7 +509,7 @@ ul.navbar-nav > .active > a{
     width: 100%;
 }
 .overlay-slide:after{
-    background: url("../img/banner/overaly.png");
+    background: url("/aloxa_eiqui/static/src/img/banner/overaly.png");
     position: absolute;
     content: "";
     z-index: 3;
@@ -1244,7 +1244,7 @@ padding: 8px 15px;
     top: 0px;
 }
 #pricing_table {
-    background: url("../img/bg/1.jpg")fixed center center;
+    background: url("/aloxa_eiqui/static/src/img/bg/1.jpg")fixed center center;
     background-size: cover;
 }
 
@@ -1942,7 +1942,7 @@ padding: 8px 15px;
     padding: 55px 0px;
 }
 #banner{
-    background: url("../img/slider/b6.jpg")no-repeat;
+    background: url("/aloxa_eiqui/static/src/img/slider/b6.jpg")no-repeat;
     background-size: cover;
     height: 500px;
 }
@@ -2443,7 +2443,7 @@ padding: 8px 15px;
     top: 0px;
     width: 100%;
     height: 100%;
-     background: url("../img/banner/overaly.png")repeat; 
+     background: url("/aloxa_eiqui/static/src/img/banner/overaly.png")repeat; 
 }
 .video-background{
     width: 100%;
@@ -2602,7 +2602,7 @@ iframe{
     color: #fff!important;
 }
 #about-details {
-    background: url('../img/banner/banner.jpg')fixed 50% 50%;
+    background: url('/aloxa_eiqui/static/src/img/banner/banner.jpg')fixed 50% 50%;
 }
 
 .single-progress .progress{
