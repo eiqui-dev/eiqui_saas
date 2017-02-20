@@ -1460,14 +1460,14 @@
 									Solo queremos clientes satisfechos. Sin permanencia, sin trucos. Garantizamos que tu sistema, es eso, tuyo.</h4>
 									<br/>
 									<input type="checkbox" name="plan-mode" checked="checked"/>
-									<div class="divider"></div>
+									<div class="divider"/>
 								</div>
 							</div>  <!-- Col-md-12 End -->
 
 							<div class="text-center pricing">
 								<div class="col-md-4 col-xs-12 col-sm-12">
 									<div id="price-company" class="single_table">
-										<div class="plan_wraper"></div>
+										<div class="plan_wraper"/>
 										<ul>
 											<li class="plan">
 												Empresa
@@ -1475,14 +1475,14 @@
 													<span>Plan Anual</span>
 											</li>
 											<li class="price">
-												<span class='price-eur'>60</span>
+												<span class="price-eur">60</span>
 												<span>€/mes</span>
 											</li>
-											<li class='price-vat'>&amp;nbsp;</li>
+											<li class="price-vat">&amp;nbsp;</li>
 											<li> 40GB de espacio en disco</li>
-											<li> 2GB de RAM</li>
-											<li> Procesador 2Cores</li>
-											<li> 3TB de transferencia</li>
+											<li> Recomendado para 15 usuarios o menos </li>
+											<li> Certificado SSL</li>
+											<li> Copias de Seguridad automáticas</li>
 											<li class="price_button">
 												<a class="btn btn-main" href="/alta">Sign UP Now!</a>
 											</li>
@@ -1491,7 +1491,7 @@
 								</div> <!-- Single col-md-4 End -->
 								<div class="col-md-4 col-xs-12 col-sm-12">
 									<div id="price-standard" class="single_table grey_bg  ">
-										<div class="plan_wraper"></div>
+										<div class="plan_wraper"/>
 										<ul>
 											<li class="plan">
 												Estándar
@@ -1499,14 +1499,14 @@
 													<span>Plan Anual</span>
 											</li>
 											<li class="price">
-												<span class='price-eur'>40</span>
+												<span class="price-eur">40</span>
 												<span>€/mes</span>
 											</li>
-											<li class='price-vat'>&amp;nbsp;</li>
+											<li class="price-vat">&amp;nbsp;</li>
 											<li> 20GB de espacio en disco</li>
-											<li> 512MB de RAM</li>
-											<li> Procesador 1Core</li>
-											<li> 1TB de transferencia</li>
+											<li> Recomendado para 5 usuarios o menos </li>
+											<li> Certificado SSL</li>
+											<li> Copias de Seguridad automáticas</li>
 											<li class="price_button">
 												<a class="btn btn-main" href="/alta">Sign UP Now!</a>
 											</li>
@@ -1515,7 +1515,7 @@
 								</div> <!-- Single col-md-4 End -->
 								<div class="col-md-4 col-xs-12 col-sm-12">
 									<div id="price-high-performance" class="single_table dark_bg">
-										<div class="plan_wraper"></div>
+										<div class="plan_wraper"/>
 										<ul>
 											<li class="plan">
 												Alto rendimiento
@@ -1523,14 +1523,14 @@
 													<span>Plan Anual</span>
 											</li>
 											<li class="price">
-												<span class='price-eur'>120</span>
+												<span class="price-eur">120</span>
 												<span>€/mes</span>
 											</li>
-											<li class='price-vat'>&amp;nbsp;</li>
+											<li class="price-vat">&amp;nbsp;</li>
 								 			<li> 80GB de espacio en disco</li>
-											<li> 8GB de RAM</li>
-											<li> Procesador 4Cores</li>
-											<li> 15TB de transferencia</li>
+											<li> Recomendado para 30 usuarios o menos </li>
+											<li> Certificado SSL</li>
+											<li> Copias de Seguridad automáticas</li>
 											<li class="price_button">
 												<a class="btn btn-main" href="/alta">Sign UP Now!</a>
 											</li>
