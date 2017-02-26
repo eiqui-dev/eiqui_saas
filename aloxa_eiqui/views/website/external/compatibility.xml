@@ -87,7 +87,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-3 col-sm-6 col-xs-12">
+							<!--<div class="col-md-3 col-sm-6 col-xs-12">
 								<h3 class="menu_head">Tags</h3>
 								<div class="footer_menu tags">
 									<a href="#"> Design</a>
@@ -101,7 +101,7 @@
 									<a href="#"> SEO</a>
 									<a href="#"> Ubuntu</a>
 								</div>
-							</div>
+							</div>-->
 
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div class="footer_mid pull-right">
+								<!--<div class="footer_mid pull-right">
 									<ul class="social-contact list-inline">
 										<li>
 											<a href="#">
@@ -152,7 +152,7 @@
 											</a>
 										</li>
 									</ul>
-								</div>
+								</div>-->
 							</div>
 
 						</div>
