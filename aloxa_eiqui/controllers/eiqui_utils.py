@@ -20,6 +20,7 @@ EIQUI_USER = 'eiqui'
 EIQUI_LOGIN = 'info@aloxa.eu'
 EIQUI_CLIENTNAME_REGEX = r'^\w{4,12}$'
 
+
 # Obtiene el nombre del repositorio y el hash del commit más reciente
 # INPUT
 #    git_user [string]    El nombre de usuario en git para usar en las peticiones con github
@@ -35,7 +36,7 @@ def get_repo_commit_info(git_user, git_pass, repo, branch):
     results = re.search('https?:\/\/(?:www\.)?github\.com\/(.+)\/([^\.]+)', repo)
     if not results:
         raise Exception("Invalid repository url")
-    
+
     user_login = results.group(1)
     user_repo = results.group(2)
 
@@ -43,7 +44,7 @@ def get_repo_commit_info(git_user, git_pass, repo, branch):
         gGithubClient = Github(git_user, git_pass)
     except AssertionError:
         raise Exception("Can't login on github!")
-    
+
     github_user = None
     github_repo = None
     try:
@@ -54,6 +55,7 @@ def get_repo_commit_info(git_user, git_pass, repo, branch):
     master = github_repo.get_git_ref('heads/%s' % branch)
     base_commit = github_repo.get_git_commit(master.object.sha)
     return (user_repo, base_commit.sha)
+
 
 # Inserta repositorios a la receta.
 # Si el repositorio existe en la receta, se actualiza.
@@ -103,6 +105,7 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
         print line
     cfg_file.close()
 
+
 # Recolecta informacion de la receta.
 # INPUT
 #    client  [string]    El nombre del cliente
@@ -115,17 +118,17 @@ def get_client_recipe_info(client, is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     instance_mode = 'test' if is_test else 'prod'
-    path_file = '%s/%s/%s/%s.cfg' % (CWD_BUILDS, client, instance_mode, instance_mode)
+    path_file = os.path.join(CWD_BUILDS, client, instance_mode, '%s.cfg' % instance_mode)
     config = configparser.ConfigParser()
     result = {}
     if any(config.read(path_file)):
-        result = {}
         values = ['xmlrpc_port', 'admin_passwd', 'db_user', 'db_password', 'data_dir', 'logfile']
         for val in values:
             valname = 'options.%s' % val
             result.update({val: valname in config['openerp'] and config['openerp'][valname] or ''})
         return result
     return False
+
 
 # Wrapper para llamar a los script de eiqui
 # INPUT
@@ -141,13 +144,27 @@ def call_eiqui_script(script, params):
     (out, err) = proc.communicate()
     return (proc.returncode, out, err)
 
+
 def create_client(client, branch="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    (rcode, out, err) = call_eiqui_script("crear_host", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
-    if rcode == 0:
-        return True
-    raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+    (rcode, out, err) = call_eiqui_script("crear_host_droplet", ['-c',"'%s'" % client])
+    if rcode != 0:
+        raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
+    (rcode, out, err) = call_eiqui_script("crear_host_docker", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
+    if rcode != 0:
+        raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
+    (rcode, out, err) = call_eiqui_script("crear_host_proxy", ['-c',"'%s'" % client])
+    if rcode != 0:
+        raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
+    (rcode, out, err) = call_eiqui_script("crear_host_setup", ['-c',"'%s'" % client])
+    if rcode != 0:
+        raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
+    (rcode, out, err) = call_eiqui_script("crear_host_push", ['-c',"'%s'" % client])
+    if rcode != 0:
+        raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
+    return True
+
 
 def create_client_test(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
@@ -157,6 +174,7 @@ def create_client_test(client):
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
 
+
 def monitor_client(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
@@ -164,6 +182,7 @@ def monitor_client(client):
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
 
 def create_snapshot(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
@@ -173,6 +192,7 @@ def create_snapshot(client):
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
 
+
 def restore_snapshot(client, snapshot):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
@@ -180,6 +200,7 @@ def restore_snapshot(client, snapshot):
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
 
 def remove_client(client, full=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
@@ -191,6 +212,7 @@ def remove_client(client, full=False):
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
+
 
 def update_client_buildbot(client, is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
@@ -221,6 +243,7 @@ def get_client_host_url(client, is_test=False, is_host=False):
         return '%s://test.%s.eiqui.com' % (schema, client)
     return '%s://%s.eiqui.com' % (schema, client)
 
+
 def create_user(server_host, dbname, adminuser, adminpasswd, newuser, newlogin, newpasswd):
     try:
         client = erppeek.Client(str(server_host))
@@ -229,6 +252,7 @@ def create_user(server_host, dbname, adminuser, adminpasswd, newuser, newlogin, 
     except:
         raise
     return res == 1
+
 
 # Crear una base de datos para Odoo
 # INPUT
@@ -249,6 +273,7 @@ def odoo_create_db(server_host, masterpasswd, dbname, lang, adminpasswd):
         raise
     return res == 1
 
+
 # Instala los modulos que pueda en la instacia indicada de Odoo
 # INPUT
 #    url        [string]         URL de la instancia Odoo
@@ -268,10 +293,13 @@ def odoo_install_modules(url, dbname, user, userpasswd, modules):
         raise
     return True
 
+
 def prepare_client_instance(client, repos, branch, modules_installed=None, git_user='', git_pass=''):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     try:
+        _logger.info(repos)
+        _logger.info(modules_installed)
         base_url = get_client_host_url(client, False, False)
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
@@ -295,6 +323,7 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
     except:
         raise
     return (inst_info, adminpasswd, base_url)
+
 
 def rebuild_test_instance(client, adminpasswd):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):

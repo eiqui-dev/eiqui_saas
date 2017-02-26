@@ -369,8 +369,8 @@ class EiquiWebsite(webmain.Home):
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     # Crear cliente
-#                     eiqui_utils.create_client(project.name, 
-#                                               branch=project.odoo_version)
+                    eiqui_utils.create_client(project.name, 
+                                              branch=project.odoo_version)
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
                     git_username = None
@@ -400,7 +400,7 @@ class EiquiWebsite(webmain.Home):
                         git_user=git_username,
                         git_pass=git_password
                     )
-                    eiqui_utils.monitor_client(project.name)
+                    #eiqui_utils.monitor_client(project.name)
                     project.write({
                         'server_state': 'created',
                         'adminpass': adminpasswd
