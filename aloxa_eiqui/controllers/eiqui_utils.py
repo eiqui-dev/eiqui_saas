@@ -148,19 +148,19 @@ def call_eiqui_script(script, params):
 def create_client(client, branch="9.0"):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    (rcode, out, err) = call_eiqui_script("crear_host_droplet", ['-c',"'%s'" % client])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['droplet', '-c', "'%s'" % client])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
-    (rcode, out, err) = call_eiqui_script("crear_host_docker", ['-c',"'%s'" % client,'-v',"'%s'" % branch])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['docker', '-c', "'%s'" % client, '-v', "'%s'" % branch])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
-    (rcode, out, err) = call_eiqui_script("crear_host_proxy", ['-c',"'%s'" % client])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['proxy', '-c', "'%s'" % client])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
-    (rcode, out, err) = call_eiqui_script("crear_host_setup", ['-c',"'%s'" % client])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['setup', '-c', "'%s'" % client])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
-    (rcode, out, err) = call_eiqui_script("crear_host_push", ['-c',"'%s'" % client])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['push', '-c', "'%s'" % client])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
     return True
