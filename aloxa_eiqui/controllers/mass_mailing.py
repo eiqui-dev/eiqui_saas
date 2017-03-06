@@ -23,11 +23,12 @@ from openerp.http import request
 import openerp.addons.mass_mailing.controllers.main as massmail
 import logging
 _logger = logging.getLogger(__name__)
-    
+
+
 class MassMailController(massmail.MassMailController):
     @http.route('/mail/campaign/eiqui', type='http', auth='none', website=True)
     def mail_campaign_eiqui(self, **kwargs):
         values = dict()
         return request.website.render("aloxa_eiqui.mail_campaign_eiqui", values)
-        
+
             

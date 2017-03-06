@@ -151,7 +151,7 @@ def create_client(client, branch="9.0"):
     (rcode, out, err) = call_eiqui_script("crear_host", ['droplet', '-c', "'%s'" % client])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
-    (rcode, out, err) = call_eiqui_script("crear_host", ['docker', '-c', "'%s'" % client, '-v', "'%s'" % branch])
+    (rcode, out, err) = call_eiqui_script("crear_host", ['dockers', '-c', "'%s'" % client, '-v', "'%s'" % branch])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
     (rcode, out, err) = call_eiqui_script("crear_host", ['proxy', '-c', "'%s'" % client])
