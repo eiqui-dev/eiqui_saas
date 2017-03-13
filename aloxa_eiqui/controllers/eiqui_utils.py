@@ -248,7 +248,7 @@ def create_user(server_host, dbname, adminuser, adminpasswd, newuser, newlogin, 
     try:
         client = erppeek.Client(str(server_host))
         client.login(adminuser, password=adminpasswd, database=dbname)
-        res = client.create('res.users', {'name':newuser,'login':newlogin, 'new_password':newpasswd})
+        res = client.create('res.users', {'name':newuser, 'login':newlogin, 'new_password':newpasswd})
     except:
         raise
     return res == 1
@@ -303,10 +303,10 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
         base_url = get_client_host_url(client, False, False)
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
-        if repos and any(repos):
-            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
-            update_client_buildbot(client, False)
-            requests.get(base_url)  # Server Up!
+        #if repos and any(repos):
+        #    add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+        #    update_client_buildbot(client, False)
+        #    requests.get(base_url)  # Server Up!
         inst_info = get_client_recipe_info(client, False)
         if not inst_info:
             raise Exception("Error! Can't read recipe data")
