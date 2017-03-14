@@ -302,7 +302,9 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
         if repos and any(repos):
-            #add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+            time.sleep(15)
+            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+            time.sleep(15)
             update_client_buildbot(client, False)
             requests.get(base_url)  # Server Up!
         inst_info = get_client_recipe_info(client, False)
