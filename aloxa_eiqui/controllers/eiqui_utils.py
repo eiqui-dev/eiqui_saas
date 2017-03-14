@@ -145,7 +145,7 @@ def call_eiqui_script(script, params):
     return (proc.returncode, out, err)
 
 
-def create_client(client, branch="9.0"):
+def create_client(client, branch="9.0", is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     (rcode, out, err) = call_eiqui_script("crear_host", ['droplet', '-c', "'%s'" % client])
@@ -166,10 +166,10 @@ def create_client(client, branch="9.0"):
     return True
 
 
-def create_client_test(client):
+def create_client_instance(client, is_test=False):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
-    (rcode, out, err) = call_eiqui_script("crear_test", ['-c',"'%s'" % client])
+    (rcode, out, err) = call_eiqui_script("crear_instancia", ['-c', "'%s'" % client, is_test and '-t' or '-d'])
     if rcode == 0:
         return True
     raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode,out,err))
@@ -298,13 +298,11 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     try:
-        _logger.info(repos)
-        _logger.info(modules_installed)
         base_url = get_client_host_url(client, False, False)
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
         if repos and any(repos):
-            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+            #add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
             update_client_buildbot(client, False)
             requests.get(base_url)  # Server Up!
         inst_info = get_client_recipe_info(client, False)
