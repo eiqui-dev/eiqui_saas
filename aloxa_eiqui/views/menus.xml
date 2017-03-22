@@ -2,7 +2,7 @@
 <openerp>
 	<data>
 	
-		<menuitem id="eiqui_menu_main" name="eiqui" sequence="1" />
+		<menuitem id="eiqui_menu_main" name="eiqui" sequence="1" web_icon="static/description/eiqui_saas.png"/>
 		
 		<menuitem id="eiqui_menu_git" parent="eiqui_menu_main" name="Git Control" sequence="10" />
 		<menuitem id="eiqui_menu_git_repos" parent="eiqui_menu_git" name="Repositories" sequence="10"
