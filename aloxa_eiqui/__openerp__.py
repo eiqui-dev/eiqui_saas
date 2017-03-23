@@ -50,6 +50,7 @@
         'views/inherit_res_config.xml',
         'views/inherit_blog_post.xml',
         'views/inherit_mass_mailing.xml',
+        'views/inherit_mail_mass_mailing_contact.xml',
         'views/repos.xml',
         'views/modules.xml',
         'views/project_modules.xml',

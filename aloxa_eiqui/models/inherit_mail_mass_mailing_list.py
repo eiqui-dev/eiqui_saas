@@ -96,7 +96,7 @@ def import_contacts_paginas_amarillas(contacts, api_user, api_pass, activity, ci
     frmt_page = u'/mactions/searchResults?where=%s&what=%s&rows=%d&seed=123&page=%d&format=json' % (urllib.quote_plus(city), urllib.quote_plus(activity), rows, npag)
     print frmt_page
     
-    auth_str = base64.encodestring('%s:%s' % (api_user, api_pass))
+    auth_str = base64.encodestring('%s:%s' % (api_user, api_pass)).strip()
     headers = {
         # Yes.. i'm the app...
         'User-Agent': 'AndroidPA 4.2.4 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Galaxy Nexus Build/MOB31K)',
@@ -140,7 +140,7 @@ class mail_mass_mailing_list(models.Model):
     def import_contacts(self):
         mail_mass_mailing_obj = self.env['mail.mass_mailing.contact']
         mails_list_ids = []
-        config = self.search([], order='id DESC', limit=1)
+        config = self.env['eiqui.config.settings'].search([], order='id DESC', limit=1)
         for record in self:
             contacts = []
             import_contacts_paxinas_galegas(contacts, activity=record.name, city='')
