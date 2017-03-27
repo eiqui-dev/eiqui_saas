@@ -8,6 +8,7 @@
 	        <field name="arch" type="xml">
 	        	<xpath expr="//tree/field[3]" position="before">
 	        		<field name="province"/>
+	        		<field name="city"/>
 	        	</xpath>
 	    	</field>
 	    </record>
