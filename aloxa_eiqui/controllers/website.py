@@ -368,6 +368,11 @@ class EiquiWebsite(webmain.Home):
                 try:
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
+                    
+                    # TEST
+                    eiqui_utils.update_client_buildbot(project.name, False)
+                    return True
+                    
                     # Crear cliente
                     eiqui_utils.create_client(project.name, 
                                               branch=project.odoo_version)
