@@ -369,13 +369,8 @@ class EiquiWebsite(webmain.Home):
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
                     
-                    # TEST
-                    eiqui_utils.update_client_buildbot(project.name, False)
-                    return True
-                    
                     # Crear cliente
-                    eiqui_utils.create_client(project.name, 
-                                              branch=project.odoo_version)
+                    eiqui_utils.create_droplet(project.name)
                     # Preparar Odoo (Produccion)
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
                     git_username = None
@@ -396,7 +391,18 @@ class EiquiWebsite(webmain.Home):
                     branch_repos = project.repo_modules_ids.search([('repo_id.branch', '=', project.odoo_version)])
                     for repo in branch_repos:
                         repos.append(repo.url)
-                    
+
+                    eiqui_utils.prepare_client_recipe(
+                        project.name,
+                        repos,
+                        project.odoo_version,
+                        git_user=git_username,
+                        git_pass=git_password
+                    )
+
+                    eiqui_utils.create_client(project.name,
+                                              branch=project.odoo_version)
+
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,
                         repos,

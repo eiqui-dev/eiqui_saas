@@ -145,12 +145,20 @@ def call_eiqui_script(script, params):
     return (proc.returncode, out, err)
 
 
-def create_client(client, branch="9.0", is_test=False):
+def create_droplet(client):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
+
     (rcode, out, err) = call_eiqui_script("crear_host", ['droplet', '-c', "'%s'" % client])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
+    return True
+
+
+def create_client(client, branch="9.0", is_test=False):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+
     (rcode, out, err) = call_eiqui_script("crear_host", ['dockers', '-c', "'%s'" % client, '-v', "'%s'" % branch])
     if rcode != 0:
         raise Exception('Return Code: %d\nOut: %s\nErr: %s\n' % (rcode, out, err))
@@ -293,6 +301,17 @@ def odoo_install_modules(url, dbname, user, userpasswd, modules):
         raise
     return True
 
+def prepare_client_recipe(client, repos, branch, git_user='', git_pass=''):
+    if not re.match(EIQUI_CLIENTNAME_REGEX, client):
+        raise Exception('Invalid Client Name!')
+    try:
+        # Produccion
+        if repos and any(repos):
+            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
+            update_client_buildbot(client, False)
+    except:
+        raise
+    
 
 def prepare_client_instance(client, repos, branch, modules_installed=None, git_user='', git_pass=''):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
@@ -301,12 +320,6 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
         base_url = get_client_host_url(client, False, False)
         adminpasswd = binascii.hexlify(os.urandom(4)).decode()
         # Produccion
-        if repos and any(repos):
-            time.sleep(15)
-            add_repos_to_client_recipe(client, repos, branch, git_user=git_user, git_pass=git_pass, is_test=False)
-            time.sleep(15)
-            update_client_buildbot(client, False)
-            requests.get(base_url)  # Server Up!
         inst_info = get_client_recipe_info(client, False)
         if not inst_info:
             raise Exception("Error! Can't read recipe data")
