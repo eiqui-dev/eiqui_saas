@@ -350,7 +350,7 @@ class EiquiWebsite(webmain.Home):
         kwargs = {'uid': request.uid, 'db': request.db, 'project_id': proj_id.id}
         thread.start_new_thread(self._thread_create_docker, (kwargs,))
         return { 'check': True }
-    
+
     @http.route(['/_update_plan_test'], auth="user", type='json', website=True)  
     def _update_plan_test(self, project_id):
         proj_id = request.env['project.project'].browse([project_id])
@@ -359,7 +359,7 @@ class EiquiWebsite(webmain.Home):
         except Exception, e:
             return { 'error': True, 'errormsg': str(e) }
         return {'check': True}
-    
+
     def _thread_create_docker(self, kwargs):
         with openerp.sql_db.db_connect(kwargs.get('db')).cursor() as new_cr:
             with Environment.manage():
@@ -368,10 +368,8 @@ class EiquiWebsite(webmain.Home):
                 try:
                     if not project:
                         raise Exception(_("The project appears doesn't exists!"))
-                    
-                    # Crear cliente
-                    eiqui_utils.create_droplet(project.name)
-                    # Preparar Odoo (Produccion)
+
+                    # Obtener informacion del proyecto a desplegar
                     eiqui_config = env['eiqui.config.settings'].search([], order="id DESC", limit=1)
                     git_username = None
                     git_password = None
@@ -392,6 +390,9 @@ class EiquiWebsite(webmain.Home):
                     for repo in branch_repos:
                         repos.append(repo.url)
 
+                    # Crear Droplet
+                    eiqui_utils.create_droplet(project.name, branch=project.odoo_version)
+                    # Escribir Recetas Buildout
                     eiqui_utils.prepare_client_recipe(
                         project.name,
                         repos,
@@ -399,10 +400,9 @@ class EiquiWebsite(webmain.Home):
                         git_user=git_username,
                         git_pass=git_password
                     )
-
-                    eiqui_utils.create_client(project.name,
-                                              branch=project.odoo_version)
-
+                    # Crear dockers y resto de configuración del sistema
+                    eiqui_utils.create_client(project.name)
+                    # Instalar base de datos, cargar modulos, ...
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,
                         repos,
