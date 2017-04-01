@@ -75,6 +75,7 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
     path_file = '%s/%s/%s/%s.cfg' % (CWD_BUILDS, client, instance_mode, instance_mode)
     config = configparser.ConfigParser()
     config.read(path_file)
+    cur_addons = 'addons' in config['openerp'] and config['openerp']['addons'].split('\n') or []
     repos = list(set(repos))  # Remove duplicate values
     for repo in repos:
         (name, sha) = get_repo_commit_info(git_user, git_pass, repo, branch)
@@ -83,18 +84,17 @@ def add_repos_to_client_recipe(client, repos, branch, git_user='', git_pass='', 
             nrepo = "git %s odoo %s depth=1" % (repo, sha)
             config['openerp']['version'] = nrepo
         else:
-            nrepo = "git %s parts/%s %s" % (repo, name, sha)
-            addons = 'addons' in config['openerp'] and config['openerp']['addons'].split('\n') or []
+            nrepo = "git %s parts/%s %s depth=3" % (repo, name, sha)
             found = False
-            for (index, addon) in enumerate(addons):
+            for (index, addon) in enumerate(cur_addons):
                 results = re.search(r'^git\s([^\s]+)', addon)
                 if results and results.group(1) == repo:
-                    addons[index] = nrepo
+                    cur_addons[index] = nrepo
                     found = True
                     break
             if not found:
-                addons.append(nrepo)
-    config['openerp']['addons'] = '\n'.join(addons)
+                cur_addons.append(nrepo)
+    config['openerp']['addons'] = '\n'.join(cur_addons)
     with open(path_file, 'w') as configfile:
         config.write(configfile)
     # Cambiar 'addons =' por 'addons +='
@@ -140,7 +140,6 @@ def get_client_recipe_info(client, is_test=False):
 #
 def call_eiqui_script(script, params):
     eiquiscript = "sudo %s/ei_%s %s" % (CWD, script, ' '.join(params))
-    _logger.info("Llamando al script: %s" % eiquiscript)
     proc = Popen(eiquiscript, shell=True, universal_newlines=True, stdout=PIPE, stderr=PIPE, cwd=CWD)
     (out, err) = proc.communicate()
     return (proc.returncode, out, err)
@@ -302,6 +301,7 @@ def odoo_install_modules(url, dbname, user, userpasswd, modules):
         raise
     return True
 
+
 def prepare_client_recipe(client, repos, branch, git_user='', git_pass=''):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
@@ -312,9 +312,9 @@ def prepare_client_recipe(client, repos, branch, git_user='', git_pass=''):
             update_client_buildbot(client, False)
     except:
         raise
-    
 
-def prepare_client_instance(client, repos, branch, modules_installed=None, git_user='', git_pass=''):
+
+def prepare_client_instance(client, modules_installed=None):
     if not re.match(EIQUI_CLIENTNAME_REGEX, client):
         raise Exception('Invalid Client Name!')
     try:
@@ -324,9 +324,7 @@ def prepare_client_instance(client, repos, branch, modules_installed=None, git_u
         inst_info = get_client_recipe_info(client, False)
         if not inst_info:
             raise Exception("Error! Can't read recipe data")
-        _logger.info(inst_info)
         odoo_url_host = get_client_host_url(client, False, True)
-        time.sleep(15)  # No somos impacientes y esperamos a que se asiente todo...
         res = odoo_create_db(odoo_url_host, inst_info['admin_passwd'], client, 'es_ES', adminpasswd)
         if res:
             if modules_installed and any(modules_installed):

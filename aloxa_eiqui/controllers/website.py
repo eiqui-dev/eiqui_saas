@@ -405,11 +405,7 @@ class EiquiWebsite(webmain.Home):
                     # Instalar base de datos, cargar modulos, ...
                     (inst_info, adminpasswd, odoo_url) = eiqui_utils.prepare_client_instance(
                         project.name,
-                        repos,
-                        project.odoo_version,
-                        modules_installed=modules,
-                        git_user=git_username,
-                        git_pass=git_password
+                        modules_installed=modules
                     )
                     #eiqui_utils.monitor_client(project.name)
                     project.write({
