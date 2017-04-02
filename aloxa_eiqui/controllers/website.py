@@ -390,7 +390,7 @@ class EiquiWebsite(webmain.Home):
                             modules.append(module.folder)
                             repos.append(module.repo_id.url)
                     # Obtener repos a instalar
-                    branch_repos = env['eiqui.repos'].search([
+                    branch_repos = env['eiqui.project.modules'].search([
                         ('repo_id.branch', '=', project.odoo_version),
                         ('id', 'in', project.repo_modules_ids.mapped('id'))
                     ])
