@@ -379,14 +379,21 @@ class EiquiWebsite(webmain.Home):
                     repos = []
                     modules = []
                     # Obtener Modulos y Repos a Instalar Vertical Base
-                    vertical_base_id = env['eiqui.vertical'].search([('name', '=', '__base__')], limit=1)
+                    vertical_base_id = env['eiqui.vertical'].search([
+                        ('name', '=', '__base__')], limit=1)
                     if vertical_base_id:
-                        branch_modules = vertical_base_id.modules.search([('repo_id.branch', '=', project.odoo_version)])
+                        branch_modules = env['eiqui.project.modules'].search([
+                            ('repo_id.branch', '=', project.odoo_version),
+                            ('id', 'in', vertical_base_id.modules.mapped('id'))
+                        ])
                         for module in branch_modules:
                             modules.append(module.folder)
                             repos.append(module.repo_id.url)
                     # Obtener repos a instalar
-                    branch_repos = project.repo_modules_ids.search([('repo_id.branch', '=', project.odoo_version)])
+                    branch_repos = env['eiqui.repos'].search([
+                        ('repo_id.branch', '=', project.odoo_version),
+                        ('id', 'in', project.repo_modules_ids.mapped('id'))
+                    ])
                     for repo in branch_repos:
                         repos.append(repo.url)
 
