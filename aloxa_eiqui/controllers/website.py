@@ -382,7 +382,7 @@ class EiquiWebsite(webmain.Home):
                     vertical_base_id = env['eiqui.vertical'].search([
                         ('name', '=', '__base__')], limit=1)
                     if vertical_base_id:
-                        branch_modules = env['eiqui.project.modules'].search([
+                        branch_modules = env['eiqui.modules'].search([
                             ('repo_id.branch', '=', project.odoo_version),
                             ('id', 'in', vertical_base_id.modules.mapped('id'))
                         ])
